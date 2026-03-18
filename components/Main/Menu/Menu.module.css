@@ -1,0 +1,180 @@
+.Menu {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(30px, 1fr));
+    background: #ffffff;
+    width: 80%;
+    height: 80%;
+    box-shadow: 1px 2px 4px rgb(198, 198, 198);
+    border-radius: 10px;
+}
+.MenuButton {
+    overflow: hidden;
+    display: grid;
+    text-decoration: none;
+    height: 100%;
+    grid-template-rows: 60% 30%;
+    justify-items: center;
+    align-content: center;
+    scale: 0.9;
+    /*border: 1px solid red;*/
+}
+
+.MenuButtonActive {
+    background-color: white;
+    border-radius: 15px;
+    position: relative;
+    overflow: hidden;
+    scale: 1.05;
+    box-shadow: 0 2px 8px rgba(177, 156, 217, 0.25);
+    transition-duration: 0.2s;
+}
+
+/* Внутренний слой */
+.MenuButtonActive::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: white;
+    border-radius: 15px;
+    z-index: -1;
+}
+
+.MenuButtonActive .ImgHome,
+.MenuButtonActive .ImgPolicy,
+.MenuButtonActive .ImgHowMake,
+.MenuButtonActive .ImgCompany,
+.MenuButtonActive .ImgOffer,
+.MenuButtonActive .imgHome,
+.MenuButtonActive .imgEvent,
+.MenuButtonActive .imgInfo,
+.MenuButtonActive .imgAnket,
+.MenuButtonActive .imgAnalyt,
+.MenuButtonActive .imgSave,
+.MenuButtonActive .imgByu
+{
+    opacity: 0.65;
+    filter: invert(12%) sepia(0%) saturate(40%) hue-rotate(180deg) brightness(100%) contrast(80%);
+    animation: iconFloat 2.5s ease-in-out infinite;
+}
+
+@keyframes iconFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-3px);
+    }
+}
+.MenuButtonActive .BtnName, .MenuButtonActive {
+    color: #9CA3AF; /* Очень светлый серый */
+    position: relative;
+    overflow: hidden;
+    --base-font-size: 9px;
+}
+.BtnNameT{
+    font-size: calc(var(--base-font-size) * var(--font-scale));
+    --base-font-size: 9px;
+}
+.ImgHome, .ImgPolicy, .ImgHowMake, .ImgCompany, .ImgOffer, .imgHome, .imgEvent, .imgInfo, .imgAnket, .imgAnalyt, .imgSave, .imgByu{
+    width: 35%;
+    /*height: 100%;*/
+    opacity: 0.3;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.ImgHome{
+    background-image: url("/public/images/Home.png");
+}
+.ImgPolicy{
+    background-image: url("/public/images/Policy.png");
+}
+.ImgHowMake{
+    background-image: url("/public/images/HowMake.png");
+}
+.ImgCompany{
+    background-image: url("/public/images/Company.png");
+}
+.ImgOffer{
+    background-image: url("/public/images/offer1.png");
+}
+.imgHome{
+    background-image: url("/public/images/Home9.png");
+}
+.imgEvent{
+    background-image: url("/public/images/Event11.png");
+}
+.imgInfo{
+    background-image: url("/public/images/Info.png");
+}
+.imgAnket{
+    background-image: url("/public/images/Anket1.png");
+}
+.imgAnalyt{
+    background-image: url("/public/images/Guests.webp");
+}
+.imgSave{
+    background-image: url("/public/images/Save.png");
+}
+.imgByu{
+    background-image: url("/public/images/Cart.png");
+}
+.BtnName, .BtnNameT{
+    text-align: center;
+    overflow: hidden;
+    color: #7a7a7a;
+}
+.BtnName{
+    font-size: 9px;
+}
+.BtnNameT{
+    --base-font-size: 9px;
+}
+/* Мелкие смартфоны (портретный режим) типа iphone4*/
+@media (max-width: 359px) and (max-height: 480px){
+    .BtnName{
+        font-size: 9px;
+    }
+    .BtnNameT{
+        --base-font-size: 9px;
+    }
+}
+/* 2. iPhone 6/7/8/SE (375px) - попадает сюда */
+@media (min-width: 375px) {
+    .BtnName{
+        font-size: 11px;
+    }
+    .BtnNameT{
+        --base-font-size: 11px;
+    }
+}
+/* 3. iPhone Plus/XR (414px) - попадает сюда */
+@media (min-width: 414px) {
+    .BtnName{
+        font-size: 12px;
+    }
+    .BtnNameT{
+        --base-font-size: 12px;
+    }
+}
+/* 4. iPhone 16 Pro Max (~430px+) - попадает сюда */
+@media (min-width: 428px) {
+    .BtnName{
+        font-size: 13px;
+    }
+    .BtnNameT{
+        --base-font-size: 13px;
+    }
+}
+/* 5. Galaxy Z Fold 5 (~717px+) - попадает сюда */
+@media (min-width: 768px) {
+    .BtnName{
+        font-size: 13px;
+    }
+    .BtnNameT{
+        --base-font-size: 13px;
+    }
+}

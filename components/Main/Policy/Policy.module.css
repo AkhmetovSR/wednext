@@ -1,0 +1,329 @@
+/*-------------------------------Base----------------------------*/
+.Policy{
+    height: 100%;
+    overflow: hidden;
+    color: #7a7a7a;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    justify-items: center;
+    /*border: 1px solid red;*/
+}
+.legalContainer, .Offer {
+    display: grid;
+    width: 90%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    /*border: 1px solid red;*/
+}
+.tabs {
+    width: 100%;
+    align-items: center;
+    /*border: 1px solid red;*/
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.tab {
+    width: 100%;
+    padding: 4%;
+    border: none;
+    background: none;
+    font-size: 14px;
+    color: #a8a8a8;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /*border-radius: 10px;*/
+}
+.tab.active {
+    color: #007bff;
+    border-bottom-color: #007bff;
+}
+/*-------------------------------Join----------------------------*/
+.policyHeader{
+    font-size: 14px;
+}
+.sectionTitle{
+    font-size: 20px;
+}
+.policySection{
+    font-size: 19px;
+}
+.linkButton, .LoadPolicy{
+    color: #007bff;
+    text-decoration: underline;
+    /*cursor: pointer;*/
+    background: none;
+    border: none;
+    font-size: 18px;
+    padding: 0;
+    text-align: start;
+    /*font: inherit;*/
+    /*display: inline;*/
+}
+.Tr{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    word-break: break-all
+}
+.Td{
+    border: 1px solid grey;
+    padding: 2%;
+}
+/*-------------------------------Btn----------------------------*/
+.policyRevoke{
+    width: 90%;
+    height: 100%;
+    background-color: white;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+    /*border: 1px solid red;*/
+    padding: 2%;
+    gap: 5%;
+    overflow: hidden;
+}
+.btnRevoke, .btnAccept{
+    border-radius: 10px;
+    width: 100%;
+    height: 70%;
+    border: none;
+    background-color: #54a7ef;
+    color: white;
+    padding: 2%;
+}
+/*-------------------------------CookiePush----------------------------*/
+.MCookie{
+    display: grid;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.75);
+    z-index: 2000;
+    color: #535353;
+    font-size: 13px;
+    justify-items: center;
+    align-items: start;
+    backdrop-filter: blur(3px);
+    /*border: 2px solid red;*/
+}
+.CloseBB{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+.Cook{
+    position: relative;
+    display: grid;
+    width: 80%;
+    align-items: center;
+    justify-items: center;
+    color: #707070;
+    border-radius: 15px;
+    background: white;
+    overflow: hidden;
+    margin-top: 5%;
+    z-index: 1;
+    /*padding-bottom: 5%;*/
+}
+.Cook.expanded{
+    height: 94%;
+    width: 90%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    overscroll-behavior: none;
+    -webkit-overflow-scrolling: auto; /* Альтернатива для iOS */
+}
+.Cont{
+    width: 85%;
+    margin-bottom: 7%;
+}
+.divClose{
+    position: sticky;
+    top: 0;
+    right: 0;
+    width: 100%;
+    z-index: 1;
+    background: white;
+    border-radius: 15px 15px 0 0;
+    display: grid;
+    justify-items: end;
+}
+
+.closeButton{
+    width: 30px;
+    height: 30px;
+    border: none;
+    background-color: #fd9696;
+    color: white;
+    border-radius: 0 15px 0 15px;
+    margin: 0;
+}
+.Title{
+    /*border: 1px solid red;*/
+    padding: 2%;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+}
+.Info{
+    display: grid;
+    font-size: 14px;
+    text-align: justify;
+    text-justify: inter-word;
+    /*border: 1px solid red;*/
+}
+.Btn{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+    gap: 10%;
+    margin-top: 5%;
+}
+.Btn div{
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    align-content: center;
+    border-radius: 10px;
+    background-color: #41b5ff;
+    font-size: 14px;
+    color: #ffffff;
+    padding: 2%;
+    /*border: 1px solid red;*/
+}
+.PolicyButton {
+    background: none;
+    border: 1px solid #007bff;
+    color: #007bff;
+    padding: 8px 10px;
+    margin-top: 3%;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: all 0.2s;
+    white-space: nowrap;
+}
+
+/*-------------------------------Company----------------------------*/
+/* Контейнер компании */
+.companyContent {
+    height: 98%;
+    width: 90%;
+    overflow: hidden;
+    /*border: 1px solid blue;*/
+    justify-self: center;
+    align-self: end;
+}
+.companyTitle{
+    font-size: 15px;
+    line-height: 0.3;
+}
+.companyHeader {
+    /*border: 2px solid red;*/
+    text-align: center;
+}
+.infoGrid{
+    height: 100%;
+    /*border: 1px solid red;*/
+}
+.infoCard {
+    /*border: 1px solid rgb(193, 229, 247);*/
+    border-radius: 12px;
+    display: grid;
+    padding: 2%;
+    border-left: 3px solid rgb(228, 228, 228);
+    margin-top: 3%;
+}
+.cardTitle {
+    /*border: 1px solid red;*/
+    margin: 0;
+    font-size: 18px;
+}
+
+.infoItem {
+    display: grid;
+    grid-template-columns: 24% auto;
+}
+span{
+    /*border: 1px solid red;*/
+}
+.infoLabel {
+    font-size: 15px;
+    border-bottom: 1px solid #dcdcdc;
+}
+
+.infoValue {
+    font-weight: 500;
+    word-break: break-all;
+    font-size: 14px;
+    /*color: #4e4e4e;*/
+    border-bottom: 1px solid #dcdcdc;
+    text-align: end;
+}
+
+/* 2. iPhone 6/7/8/SE (375px) - попадает сюда */
+@media (min-width: 375px) {
+    .Title{
+        font-size: 22px;
+    }
+    .Info{
+        font-size: 16px;
+    }
+    .PolicyButton{
+        font-size: 14px;
+    }
+    .Btn div{
+        font-size: 15px;
+    }
+}
+
+/* 3. iPhone Plus/XR (414px) - попадает сюда */
+@media (min-width: 414px) {
+    .Title{
+        font-size: 22px;
+    }
+    .Info{
+        font-size: 16px;
+    }
+    .PolicyButton{
+        font-size: 15px;
+    }
+    .Btn div{
+        font-size: 16px;
+    }
+}
+
+/* 4. iPhone 16 Pro Max (~430px+) - попадает сюда */
+@media (min-width: 428px) {
+    .Title{
+        font-size: 24px;
+    }
+    .Info{
+        font-size: 19px;
+    }
+    .PolicyButton{
+        font-size: 16px;
+    }
+    .Btn div{
+        font-size: 17px;
+    }
+}
+
+/* 5. Galaxy Z Fold 5 (~717px+) - попадает сюда */
+@media (min-width: 768px) {
+    .Title{
+        font-size: 24px;
+    }
+    .Info{
+        font-size: 19px;
+    }
+    .PolicyButton{
+        font-size: 16px;
+    }
+    .Btn div{
+        font-size: 17px;
+    }
+}
