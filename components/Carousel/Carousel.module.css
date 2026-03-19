@@ -1,7 +1,7 @@
 .Carousel{
     height: 100%;
     width: 100%;
-    border: 1px solid red;
+    border: 10px solid red;
     overflow: hidden;
     position: absolute;
     background-color: red;

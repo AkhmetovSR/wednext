@@ -1,0 +1,106 @@
+.MDY{
+    font-size: calc(var(--base-font-size) * var(--font-scale));
+}
+.Month{
+    font-size: calc(var(--base-font-size) * var(--font-scale));
+}
+.Day{
+    font-size: calc(var(--base-font-size) * var(--font-scale));
+}
+.Year{
+    font-size: calc(var(--base-font-size) * var(--font-scale));
+}
+
+
+/* Мелкие смартфоны (портретный режим) типа iphone4*/
+@media (max-width: 359px) and (max-height: 480px){
+    .Month{
+        --base-font-size: 16px;
+    }
+    .Day{
+        --base-font-size: 30px;
+    }
+    .Year{
+        --base-font-size: 16px;
+    }
+}
+/* Мелкие смартфоны (портретный режим) типа iphone5/5s*/
+@media (max-width: 359px) and (min-height: 481px) and (max-height: 570px){
+    .D{
+        --base-font-size: 40px;
+    }
+}
+/* iPhone 6/7/8/SE/X/Galaxy S5 */
+@media (min-width: 360px) and (max-width: 375px) and (max-height: 812px){
+    .D{
+        --base-font-size: 45px;
+    }
+}
+/* iPhone 6/7/8 Plus */
+@media (min-width: 360px) and (min-height: 720px) and (max-height: 740px){
+    .D{
+        --base-font-size: 50px;
+    }
+}
+/* iPhone XR/12 Pro/ 14 Pro MAX/ Pixel 7/ S20FE/ */
+@media (min-width: 376px) and (max-width: 460px) and (min-height: 741px){
+    .D{
+        --base-font-size: 60px;
+    }
+}
+
+/* 16 Pro MAX */
+@media (min-width: 430px) and (min-height: 900px) {
+    .D{
+        --base-font-size: 65px;
+    }
+}
+/*Z Fold 5*/
+@media (max-width: 359px) and (min-height: 880px){
+    .D{
+        --base-font-size: 50px;
+    }
+}
+
+/*@media (max-width: 359px) and (max-height: 480px){*/
+/*    .DT{*/
+/*        --base-font-size: 22px;*/
+/*    }*/
+/*}*/
+/*!* Мелкие смартфоны (портретный режим) типа iphone5/5s*!*/
+/*@media (max-width: 359px) and (min-height: 481px) and (max-height: 570px){*/
+/*    .DT{*/
+/*        --base-font-size: 27px;*/
+/*    }*/
+/*}*/
+/*!* iPhone 6/7/8/SE/X/Galaxy S5 *!*/
+/*@media (min-width: 360px) and (max-width: 375px) and (max-height: 812px){*/
+/*    .DT{*/
+/*        --base-font-size: 30px;*/
+/*    }*/
+/*}*/
+/*!* iPhone 6/7/8 Plus *!*/
+/*@media (min-width: 360px) and (min-height: 720px) and (max-height: 740px){*/
+/*    .DT{*/
+/*        --base-font-size: 35px;*/
+/*    }*/
+/*}*/
+/*!* iPhone XR/12 Pro/ 14 Pro MAX/ Pixel 7/ S20FE/ *!*/
+/*@media (min-width: 376px) and (max-width: 460px) and (min-height: 741px){*/
+/*    .DT{*/
+/*        --base-font-size: 40px;*/
+/*    }*/
+/*}*/
+
+/*!* 16 Pro MAX *!*/
+/*@media (min-width: 430px) and (min-height: 900px) {*/
+/*    .DT{*/
+/*        --base-font-size: 40px;*/
+/*    }*/
+/*}*/
+/*!*Z Fold 5*!*/
+/*@media (max-width: 359px) and (min-height: 880px){*/
+/*    .DT{*/
+/*        --base-font-size: 35px;*/
+/*    }*/
+/*}*/

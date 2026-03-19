@@ -1,0 +1,190 @@
+.RSVP{
+    height: 100%;
+    width: 90%;
+    /*border: 1px solid red;*/
+    color: white;
+    /*justify-items: center;*/
+    grid-template-rows: 8% 9%  50%;
+    overflow: hidden;
+    gap: 2%;
+}
+.RSVPFIO{
+    padding-left: 5%;
+    border-radius: 10px;
+    border: none;
+    font-size: 13px;
+    outline: none;
+}
+.RYesOrNot{
+    grid-template-columns: 1fr 1fr;
+    gap: 3%;
+}
+.YesOrNotBtn{
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
+    background-color: white;
+    border: none;
+    color: grey;
+    --base-font-size: 12px;
+    font-size: var(--base-font-size);
+}
+.YesOrNotBtn:hover{
+    background-color: #ffffff;
+}
+.YesOrNotBtn.active {
+    background-color: #D4C676;
+    color: white;
+}
+
+.Regret{
+    text-align: center;
+    align-self: center;
+    color: #aeaeae;
+    font-size: 20px;
+    /*border: 1px solid red;*/
+}
+.AlcoPrefer{
+    color: #7a7a7a;
+    background-color: white;
+    border-radius: 10px;
+    padding-left: 5%;
+    padding-right: 5%;
+    display: grid;
+    grid-template-rows: 15% 45% 40%;
+}
+.Title{
+    text-align: center;
+    align-content: center;
+    --base-font-size: 14px;
+}
+.divAlco{
+    grid-template-columns: 1fr 1fr;
+    gap: 4%;
+    justify-content: center;
+    /*align-items: center;*/
+    --base-font-size: 13px;
+}
+.AlcoButton{
+    font-size: var(--base-font-size);
+    /*height: 90%;*/
+    /*padding: 5%;*/
+    color: grey;
+    text-align: start;
+    border: 1px solid #D4C676;
+    border-radius: 10px;
+    background-color: white;
+    grid-template-columns: auto auto;
+}
+.AlcoButton.active {
+    background-color: #D4C676;
+    color: white;
+}
+.divOtherAlco{
+    align-items: center;
+}
+.OtherAlco{
+    border-radius: 10px;
+    border: 1px solid #c5c5c5;
+    padding: 3%;
+    font-size: 14px;
+    outline: none;
+}
+.Warn{
+    align-content: center;
+    text-align: center;
+    justify-self: center;
+    --base-font-size: 12px;
+    color: #931717;
+    font-size: 125px;
+}
+.BtnConfirm{
+    background-color: #D4C676;
+    border-radius: 10px;
+    border: none;
+    color: white;
+    /*position: sticky;*/
+    width: 60%;
+    /*height: 40px;*/
+    margin-top: auto;
+    padding: 4%;
+    justify-self: center;
+    font-size: 14px;
+    margin-bottom: 5%;
+}
+
+/* 375px - 413px: ×1.09 */
+@media (min-width: 375px) {
+    .RSVPFIO {
+        font-size: 14px; /* 12 × 1.09 */
+    }
+    .YesOrNotBtn{
+        --base-font-size: 14px; /* 12 × 1.09 */
+    }
+    .Title, .AlcoButton {
+        --base-font-size: 15px;
+    }
+    .OtherAlco {
+        font-size: 15px;
+    }
+    .BtnConfirm{
+        font-size: 15px;
+    }
+}
+
+/* 414px - 427px: ×1.14 */
+@media (min-width: 414px) {
+    .RSVPFIO {
+        font-size: 15px; /* 12 × 1.14 */
+    }
+    .YesOrNotBtn{
+        --base-font-size: 15px; /* 12 × 1.09 */
+    }
+    .Title, .AlcoButton {
+        --base-font-size: 15px;
+    }
+    .OtherAlco {
+        font-size: 16px;
+    }
+    .BtnConfirm{
+        font-size: 16px;
+    }
+}
+
+/* 428px+ : ×1.18 */
+@media (min-width: 428px) {
+    .RSVPFIO {
+        font-size: 15px; /* 12 × 1.18 */
+    }
+    .YesOrNotBtn{
+        --base-font-size: 15px; /* 12 × 1.09 */
+    }
+    .Title, .AlcoButton {
+        --base-font-size: 16px;
+    }
+    .OtherAlco {
+        font-size: 16px;
+    }
+    .BtnConfirm{
+        font-size: 16px;
+    }
+}
+
+/* 768px+ : ×1.27 */
+@media (min-width: 768px) {
+    .RSVPFIO {
+        font-size: 16px; /* 12 × 1.27 */
+    }
+    .YesOrNotBtn{
+        --base-font-size: 16px; /* 12 × 1.09 */
+    }
+    .Title, .AlcoButton {
+        --base-font-size: 17px;
+    }
+    .OtherAlco {
+        font-size: 17px;
+    }
+    .BtnConfirm{
+        font-size: 17px;
+    }
+}

@@ -1,0 +1,68 @@
+/*:root {*/
+/*    --font-forum: 'Forum';*/
+/*    --font-mpl: 'MPL';*/
+/*}*/
+/*.DivWish{*/
+/*    border-radius: 25px;*/
+/*    padding-left: 7%;*/
+/*    grid-template-columns: 90% 8%;*/
+/*}*/
+/*.Wish{*/
+/*    width: 100%;*/
+/*    align-content: start;*/
+/*    list-style-type: none;*/
+/*    !*overscroll-behavior: none;*!*/
+/*    !*overflow: auto;*!*/
+/*}*/
+/*.Wish.reordering {*/
+/*    !* Prevent text selection during reorder *!*/
+/*    -webkit-user-select: none;*/
+/*    -moz-user-select: none;*/
+/*    -ms-user-select: none;*/
+/*    user-select: none;*/
+/*    !* Improve dragging performance *!*/
+/*    !*transform: translateZ(0);*!*/
+/*    !*backface-visibility: hidden;*!*/
+/*    !*perspective: 1000;*!*/
+/*}*/
+/*.WishDesc{*/
+/*    font-family: var(--font-mpl);*/
+/*    --base-font-size: 19px;*/
+/*    margin-bottom: 5%;*/
+/*}*/
+/*.deleteButton{*/
+/*    background: none;*/
+/*    color: #CEC58E;*/
+/*    border: 1px solid #CEC58E;*/
+/*    width: 24px;*/
+/*    height: 24px;*/
+/*    border-radius: 40%;*/
+/*    cursor: pointer;*/
+/*    font-size: 14px;*/
+/*}*/
+/*!* 2. iPhone 6/7/8/SE (375px) - попадает сюда *!*/
+/*@media (min-width: 375px) {*/
+/*    .WishDesc { --base-font-size: 19px; } !* 17 × 1.09 *!*/
+/*}*/
+/*!* 3. iPhone Plus/XR (414px) - попадает сюда *!*/
+/*@media (min-width: 414px) {*/
+/*    .WishDesc { --base-font-size: 19px; } !* 17 × 1.14 *!*/
+/*}*/
+/*!* 4. iPhone 16 Pro Max (~430px+) - попадает сюда *!*/
+/*@media (min-width: 428px) {*/
+/*    .WishDesc { --base-font-size: 20px; } !* 17 × 1.18 *!*/
+/*}*/
+/*!* 5. Galaxy Z Fold 5 (~717px+) - попадает сюда *!*/
+/*@media (min-width: 768px) {*/
+/*    .WishDesc { --base-font-size: 22px; } !* 17 × 1.27 *!*/
+/*}*/
+
+/*!* iOS specific fixes *!*/
+/*@supports (-webkit-touch-callout: none) {*/
+/*    .Wish.reordering {*/
+/*        -webkit-overflow-scrolling: touch;*/
+/*    }*/
+/*    .DivWish:active {*/
+/*        opacity: 0.8; !* Visual feedback on iOS *!*/
+/*    }*/
+/*}*/

@@ -1,0 +1,240 @@
+:root {
+    --font-vibes: 'Great Vibes';
+    --font-forum: 'Forum';
+    --font-cursive: 'Cursive';
+}
+.BG{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-image: url("/public/images/Wood2.webp");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: grid;
+    grid-template-rows: 85% 15%;
+}
+.HomeT3{
+    display: grid;
+    grid-template-rows: 24% 41% 14% 20%;
+    /*border: 1px solid red;*/
+    z-index: 1;
+}
+
+/*--------------------------------------------------------------Intro & Invite----------------------------------------*/
+.divIntro div, .divWM div, .divDate div, .divInvite div{
+    /*border: 1px solid red;*/
+    font-size: calc(var(--base-font-size) * var(--font-scale));
+}
+.divIntro, .divInvite{
+    /*border: 1px solid red;*/
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+}
+.divIntro{
+    display: grid;
+    align-items: end;
+}
+.divInvite{
+    display: grid;
+    align-items: start;
+}
+.customIntro, .customInvite{
+    width: 65%;
+    color: #dadada;
+    font-family: var(--font-forum);
+    --base-font-size: 12px;
+    letter-spacing: 2px;
+    font-weight: bolder;
+    /*border: 1px solid red;*/
+}
+
+/*--------------------------------------------------------------WM----------------------------------------------------*/
+.divWM{
+    /*border: 1px solid red;*/
+    display: grid;
+    align-content: center;
+    justify-items: center;
+}
+.customWM{
+    text-align: center;
+    font-family: var(--font-vibes);
+    --base-font-size: 34px;
+    color: #CEC58E;
+    /*border: 1px solid red;*/
+}
+
+/*--------------------------------------------------------------Date--------------------------------------------------*/
+.divDate{
+    display: grid;
+    gap: 10%;
+    align-content: start;
+    justify-items: center;
+    width: 100%;
+    /*border: 1px solid blue;*/
+}
+.MDY{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    font-family: var(--font-forum);
+    gap: 10%;
+    width: 40%;
+    /*border: 1px solid red;*/
+}
+.dayTitle{
+    display: grid;
+    color: #CEC58E;
+    /*border: 1px solid red;*/
+    font-family: var(--font-vibes);
+    --base-font-size: 28px;
+    padding-right: 4%;
+    width: 40%;
+    justify-items: center;
+}
+.M, .D, .Y{
+    display: grid;
+    align-items: end;
+}
+.M div{
+    color: #dcdcdc;
+    --base-font-size: 17px;
+}
+.Y div{
+    color: #dcdcdc;
+    --base-font-size: 19px;
+}
+.D div{
+    color: #CEC58E;
+    font-size: calc(var(--base-font-size) * var(--font-scale));
+    --base-font-size: 36px;
+    line-height: 0.7;
+}
+
+/*--------------------------------------------------------------EWRA--------------------------------------------------*/
+.customEventTitle, .customWishTitle, .customRVSPTitle, .customAnalyticTitle{
+
+}
+.customEventFrame, .customWishFrame, .customRSVPFrame, .customAnalyticFrame{
+    background-color: rgba(57, 57, 57, 0.49);
+    border: 1px solid #CEC58E;
+}
+
+/*------ Event & Wish ------*/
+.customTime, .customEventName{
+
+}
+.customEventDesc, .customWishDesc{
+    color: white;
+}
+
+/*------ RVSP ------*/
+.customBtnConfirm, .customYesOrNotBtn.customActive, .customAlcoButton.customActive {
+    /*background-color: #bf5a89;*/
+}
+.customAlcoButton{
+    /*border: 1px solid #bf5a89;*/
+}
+
+/*------ Analytic ------*/
+.customLine{
+    border: 1px solid white;
+    color: white;
+}
+.customDrinkSummary{
+    color: white;
+}
+.customOtherLine{
+    border-bottom: 1px solid white;
+}
+
+/* 2. iPhone 6/7/8/SE (375px) - попадает сюда */
+@media (min-width: 375px) {
+    .customIntro, .customInvite{
+        --base-font-size: 16px;
+    }
+    .divWM div{
+        --base-font-size: 48px;
+    }
+    .M div{
+        --base-font-size: 21px;
+    }
+    .Y div{
+        --base-font-size: 24px;
+    }
+    .D div{
+        --base-font-size: 48px;
+    }
+    .dayTitle{
+        --base-font-size: 34px;
+    }
+}
+
+/* 3. iPhone Plus/XR (414px) - попадает сюда */
+@media (min-width: 414px) {
+    .customIntro, .customInvite{
+        --base-font-size: 16px;
+    }
+    .divWM div{
+        --base-font-size: 50px;
+    }
+    .M div{
+        --base-font-size: 22px;
+    }
+    .Y div{
+        --base-font-size: 26px;
+    }
+    .D div{
+        --base-font-size: 50px;
+    }
+    .dayTitle{
+        --base-font-size: 36px;
+    }
+}
+
+/* 4. iPhone 16 Pro Max (~430px+) - попадает сюда */
+@media (min-width: 428px) {
+    .customIntro, .customInvite{
+        --base-font-size: 19px;
+    }
+    .divWM div{
+        --base-font-size: 54px;
+    }
+    .M div{
+        --base-font-size: 23px;
+    }
+    .Y div{
+        --base-font-size: 28px;
+    }
+    .D div{
+        --base-font-size: 56px;
+    }
+    .dayTitle{
+        --base-font-size: 38px;
+    }
+}
+
+/* 5. Galaxy Z Fold 5 (~717px+) - попадает сюда */
+@media (min-width: 768px) {
+    .customIntro, .customInvite{
+        --base-font-size: 19px;
+    }
+    .divWM div{
+        --base-font-size: 54px;
+    }
+    .M div{
+        --base-font-size: 23px;
+    }
+    .Y div{
+        --base-font-size: 28px;
+    }
+    .D div{
+        --base-font-size: 56px;
+    }
+    .dayTitle{
+        --base-font-size: 38px;
+    }
+}

@@ -1,0 +1,17 @@
+.Confirm{
+    position: absolute;
+    height: 78%;
+    width: 80%;
+    /*border: 1px solid red;*/
+    color: #787878;
+    justify-content: center;
+    text-align: center;
+    grid-template-rows: 50% 50%;
+    overflow: hidden;
+}
+.Thanks{
+    display: grid;
+    align-self: center;
+    text-align: center;
+    text-justify: inter-word;
+}

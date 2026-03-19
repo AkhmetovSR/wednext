@@ -1,0 +1,17 @@
+.FireFly{
+    position: absolute;
+    border: 10px solid red;
+    /*z-index: -10;*/
+    width: 200px;
+    height: 200px;
+}
+
+.Unity{
+    width: 10px;
+    height: 10px;
+    /*position: fixed;*/
+    background: radial-gradient(circle, #fff3a0 20%, rgba(255,243,160,0.3) 70%, transparent 100%);
+    border-radius: 50%;
+    will-change: transform, opacity;
+    pointer-events: none;
+}

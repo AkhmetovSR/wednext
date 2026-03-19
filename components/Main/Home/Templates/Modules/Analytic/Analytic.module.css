@@ -1,0 +1,143 @@
+.Guests{
+    width: 100%;
+    height: 100%;
+    display: grid;
+    align-content: start;
+}
+.Line{
+    width: 90%;
+    display: grid;
+    align-self: start;
+    justify-self: center;
+    grid-template-columns: 10% 40% 50%;
+    margin-top: 3%;
+    border-radius: 5px;
+    border: 1px solid #a5a5a5;
+    --base-font-size: 20px;
+}
+.Guest, .Number{
+    padding: 5%;
+    --base-font-size: 14px;
+    overflow-x: hidden;
+    align-content: center;
+}
+.Number{
+    justify-items: center;
+    border-right: 1px solid #afafaf;
+}
+.Alco{
+    padding: 5%;
+    border-left: 1px solid #afafaf;
+    --base-font-size: 14px;
+    /*border: 1px solid red;*/
+}
+.DrinkSummary{
+    gap: 3%;
+    padding: 5%;
+    width: 80%;
+    align-content: start;
+    justify-self: center;
+    --base-font-size: 20px;
+}
+.drinkRow, .drinkRowG{
+    height: 100%;
+    grid-template-columns: 80% 20%;
+}
+.dCount{
+    text-align: end;
+}
+.defDrink, .drinkOther{
+    --base-font-size: 16px;
+}
+.Other{
+    width: 100%;
+    border-radius: 10px;
+}
+.OtherDrink{
+    padding-top: 2%;
+}
+.otherLine{
+    width: 100%;
+    grid-template-columns: 80% 20%;
+}
+.oCount{
+    text-align: end;
+}
+.Atten{
+    display: grid;
+    grid-template-columns: 93% 7%;
+    position: absolute;
+    width: 86%;
+    padding: 2%;
+    margin-bottom: 5%;
+    bottom: 17%;
+    border-radius: 15px;
+    background-color: rgba(255, 255, 255);
+    color: #bd0808;
+    text-align: center;
+    --base-font-size: 14px;
+    line-height: 1.5;
+}
+.CloseButton {
+    display: grid;
+    width: 24px;
+    height: 24px;
+    border: none;
+    background: #ff4444;
+    color: white;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+/* 2. iPhone 6/7/8/SE (375px) - попадает сюда */
+@media (min-width: 375px) {
+    .Guest, .Number, .Alco {
+        --base-font-size: 16px;
+    }
+    .Atten {
+        --base-font-size: 16px;
+    }
+    .defDrink, .drinkOther{
+        --base-font-size: 20px;
+    }
+}
+
+/* 3. iPhone Plus/XR (414px) - попадает сюда */
+@media (min-width: 414px) {
+    .Guest, .Number, .Alco {
+        --base-font-size: 17px;
+    }
+    .Atten {
+        --base-font-size: 17px;
+    }
+    .defDrink, .drinkOther{
+        --base-font-size: 21px;
+    }
+}
+
+/* 4. iPhone 16 Pro Max (~430px+) - попадает сюда */
+@media (min-width: 428px) {
+    .Guest, .Number, .Alco {
+        --base-font-size: 18px;
+    }
+    .Atten {
+        --base-font-size: 18px;
+    }
+    .defDrink, .drinkOther{
+        --base-font-size: 22px;
+    }
+}
+
+/* 5. Galaxy Z Fold 5 (~717px+) - попадает сюда */
+@media (min-width: 768px) {
+    .Guest, .Number, .Alco {
+        --base-font-size: 18px;
+    }
+    .Atten {
+        --base-font-size: 18px;
+    }
+    .defDrink, .drinkOther{
+        --base-font-size: 22px;
+    }
+}

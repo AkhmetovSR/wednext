@@ -22,6 +22,7 @@ import React from "react";
 import Swipe from "@/components/Swipe/Swipe";
 import {useControl, useCarouselState} from "@/components/Providers/Context";
 import { useAddEditForm } from "@/hooks/useAddEditForm";
+import Temp3 from "@/components/Main/Home/Templates/Temp/T3/Temp3";
 
 // const tempArr = [
 //     { id: 1, div: <Template1 /> },
@@ -39,7 +40,7 @@ import { useAddEditForm } from "@/hooks/useAddEditForm";
 const tempArr = [
     { id: 1, div: "asd" },
     { id: 2, div: "asd" },
-    { id: 3, div: "asd" },
+    { id: 3, div: <Temp3 /> },
     { id: 4, div: "asd" },
     { id: 5, div: "asd" },
     { id: 6, div: "asd" },
