@@ -94,7 +94,7 @@ const CookiePolicy = ({setActiveTab, isExpanded, CookNot, setIsExpanded}) => {
                     </ul>
                 </section>
 
-                {/* 3. Управление файлами «cookie» */}
+                {/* [slideId]. Управление файлами «cookie» */}
                 <section className={s.policySection}>
                     <h2 className={s.sectionTitle}>3. Управление файлами «cookie»</h2>
 

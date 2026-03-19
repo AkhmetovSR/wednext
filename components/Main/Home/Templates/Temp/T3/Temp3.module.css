@@ -7,7 +7,7 @@
     position: absolute;
     height: 100%;
     width: 100%;
-    background-image: url("/public/images/Wood2.webp");
+    background-image: url("/images/Wood2.webp");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -173,7 +173,7 @@
     }
 }
 
-/* 3. iPhone Plus/XR (414px) - попадает сюда */
+/* [slideId]. iPhone Plus/XR (414px) - попадает сюда */
 @media (min-width: 414px) {
     .customIntro, .customInvite{
         --base-font-size: 16px;

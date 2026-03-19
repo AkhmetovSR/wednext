@@ -3,7 +3,7 @@
 import { useCarouselState } from "@/components/Providers/Context"
 import { useState } from "react";
 
-export const SwipeSlide = (activeSlide, setActiveSlide, totalSlides, Open) => {
+export const SwipeSlide = (activeSlide, setActiveSlide, totalSlides, openSlide) => {
     const { selectedSlideId, setSlideMove } = useCarouselState();
     const [startTapX, setStartTapX] = useState(0);
 
@@ -51,7 +51,7 @@ export const SwipeSlide = (activeSlide, setActiveSlide, totalSlides, Open) => {
     const handleTap = (e, info, id) => {
         const deltaX = Math.abs(info.point.x - startTapX);
         if (!selectedSlideId && deltaX < 10) {
-            Open(id + 1);
+            openSlide(id + 1);
         }
         setSlideMove(false);
     };

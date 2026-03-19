@@ -1,5 +1,5 @@
 import m from "@/components/Main/Home/Home.module.css";
-import s from "@/components/Main/Home/Templates/Modules/Home/Date/Date.module.css";
+import s from "@/components/Main/Home/Templates/Temp/T3/Temp3.module.css";
 import HomeT3 from "@/components/Main/Home/Templates/Temp/T3/HomeT3";
 import {motion} from "framer-motion";
 import FireFly from "@/components/Main/Home/Templates/Functions/FireFly";

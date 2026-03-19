@@ -77,7 +77,7 @@ const Offer = () => {
                             </div>
                         </section>
 
-                        {/* 3. Порядок оформления заказа и расчетов */}
+                        {/* [slideId]. Порядок оформления заказа и расчетов */}
                         <section className={s.policySection}>
                             <h2 className={s.sectionTitle}>3. Порядок оформления заказа и расчетов</h2>
 

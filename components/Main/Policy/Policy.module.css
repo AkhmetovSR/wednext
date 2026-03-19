@@ -280,7 +280,7 @@ span{
     }
 }
 
-/* 3. iPhone Plus/XR (414px) - попадает сюда */
+/* [slideId]. iPhone Plus/XR (414px) - попадает сюда */
 @media (min-width: 414px) {
     .Title{
         font-size: 22px;
