@@ -1,7 +1,7 @@
 :root {
-    --font-vibes: 'Great Vibes';
-    --font-forum: 'Forum';
-    --font-cursive: 'Cursive';
+    --font-vibes: 'Great Vibes', cursive;
+    --font-forum: 'Forum', cursive;
+    --font-cursive: 'Cursive', cursive;
 }
 .BG{
     position: absolute;
@@ -16,7 +16,7 @@
 }
 .HomeT3{
     display: grid;
-    grid-template-rows: 24% 41% 14% 20%;
+    grid-template-rows: 24% 41% 18% 15%;
     /*border: 1px solid red;*/
     z-index: 1;
 }
@@ -102,19 +102,38 @@
 }
 .M div{
     color: #dcdcdc;
-    --base-font-size: 17px;
 }
 .Y div{
     color: #dcdcdc;
-    --base-font-size: 19px;
 }
 .D div{
     color: #CEC58E;
-    font-size: calc(var(--base-font-size) * var(--font-scale));
-    --base-font-size: 36px;
     line-height: 0.7;
 }
-
+.open.customMonth{
+    font-size: 1.3rem;
+}
+.open.customDay{
+    font-size: 3rem;
+}
+.open.customYear{
+    font-size: 1.4rem;
+}
+.open.customDT{
+    font-size: 2rem;
+}
+.closed.customMonth{
+    font-size: 0.9rem;
+}
+.closed.customDay{
+    font-size: 1.8rem;
+}
+.closed.customYear{
+    font-size: 1rem;
+}
+.closed.customDT{
+    font-size: 1.2rem;
+}
 /*--------------------------------------------------------------EWRA--------------------------------------------------*/
 .customEventTitle, .customWishTitle, .customRVSPTitle, .customAnalyticTitle{
 

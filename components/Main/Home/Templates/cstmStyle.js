@@ -16,6 +16,7 @@ export const cstmHome = (s) => ({
     Day: s.customDay,
     Month: s.customMonth,
     Year: s.customYear,
+    DT: s.customDT,
     DivInv: s.customDivInv,
     invite: s.customInvite,
 });

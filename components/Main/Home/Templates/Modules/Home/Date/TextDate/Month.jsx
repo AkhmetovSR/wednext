@@ -1,7 +1,6 @@
-import React from 'react';
+import s from "@/components/Main/Home/Templates/Temp/T3/Temp3.module.css";
 import {motion} from "framer-motion";
 import {useWeddingData} from "@/components/Providers/Context";
-import s from "@/components/Main/Home/Templates/Modules/Home/Date/Date.module.css";
 
 export default function Month({customClasses, isSlideOpen}) {
     const { weddingData } = useWeddingData();
@@ -12,7 +11,7 @@ export default function Month({customClasses, isSlideOpen}) {
         "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"
     ];
     return (
-        <motion.div className={`${s.Month} ${customClasses?.Month || ""}`}>
+        <motion.div className={`${s.Month} ${customClasses?.Month || ""} ${isSlideOpen ? s.open : s.closed}`}>
             {(date ? (monthNames[date.getMonth()]).toUpperCase() : "Месяц").substring(0, 3)}
         </motion.div>
     );

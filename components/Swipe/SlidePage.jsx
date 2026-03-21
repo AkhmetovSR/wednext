@@ -4,7 +4,6 @@ import { useParams } from 'next/navigation';
 import { useCarouselState } from '@/components/Providers/Context';
 import s from '@/components/Swipe/Swipe.module.css';
 import { motion } from "framer-motion";
-import { useOpenSlide } from "@/components/Main/Home/Templates/Functions/useOpenSlide";
 import { tempArr } from "@/components/Carousel/tempArray";
 import {SwipeSlide} from "@/hooks/useSwipeSlide";
 import {useEffect} from "react";
@@ -13,13 +12,12 @@ export default function SlidePage() {
     const params = useParams();
     const slideId = params?.slideId;
     const { selectedSlideId, setSelectedSlideId } = useCarouselState();
-    // const { closeSlide } = useOpenSlide();
     console.log("slideId" + slideId)
 
     const { closeSlide } = SwipeSlide();
     useEffect(() => {
         setSelectedSlideId(parseInt(slideId)); // устанавливаем в контекст
-    }, [slideId]);
+    }, [slideId, setSelectedSlideId]);
     // Поиск слайда
     const slideIdNum = parseInt(slideId);
     const slideContent = tempArr.find(item => item.id === parseInt(slideIdNum));
@@ -50,7 +48,7 @@ export default function SlidePage() {
             <motion.div
                 className={s.fullscreenContent}
                 layoutId={`slide-${selectedSlideId || slideIdNum}`}
-                transition={{ duration: 0.3 }}
+                transition={{ duration: 0.3, delay: 0 }}
             >
                 <div className={s.Back} onClick={closeSlide}>
                     <div className={s.ArrL}></div>

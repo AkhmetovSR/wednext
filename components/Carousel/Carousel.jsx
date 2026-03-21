@@ -15,7 +15,7 @@ export default function Carousel() {
     return (
         <Swipe>
             {tempArr.map((i) => (
-                <motion.div data-id={i.id} key={i.id} className={s.Carousel} style={{ borderRadius: selectedSlideId ? 0 : 25 }}>
+                <motion.div data-id={i.id} key={i.id} className={s.Carousel} style={{ borderRadius: selectedSlideId ? 0 : 25 }} transition={{ duration: 0.3, delay: 0 }}>
                     {i.div}
                     {selectedSlideId && bb && (!paramN || isE) && (
                         <motion.div className={s.BB}>

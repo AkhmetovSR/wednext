@@ -62,7 +62,7 @@
     height: 100%;
     align-items: center;
     display: grid;
-    justify-self: center;
+    justify-items: center;
     grid-template-columns: auto 35% auto;
     /*background-color: #f1f1f1;*/
     /*border-radius: 50px;*/
