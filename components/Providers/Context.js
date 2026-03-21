@@ -22,6 +22,7 @@ export const CarouselStateProvider = ({ children }) => {
         wish: false
     });
     const [selectedSlideId, setSelectedSlideId] = useState(null);
+    const [isSlideOpen, setIsSlideOpen] = useState(false);
     const [buy, setBuy] = useState(false);
     const [bb, setBb] = useState(false);
     const [isAddEvent, setIsAddEvent] = useState(false);
@@ -43,6 +44,8 @@ export const CarouselStateProvider = ({ children }) => {
         setReorderingStates,
         selectedSlideId,
         setSelectedSlideId,
+        isSlideOpen,
+        setIsSlideOpen,
         buy,
         setBuy,
         bb,

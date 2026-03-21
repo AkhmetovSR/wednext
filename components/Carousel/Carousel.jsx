@@ -9,18 +9,13 @@ import { tempArr } from "@/components/Carousel/tempArray";
 
 export default function Carousel() {
     const { paramN, isE } = useControl();
-    const { selectedSlideId, bb, setBb } = useCarouselState();
+    const { selectedSlideId, bb} = useCarouselState();
     const { closeForm } = useAddEditForm();
 
     return (
         <Swipe>
             {tempArr.map((i) => (
-                <motion.div
-                    data-id={i.id}
-                    key={i.id}
-                    className={s.Carousel}
-                    style={{ borderRadius: selectedSlideId ? 0 : 25 }}
-                >
+                <motion.div data-id={i.id} key={i.id} className={s.Carousel} style={{ borderRadius: selectedSlideId ? 0 : 25 }}>
                     {i.div}
                     {selectedSlideId && bb && (!paramN || isE) && (
                         <motion.div className={s.BB}>

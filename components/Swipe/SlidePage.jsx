@@ -1,4 +1,3 @@
-// app/[slideId]/page.js
 'use client';
 
 import { useParams } from 'next/navigation';
@@ -7,43 +6,29 @@ import s from '@/components/Swipe/Swipe.module.css';
 import { motion } from "framer-motion";
 import { useOpenSlide } from "@/components/Main/Home/Templates/Functions/useOpenSlide";
 import { tempArr } from "@/components/Carousel/tempArray";
-import { useEffect } from 'react';
+import {SwipeSlide} from "@/hooks/useSwipeSlide";
+import {useEffect} from "react";
 
 export default function SlidePage() {
     const params = useParams();
     const slideId = params?.slideId;
-    const { selectedSlideId } = useCarouselState();
-    const { closeSlide } = useOpenSlide();
+    const { selectedSlideId, setSelectedSlideId } = useCarouselState();
+    // const { closeSlide } = useOpenSlide();
+    console.log("slideId" + slideId)
 
-    // ОТЛАДКА
+    const { closeSlide } = SwipeSlide();
     useEffect(() => {
-        console.log('SlidePage Debug:', {
-            slideIdFromURL: slideId,
-            slideIdType: typeof slideId,
-            slideIdAsNumber: parseInt(slideId),
-            selectedSlideId,
-            selectedSlideIdType: typeof selectedSlideId,
-            tempArr: tempArr.map(item => ({
-                id: item.id,
-                idType: typeof item.id,
-                hasDiv: !!item.div
-            }))
-        });
-    }, [slideId, selectedSlideId]);
-
+        setSelectedSlideId(parseInt(slideId)); // устанавливаем в контекст
+    }, [slideId]);
     // Поиск слайда
     const slideIdNum = parseInt(slideId);
-    const slideContent = tempArr.find(item => item.id === slideIdNum);
-
-    console.log('Search result:', {
-        slideIdNum,
-        found: !!slideContent,
-        slideContent
-    });
+    const slideContent = tempArr.find(item => item.id === parseInt(slideIdNum));
 
     if (!slideContent) {
         return (
-            <div className={s.fullscreenOverlay}>
+            <motion.div className={s.fullscreenOverlay}
+
+            >
                 <div className={s.fullscreenContent}>
                     <div className={s.Back} onClick={closeSlide}>
                         <div className={s.ArrL}></div>
@@ -56,7 +41,7 @@ export default function SlidePage() {
                         <p>Доступные ID: {tempArr.map(t => t.id).join(', ')}</p>
                     </div>
                 </div>
-            </div>
+            </motion.div>
         );
     }
 
@@ -71,7 +56,6 @@ export default function SlidePage() {
                     <div className={s.ArrL}></div>
                     <div className={s.See}>К шаблонам</div>
                 </div>
-
                 {slideContent.div}
             </motion.div>
         </motion.div>

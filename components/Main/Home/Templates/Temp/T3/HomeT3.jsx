@@ -8,7 +8,7 @@ import Year from "@/components/Main/Home/Templates/Modules/Home/Date/TextDate/Ye
 import DayTitle from "@/components/Main/Home/Templates/Modules/Home/Date/TextDate/DayTitle";
 import Invite from "@/components/Main/Home/Templates/Modules/Home/Invite/Invite";
 import Intro from "@/components/Main/Home/Templates/Modules/Home/Intro/Intro";
-import {useWeddingData} from "@/components/Providers/Context";
+import {useCarouselState, useWeddingData} from "@/components/Providers/Context";
 import {AddEditForm} from "@/components/Main/Home/Templates/Functions/AddEditForm";
 
 export default function HomeT3({customClasses, isSlideOpen}) {
@@ -17,14 +17,12 @@ export default function HomeT3({customClasses, isSlideOpen}) {
     const coefficient = calculateFontSize(newlyWed1, newlyWed2, isSlideOpen);
     const { openForm } = AddEditForm();
     return (
-        <div className={s.HomeT3}>
-            <motion.div className={s.divIntro}><Intro customClasses={customClasses} isSlideOpen={isSlideOpen}/>
-            </motion.div>
-            <motion.div className={`${s.divWM} divWM`} style={{'--font-coefficient': coefficient}}>
+        <motion.div className={s.HomeT3}>
+            <motion.div className={s.divIntro}><Intro customClasses={customClasses} isSlideOpen={isSlideOpen}/></motion.div>
+            <motion.div className={`${s.divWM} divWM`}>
                 <WifeAndMan customClasses={customClasses} isSlideOpen={isSlideOpen}/>
             </motion.div>
-            <motion.div className={s.divInvite}><Invite customClasses={customClasses} isSlideOpen={isSlideOpen}/>
-            </motion.div>
+            <motion.div className={s.divInvite}><Invite customClasses={customClasses} isSlideOpen={isSlideOpen}/></motion.div>
             <motion.div className={s.divDate}
                         initial={{scale: isSlideOpen ? 1 : 0.8}}
                         animate={{scale: isSlideOpen ? 1 : 0.8}}
@@ -34,8 +32,8 @@ export default function HomeT3({customClasses, isSlideOpen}) {
                     <div className={s.D}><Day isSlideOpen={isSlideOpen}/></div>
                     <div className={s.Y}><Year isSlideOpen={isSlideOpen}/></div>
                 </motion.div>
-                <motion.div className={s.dayTitle} onClick={() => {openForm('calendar');}}><DayTitle isSlideOpen={isSlideOpen}/></motion.div>
+                <motion.div className={s.dayTitle} onClick={() => {openForm('calendar');}}><DayTitle/></motion.div>
             </motion.div>
-        </div>
+        </motion.div>
     );
 }

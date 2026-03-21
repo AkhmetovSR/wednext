@@ -1,6 +1,6 @@
 import {motion} from "framer-motion";
 import {useContext} from "react";
-import m from "@/components/Main/Home/Templates/Modules/MenuTemp/MenuTemp.module.css";
+import m from "@/components/Main/Menu/Menu.module.css";
 import {Vibro} from "@/components/Main/Home/Templates/Functions/Vibro";
 import {OperationsContext, useCarouselState, useControl, usePageContext, usePositionState, useWeddingData} from "@/components/Providers/Context";
 

@@ -12,12 +12,7 @@ export default function Month({customClasses, isSlideOpen}) {
         "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"
     ];
     return (
-        <motion.div
-            className={`${s.Month} ${customClasses?.Month || ""}`}
-            initial={{"--font-scale": isSlideOpen ? 1 : 0.6}}
-            animate={{"--font-scale": isSlideOpen ? 1 : 0.6}}
-            transition={{ delay: 0.1 }}
-        >
+        <motion.div className={`${s.Month} ${customClasses?.Month || ""}`}>
             {(date ? (monthNames[date.getMonth()]).toUpperCase() : "Месяц").substring(0, 3)}
         </motion.div>
     );

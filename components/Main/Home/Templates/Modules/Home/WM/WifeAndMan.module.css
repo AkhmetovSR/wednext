@@ -1,0 +1,25 @@
+/* components/WifeAndMan/WifeAndMan.module.css */
+.name, .and {
+    font-family: var(--font-vibes);
+    color: #CEC58E;
+    text-align: center;
+    /*transition: all var(--transition-duration) var(--transition-timing);*/
+    /*--font-size-closed: 0.5rem;*/
+    /*--font-size-open: 55rem;*/
+    transition: none; /* Отключаем CSS transition */
+}
+
+/*!* Адаптивность *!*/
+/*@media (max-width: 768px) {*/
+/*    .name {*/
+/*        --font-size-closed: 0.5rem;*/
+/*        --font-size-open: 5rem;*/
+/*    }*/
+/*}*/
+
+/*@media (min-width: 768px) {*/
+/*    .name {*/
+/*        --font-size-closed: 34px;*/
+/*        --font-size-open: 68px;*/
+/*    }*/
+/*}*/

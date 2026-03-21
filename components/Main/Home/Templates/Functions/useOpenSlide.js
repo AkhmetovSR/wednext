@@ -28,20 +28,22 @@ import { useCarouselState } from '@/components/Providers/Context';
 
 export const useOpenSlide = () => {
     const router = useRouter();
-    const { setBb, setSelectedSlideId, setActiveSlide } = useCarouselState();
+    const { setBb, setSelectedSlideId, setActiveSlide, setIsSlideOpen } = useCarouselState();
 
     const openSlide = (id) => {
         // В Next.js навигация через push
         router.push(`/${id}`);
         setActiveSlide(id - 1);
         setSelectedSlideId(id); // если нужно
+        setIsSlideOpen(true);
         // если нужно
     };
 
     const closeSlide = () => {
         setBb(false);
         // Возврат на предыдущую страницу
-        router.back();
+        router.push(`/`);
+        setIsSlideOpen(false);
     };
 
     return {

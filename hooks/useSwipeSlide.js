@@ -2,9 +2,11 @@
 
 import { useCarouselState } from "@/components/Providers/Context"
 import { useState } from "react";
+import {useRouter} from "next/navigation";
 
-export const SwipeSlide = (activeSlide, setActiveSlide, totalSlides, openSlide) => {
-    const { selectedSlideId, setSlideMove } = useCarouselState();
+export const SwipeSlide = (activeSlide, setActiveSlide, totalSlides) => {
+    const router = useRouter(); // ← вызываем хук внутри функции
+    const { selectedSlideId, setSlideMove, setIsSlideOpen, setBb } = useCarouselState();
     const [startTapX, setStartTapX] = useState(0);
 
     const goToNextSlide = () => {
@@ -50,10 +52,21 @@ export const SwipeSlide = (activeSlide, setActiveSlide, totalSlides, openSlide) 
 
     const handleTap = (e, info, id) => {
         const deltaX = Math.abs(info.point.x - startTapX);
+        const openSlide = (id) => {
+            router.push(`/${id}`); // навигация на страницу слайда
+        };
         if (!selectedSlideId && deltaX < 10) {
             openSlide(id + 1);
+            setIsSlideOpen(true);
         }
         setSlideMove(false);
+    };
+
+    const closeSlide = () => {
+        setBb(false);
+        // Возврат на предыдущую страницу
+        router.push(`/`);
+        setIsSlideOpen(false);
     };
 
     return {
@@ -62,7 +75,8 @@ export const SwipeSlide = (activeSlide, setActiveSlide, totalSlides, openSlide) 
         handleTapStart,
         handleTap,
         goToNextSlide,
-        goToPrevSlide
+        goToPrevSlide,
+        closeSlide
     };
 };
 
