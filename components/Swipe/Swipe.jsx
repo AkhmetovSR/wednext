@@ -27,12 +27,10 @@ const Swipe = ({ children }) => {
 
     useAutoSlide(slideMove, selectedSlideId, totalSlides, setActiveSlide, 1);
 
-    // Убираем openSlide — навигация теперь через Link в Carousel
     const { handleTap, handleTapStart, handleDragEnd } = SwipeSlide(
         activeSlide,
         setActiveSlide,
-        totalSlides,
-        null  // openSlide больше не нужен
+        totalSlides
     );
 
     useEffect(() => {
@@ -61,14 +59,18 @@ const Swipe = ({ children }) => {
         return position;
     };
 
-    // Если есть slideId — показываем карусель? Нет, карусель не показываем на странице слайда
+    // Если есть slideId в URL — показываем страницу слайда, а не карусель
     if (slideId) return null;
 
     return (
         <motion.div className={s.Main}>
             <div className={s.divTitle}>
                 <div className={s.title}>Выбери свое</div>
-                <div className={s.title}><h1 className={s.title}><strong>свадебное пригласительное</strong></h1></div>
+                <div className={s.title}>
+                    <h1 className={s.title}>
+                        <strong>свадебное пригласительное</strong>
+                    </h1>
+                </div>
                 <div className={s.title}>и отправь гостям</div>
                 <div className={s.shadow}></div>
             </div>
@@ -127,7 +129,9 @@ const Swipe = ({ children }) => {
 
             {!selectedSlideId && (
                 <motion.div className={s.divNavi}>
-                    <div className={s.navi}><CarouselNavigation /></div>
+                    <div className={s.navi}>
+                        <CarouselNavigation />
+                    </div>
                 </motion.div>
             )}
         </motion.div>
