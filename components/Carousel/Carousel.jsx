@@ -1,12 +1,5 @@
-'use client';
-import s from "@/components/Carousel/Carousel.module.css";
-import { motion } from "framer-motion";
-import React, { useEffect } from "react";
-import Swipe from "@/components/Swipe/Swipe";
-import { useControl, useCarouselState } from "@/components/Providers/Context";
-import { useAddEditForm } from "@/hooks/useAddEditForm";
-import { tempArr } from "@/components/Carousel/tempArray";
-import { useRouter } from "next/navigation";
+// components/Carousel/Carousel.jsx
+import Link from 'next/link';
 
 export default function Carousel() {
     const router = useRouter();
@@ -15,24 +8,30 @@ export default function Carousel() {
     const { closeForm } = useAddEditForm();
 
     useEffect(() => {
-        if (router && tempArr.length) {  // ← добавить проверку
-            for (let i = 1; i <= tempArr.length; i++) {
-                router.prefetch(`/${i}`);
-            }
+        // Предзагрузка всех слайдов
+        for (let i = 1; i <= tempArr.length; i++) {
+            router.prefetch(`/${i}`);
         }
     }, [router]);
 
     return (
         <Swipe>
             {tempArr.map((i) => (
-                <motion.div data-id={i.id} key={i.id} className={s.Carousel} style={{ borderRadius: selectedSlideId ? 0 : 25 }} transition={{ duration: 0.3, delay: 0 }}>
-                    {i.div}
-                    {selectedSlideId && bb && (!paramN || isE) && (
-                        <motion.div className={s.BB}>
-                            <motion.div className={s.divClose} onTap={closeForm}></motion.div>
-                        </motion.div>
-                    )}
-                </motion.div>
+                <Link href={`/${i.id}`} prefetch={false} key={i.id}>  {/* prefetch=false, т.к. уже предзагрузили */}
+                    <motion.div 
+                        data-id={i.id} 
+                        className={s.Carousel} 
+                        style={{ borderRadius: selectedSlideId ? 0 : 25 }} 
+                        transition={{ duration: 0.3, delay: 0 }}
+                    >
+                        {i.div}
+                        {selectedSlideId && bb && (!paramN || isE) && (
+                            <motion.div className={s.BB}>
+                                <motion.div className={s.divClose} onTap={closeForm}></motion.div>
+                            </motion.div>
+                        )}
+                    </motion.div>
+                </Link>
             ))}
         </Swipe>
     );
