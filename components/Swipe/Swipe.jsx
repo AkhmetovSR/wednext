@@ -2,8 +2,7 @@
 
 import { motion } from "framer-motion";
 import React, { useEffect, useRef } from "react";
-import { useParams } from 'next/navigation';
-import Link from "next/link";
+import { useParams, useRouter } from 'next/navigation';
 import s from "@/components/Swipe/Swipe.module.css";
 import { useCarouselState, useControl } from "@/components/Providers/Context";
 import CarouselNavigation from "@/components/Carousel/CarouselNavigation";
@@ -11,6 +10,7 @@ import { SwipeSlide } from "@/hooks/useSwipeSlide";
 import { useAutoSlide } from "@/hooks/useSlideManagement";
 
 const Swipe = ({ children }) => {
+    const router = useRouter();
     const { paramN } = useControl();
     const {
         setBb,
@@ -28,11 +28,10 @@ const Swipe = ({ children }) => {
 
     useAutoSlide(slideMove, selectedSlideId, totalSlides, setActiveSlide, 1);
 
-    const { handleTap, handleTapStart, handleDragEnd } = SwipeSlide(
+    const { handleTapStart, handleDragEnd, goToNextSlide, goToPrevSlide } = SwipeSlide(
         activeSlide,
         setActiveSlide,
-        totalSlides,
-        null
+        totalSlides
     );
 
     useEffect(() => {
@@ -63,8 +62,20 @@ const Swipe = ({ children }) => {
 
     if (slideId) return null;
 
-    // Текущий активный слайд (тот, который нужно открыть)
     const currentActiveSlideId = React.Children.toArray(children)[activeSlide]?.props["data-id"];
+
+    const handleOpenSlide = (e) => {
+        e.stopPropagation();
+        router.push(`/${currentActiveSlideId}`, { shallow: true });
+        setSelectedSlideId(currentActiveSlideId);
+        setActiveSlide(activeSlide);
+    };
+
+    // Для обработки свайпов по стрелкам (если есть)
+    const handleSwipe = (direction) => {
+        if (direction === 'left') goToNextSlide();
+        if (direction === 'right') goToPrevSlide();
+    };
 
     return (
         <motion.div className={s.Main}>
@@ -76,25 +87,18 @@ const Swipe = ({ children }) => {
             </div>
 
             <div className={s.carousel}>
-                {/* Link на область свайпа, но открывает активный слайд */}
-                <Link 
-                    href={`/${currentActiveSlideId}`}
-                    prefetch={false}
-                    style={{ display: 'contents' }}
-                >
-                    <motion.div
-                        className={s.Sw}
-                        ref={swipeAreaRef}
-                        drag="x"
-                        dragConstraints={{ left: 0, right: 0 }}
-                        dragElastic={0}
-                        onDragEnd={handleDragEnd}
-                        onTapStart={handleTapStart}
-                        onTap={(e, info) => handleTap(e, info, activeSlide)}
-                        dragMomentum={false}
-                        whileTap={{ cursor: 'grabbing' }}
-                    />
-                </Link>
+                <motion.div
+                    className={s.Sw}
+                    ref={swipeAreaRef}
+                    drag="x"
+                    dragConstraints={{ left: 0, right: 0 }}
+                    dragElastic={0}
+                    onDragEnd={handleDragEnd}
+                    onTapStart={handleTapStart}
+                    dragMomentum={false}
+                    whileTap={{ cursor: 'grabbing' }}
+                    onClick={handleOpenSlide}  // ← мгновенный переход
+                />
 
                 {React.Children.map(children, (child, index) => {
                     const id = child.props["data-id"];
