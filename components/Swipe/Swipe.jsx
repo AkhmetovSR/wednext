@@ -4,13 +4,13 @@ import { motion } from "framer-motion";
 import React, { useEffect, useRef } from "react";
 import { useParams } from 'next/navigation';
 import s from "@/components/Swipe/Swipe.module.css";
-import { useCarouselState } from "@/components/Providers/Context";
+import { useCarouselState, useControl } from "@/components/Providers/Context";
 import CarouselNavigation from "@/components/Carousel/CarouselNavigation";
 import { SwipeSlide } from "@/hooks/useSwipeSlide";
 import { useAutoSlide } from "@/hooks/useSlideManagement";
-import Title from "@/components/Swipe/Title";
 
 const Swipe = ({ children }) => {
+    const { paramN } = useControl();
     const {
         setBb,
         selectedSlideId,
@@ -27,7 +27,13 @@ const Swipe = ({ children }) => {
 
     useAutoSlide(slideMove, selectedSlideId, totalSlides, setActiveSlide, 1);
 
-    const { handleTap, handleTapStart, handleDragEnd } = SwipeSlide(activeSlide, setActiveSlide, totalSlides);
+    // Убираем openSlide — навигация теперь через Link в Carousel
+    const { handleTap, handleTapStart, handleDragEnd } = SwipeSlide(
+        activeSlide,
+        setActiveSlide,
+        totalSlides,
+        null  // openSlide больше не нужен
+    );
 
     useEffect(() => {
         if (slideId) {
@@ -55,12 +61,17 @@ const Swipe = ({ children }) => {
         return position;
     };
 
-    // Если есть slideId - значит мы на странице слайда, не показываем карусель
+    // Если есть slideId — показываем карусель? Нет, карусель не показываем на странице слайда
     if (slideId) return null;
 
     return (
         <motion.div className={s.Main}>
-            <Title/>
+            <div className={s.divTitle}>
+                <div className={s.title}>Выбери свое</div>
+                <div className={s.title}><h1 className={s.title}><strong>свадебное пригласительное</strong></h1></div>
+                <div className={s.title}>и отправь гостям</div>
+                <div className={s.shadow}></div>
+            </div>
 
             <div className={s.carousel}>
                 <motion.div
@@ -114,11 +125,11 @@ const Swipe = ({ children }) => {
                 })}
             </div>
 
-            {/*{!selectedSlideId && (*/}
+            {!selectedSlideId && (
                 <motion.div className={s.divNavi}>
                     <div className={s.navi}><CarouselNavigation /></div>
                 </motion.div>
-            {/*)}*/}
+            )}
         </motion.div>
     );
 };
