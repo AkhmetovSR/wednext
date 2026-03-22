@@ -28,12 +28,11 @@ const Swipe = ({ children }) => {
 
     useAutoSlide(slideMove, selectedSlideId, totalSlides, setActiveSlide, 1);
 
-    // openSlide теперь не нужен, навигация через Link
     const { handleTap, handleTapStart, handleDragEnd } = SwipeSlide(
         activeSlide,
         setActiveSlide,
         totalSlides,
-        null  // openSlide не нужен, тап обрабатывается Link
+        null
     );
 
     useEffect(() => {
@@ -64,6 +63,9 @@ const Swipe = ({ children }) => {
 
     if (slideId) return null;
 
+    // Текущий активный слайд (тот, который нужно открыть)
+    const currentActiveSlideId = React.Children.toArray(children)[activeSlide]?.props["data-id"];
+
     return (
         <motion.div className={s.Main}>
             <div className={s.divTitle}>
@@ -74,18 +76,25 @@ const Swipe = ({ children }) => {
             </div>
 
             <div className={s.carousel}>
-                <motion.div
-                    className={s.Sw}
-                    ref={swipeAreaRef}
-                    drag="x"
-                    dragConstraints={{ left: 0, right: 0 }}
-                    dragElastic={0}
-                    onDragEnd={handleDragEnd}
-                    onTapStart={handleTapStart}
-                    onTap={(e, info) => handleTap(e, info, activeSlide)}
-                    dragMomentum={false}
-                    whileTap={{ cursor: 'grabbing' }}
-                />
+                {/* Link на область свайпа, но открывает активный слайд */}
+                <Link 
+                    href={`/${currentActiveSlideId}`}
+                    prefetch={false}
+                    style={{ display: 'contents' }}
+                >
+                    <motion.div
+                        className={s.Sw}
+                        ref={swipeAreaRef}
+                        drag="x"
+                        dragConstraints={{ left: 0, right: 0 }}
+                        dragElastic={0}
+                        onDragEnd={handleDragEnd}
+                        onTapStart={handleTapStart}
+                        onTap={(e, info) => handleTap(e, info, activeSlide)}
+                        dragMomentum={false}
+                        whileTap={{ cursor: 'grabbing' }}
+                    />
+                </Link>
 
                 {React.Children.map(children, (child, index) => {
                     const id = child.props["data-id"];
@@ -94,39 +103,33 @@ const Swipe = ({ children }) => {
                     if (Math.abs(position) > 1) return null;
 
                     return (
-                        <Link 
+                        <motion.div
                             key={id}
-                            href={`/${id}`}
-                            prefetch={false}  // предзагрузка в Carousel
-                            style={{ display: 'contents' }}
+                            className={`${s.CardCont} ${isActive ? s.activeCard : ''}`}
+                            style={{
+                                zIndex: totalSlides - Math.abs(position),
+                                pointerEvents: 'none',
+                            }}
+                            layoutId={`slide-${id}`}
+                            initial={false}
+                            animate={{
+                                opacity: 1,
+                                x: position * 130,
+                                scale: Math.max(0.7, 1 - Math.abs(position) * 0.5),
+                                rotateY: position * -30,
+                                z: Math.abs(position) * -120,
+                                filter: `blur(${Math.abs(position) * 2}px)`
+                            }}
+                            transition={{ duration: 0.3, ease: "easeOut", type: "tween" }}
                         >
-                            <motion.div
-                                className={`${s.CardCont} ${isActive ? s.activeCard : ''}`}
-                                style={{
-                                    zIndex: totalSlides - Math.abs(position),
-                                    pointerEvents: 'none',
-                                }}
-                                layoutId={`slide-${id}`}
-                                initial={false}
-                                animate={{
-                                    opacity: 1,
-                                    x: position * 130,
-                                    scale: Math.max(0.7, 1 - Math.abs(position) * 0.5),
-                                    rotateY: position * -30,
-                                    z: Math.abs(position) * -120,
-                                    filter: `blur(${Math.abs(position) * 2}px)`
-                                }}
-                                transition={{ duration: 0.3, ease: "easeOut", type: "tween" }}
-                            >
-                                {!selectedSlideId && isActive && (
-                                    <div className={s.Watch}>
-                                        <div className={s.Eye}></div>
-                                        <div className={s.See}>Посмотреть</div>
-                                    </div>
-                                )}
-                                {child}
-                            </motion.div>
-                        </Link>
+                            {!selectedSlideId && isActive && (
+                                <div className={s.Watch}>
+                                    <div className={s.Eye}></div>
+                                    <div className={s.See}>Посмотреть</div>
+                                </div>
+                            )}
+                            {child}
+                        </motion.div>
                     );
                 })}
             </div>
