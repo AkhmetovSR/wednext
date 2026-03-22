@@ -2,7 +2,7 @@
 import s from "@/components/Carousel/Carousel.module.css";
 import { motion } from "framer-motion";
 import React, { useEffect } from "react";
-import Link from "next/link";  // ← добавляем Link
+import Link from "next/link";
 import Swipe from "@/components/Swipe/Swipe";
 import { useControl, useCarouselState } from "@/components/Providers/Context";
 import { useAddEditForm } from "@/hooks/useAddEditForm";
@@ -29,8 +29,8 @@ export default function Carousel() {
                 <Link 
                     key={i.id} 
                     href={`/${i.id}`}
-                    prefetch={false}  // отключаем, так как уже предзагрузили выше
-                    style={{ display: 'contents' }}  // чтобы не ломал анимации
+                    prefetch={false}
+                    style={{ display: 'contents' }}
                 >
                     <motion.div 
                         data-id={i.id} 
