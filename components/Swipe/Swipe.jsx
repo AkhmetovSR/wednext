@@ -85,11 +85,7 @@ const Swipe = ({ children }) => {
                         dragConstraints={{ left: 0, right: 0 }}
                         dragElastic={0}
                         onDragEnd={handleDragEnd}
-                        onTapStart={handleTapStart}
-                        onTap={(e, info) => handleTap(e, info, activeSlide)}
-                        dragMomentum={false}
-                        whileTap={{ cursor: 'grabbing' }}
-                    />
+                     onTapStart={handleTapStart}/>
                 </Link>
 
                 {React.Children.map(children, (child, index) => {
