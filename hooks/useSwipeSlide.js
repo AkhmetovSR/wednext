@@ -46,9 +46,8 @@ export const SwipeSlide = (activeSlide, setActiveSlide, totalSlides) => {
         setSlideMove(false);
     };
 
-    // handleTap — убираем, потому что клик обрабатывает Link
     const handleTap = (e, info, id) => {
-        // Ничего не делаем, клик идет через Link
+        // Тап обрабатывается Link в Swipe, здесь только свайпы
         setSlideMove(false);
     };
 
