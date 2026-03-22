@@ -19,10 +19,10 @@ export default function Menu() {
                 <motion.div className={s.BtnName}>Шаблоны</motion.div>
             </Link>
 
-            {/*<Link href="/Instruction" className={isActive('/Instruction') ? `${s.MenuButton} ${s.MenuButtonActive}` : s.MenuButton}>*/}
-            {/*    <div className={s.ImgHowMake}></div>*/}
-            {/*    <div className={s.BtnName}>Описание</div>*/}
-            {/*</Link>*/}
+            <Link href="/Instruction" className={isActive('/Instruction') ? `${s.MenuButton} ${s.MenuButtonActive}` : s.MenuButton}>
+              <div className={s.ImgHowMake}></div>
+              <div className={s.BtnName}>Описание</div>
+            </Link>
 
             {/*<Link href="/Policy" className={isActive('/Policy') ? `${s.MenuButton} ${s.MenuButtonActive}` : s.MenuButton}>*/}
             {/*    <div className={s.ImgPolicy}></div>*/}
