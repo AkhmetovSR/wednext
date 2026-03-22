@@ -3,7 +3,7 @@
 import { useCarouselState } from "@/components/Providers/Context"
 import { useState } from "react";
 
-export const SwipeSlide = (activeSlide, setActiveSlide, totalSlides, openSlide) => {
+export const SwipeSlide = (activeSlide, setActiveSlide, totalSlides) => {
     const { selectedSlideId, setSlideMove, setIsSlideOpen, setBb } = useCarouselState();
     const [startTapX, setStartTapX] = useState(0);
 
@@ -46,15 +46,9 @@ export const SwipeSlide = (activeSlide, setActiveSlide, totalSlides, openSlide) 
         setSlideMove(false);
     };
 
+    // handleTap — убираем, потому что клик обрабатывает Link
     const handleTap = (e, info, id) => {
-        const deltaX = Math.abs(info.point.x - startTapX);
-        if (!selectedSlideId && deltaX < 10) {
-            // Если openSlide передан — используем его (для свайпа)
-            if (openSlide) {
-                openSlide(id + 1);
-            }
-            setIsSlideOpen(true);
-        }
+        // Ничего не делаем, клик идет через Link
         setSlideMove(false);
     };
 
