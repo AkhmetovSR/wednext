@@ -2,7 +2,6 @@
 import s from "@/components/Carousel/Carousel.module.css";
 import { motion } from "framer-motion";
 import React, { useEffect } from "react";
-import Link from "next/link";
 import Swipe from "@/components/Swipe/Swipe";
 import { useControl, useCarouselState } from "@/components/Providers/Context";
 import { useAddEditForm } from "@/hooks/useAddEditForm";
@@ -26,26 +25,20 @@ export default function Carousel() {
     return (
         <Swipe>
             {tempArr.map((i) => (
-                <Link 
+                <motion.div 
+                    data-id={i.id} 
                     key={i.id} 
-                    href={`/${i.id}`}
-                    prefetch={false}
-                    style={{ display: 'contents' }}
+                    className={s.Carousel} 
+                    style={{ borderRadius: selectedSlideId ? 0 : 25 }} 
+                    transition={{ duration: 0.3, delay: 0 }}
                 >
-                    <motion.div 
-                        data-id={i.id} 
-                        className={s.Carousel} 
-                        style={{ borderRadius: selectedSlideId ? 0 : 25 }} 
-                        transition={{ duration: 0.3, delay: 0 }}
-                    >
-                        {i.div}
-                        {selectedSlideId && bb && (!paramN || isE) && (
-                            <motion.div className={s.BB}>
-                                <motion.div className={s.divClose} onTap={closeForm}></motion.div>
-                            </motion.div>
-                        )}
-                    </motion.div>
-                </Link>
+                    {i.div}
+                    {selectedSlideId && bb && (!paramN || isE) && (
+                        <motion.div className={s.BB}>
+                            <motion.div className={s.divClose} onTap={closeForm}></motion.div>
+                        </motion.div>
+                    )}
+                </motion.div>
             ))}
         </Swipe>
     );
