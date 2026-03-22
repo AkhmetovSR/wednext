@@ -77,7 +77,7 @@ const Swipe = ({ children }) => {
 
             <div className={s.carousel}>
                 {/* Link на область свайпа, но открывает активный слайд */}
-                <Link href={`/${ activeSlide+1}`}>
+                <Link href={`/3`}>
                     <motion.div
                         className={s.Sw}
                         ref={swipeAreaRef}
