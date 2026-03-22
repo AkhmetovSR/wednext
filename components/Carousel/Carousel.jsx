@@ -1,16 +1,26 @@
 'use client';
 import s from "@/components/Carousel/Carousel.module.css";
 import { motion } from "framer-motion";
-import React from "react";
+import React, { useEffect } from "react";
 import Swipe from "@/components/Swipe/Swipe";
 import { useControl, useCarouselState } from "@/components/Providers/Context";
 import { useAddEditForm } from "@/hooks/useAddEditForm";
 import { tempArr } from "@/components/Carousel/tempArray";
+import { useRouter } from "next/navigation";
 
 export default function Carousel() {
+    const router = useRouter();
     const { paramN, isE } = useControl();
     const { selectedSlideId, bb} = useCarouselState();
     const { closeForm } = useAddEditForm();
+
+    useEffect(() => {
+        if (router && tempArr.length) {  // ← добавить проверку
+            for (let i = 1; i <= tempArr.length; i++) {
+                router.prefetch(`/${i}`);
+            }
+        }
+    }, [router]);
 
     return (
         <Swipe>
