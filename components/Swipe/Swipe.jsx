@@ -78,7 +78,7 @@ const Swipe = ({ children }) => {
             <div className={s.carousel}>
                 {/* Link на область свайпа, но открывает активный слайд */}
                 <Link 
-                    href={`/${ activeSlide }`}
+                    href={`/${ activeSlide - 1}`}
                     prefetch={false}
                     style={{ display: 'contents' }}
                 >
