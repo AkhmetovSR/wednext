@@ -87,7 +87,7 @@
     background-repeat: no-repeat;
 }
 .ImgHome{
-    background-image: url("../../../public/images/Home.png");
+    background-image: url("/images/Home.png");
 }
 .ImgPolicy{
     background-image: url("../../../public/images/Policy.png");
