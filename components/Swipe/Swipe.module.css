@@ -80,6 +80,11 @@
     z-index: 100;
 
 }
+.Link{
+    border: 2px solid red;
+    width: 65%;
+    height: 84%;
+}
 .Sw{
     display: grid;
     position: absolute;
@@ -87,7 +92,8 @@
     height: 84%;
     z-index: 15;
     bottom: 8%;
-    /*border: 1px solid blue;*/
+    left: 17%;
+    border: 2px solid blue;
 }
 .CardCont {
     position: absolute;
