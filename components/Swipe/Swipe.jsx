@@ -1,7 +1,7 @@
 'use client';
 
 import {motion} from "framer-motion";
-import React, {useEffect, useRef, useState} from "react";
+import React, {useEffect, useRef} from "react";
 import {useParams, useRouter} from 'next/navigation';
 import Link from "next/link";
 import s from "@/components/Swipe/Swipe.module.css";
@@ -31,7 +31,7 @@ const Swipe = ({children}) => {
     // Автопролистывание (до тапа или свайпа)
     useAutoSlide(autoSlide, selectedSlideId, totalSlides, setActiveSlide, 1);
     // Свайпы
-    const {handleTapStart, handleDragEnd, handleTap} = SwipeSlide(activeSlide, setActiveSlide, totalSlides);
+    const {handleTapStart, handleDragEnd} = SwipeSlide(activeSlide, setActiveSlide, totalSlides, null);
     // Синхронизация активного слайда с URL (Чтобы при закрытии слайда и возврате на главную карусель показывала тот же слайд, который только что был открыт)
     useEffect(() => {
         if (slideId) {
@@ -65,6 +65,8 @@ const Swipe = ({children}) => {
             <Title activeSlide={activeSlide}></Title>
 
             <div className={s.carousel}>
+                {/* Link на область свайпа, но открывает активный слайд */}
+                <Link href={`/${activeSlide + 1}`} prefetch className={s.Link}>
                     <motion.div
                         className={s.Sw}
                         ref={swipeAreaRef}
@@ -73,7 +75,6 @@ const Swipe = ({children}) => {
                         dragElastic={0}
                         onDragEnd={handleDragEnd}
                         onTapStart={handleTapStart}
-                        onTap={handleTap}
                     />
                     {React.Children.map(children, (child, index) => {
                         const id = child.props["data-id"];
@@ -111,6 +112,7 @@ const Swipe = ({children}) => {
                             </motion.div>
                         );
                     })}
+                </Link>
             </div>
 
             {!selectedSlideId && (
@@ -119,7 +121,7 @@ const Swipe = ({children}) => {
                 </motion.div>
             )}
         </motion.div>
-    );
+);
 };
 
 export default Swipe;
