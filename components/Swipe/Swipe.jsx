@@ -3,51 +3,35 @@
 import {motion} from "framer-motion";
 import React, {useEffect, useRef} from "react";
 import {useParams, useRouter} from 'next/navigation';
-import Link from "next/link";
 import s from "@/components/Swipe/Swipe.module.css";
-import {useCarouselState, useControl} from "@/components/Providers/Context";
+import {useCarouselState} from "@/components/Providers/Context";
 import CarouselNavigation from "@/components/Carousel/CarouselNavigation";
 import {SwipeSlide} from "@/hooks/useSwipeSlide";
 import {useAutoSlide} from "@/hooks/useSlideManagement";
 import Title from "@/components/Swipe/Title";
 
 const Swipe = ({children}) => {
-    const {paramN} = useControl();
-    const {
-        setBb,
-        selectedSlideId,
-        setSelectedSlideId,
-        activeSlide,
-        setActiveSlide,
-        slideMove,
-        setSlideMove
-    } = useCarouselState();
+    // const {paramN} = useControl();
+    const {setBb, selectedSlideId, setSelectedSlideId, activeSlide, setActiveSlide, slideMove, setSlideMove} = useCarouselState();
     const params = useParams();
     const slideId = params?.slideId;
     const totalSlides = React.Children.count(children);
     const swipeAreaRef = useRef(null);
     const router = useRouter();
 
-    // useAutoSlide(slideMove, selectedSlideId, totalSlides, setActiveSlide, 1);
-
+    // Предзагрузка слайдов
     useEffect(() => {
         if (router && totalSlides) {
-            console.log('🔵 Начинаем предзагрузку слайдов, всего:', totalSlides);
             for (let i = 1; i <= totalSlides; i++) {
-                console.log(`🔵 Предзагрузка слайда ${i}`);
                 router.prefetch(`/${i}`);
             }
-            console.log('🔵 Предзагрузка завершена');
         }
     }, [totalSlides, router]);
-
-    const {handleTapStart, handleDragEnd} = SwipeSlide(
-        activeSlide,
-        setActiveSlide,
-        totalSlides,
-        null
-    );
-
+    // Автопролистывание (до тапа или свайпа)
+    useAutoSlide(slideMove, selectedSlideId, totalSlides, setActiveSlide, 1);
+    // Свайпы
+    const {handleTap, handleTapStart, handleDragEnd} = SwipeSlide(activeSlide, setActiveSlide, totalSlides);
+    // Синхронизация активного слайда с URL (Чтобы при закрытии слайда и возврате на главную карусель показывала тот же слайд, который только что был открыт)
     useEffect(() => {
         if (slideId) {
             const id = parseInt(slideId);
@@ -61,7 +45,6 @@ const Swipe = ({children}) => {
             setBb(false);
         }
     }, [slideId, totalSlides, setSelectedSlideId, setBb, setActiveSlide, setSlideMove]);
-
     const getSlidePosition = (index) => {
         let position = index - activeSlide;
         if (totalSlides > 3) {
@@ -73,7 +56,7 @@ const Swipe = ({children}) => {
         }
         return position;
     };
-
+    // Исчезновение карусели, чтобы не грузить систему
     if (slideId) return null;
 
     return (
@@ -82,7 +65,7 @@ const Swipe = ({children}) => {
 
             <div className={s.carousel}>
                 {/* Link на область свайпа, но открывает активный слайд */}
-                <Link href={`/${activeSlide + 1}`} prefetch className={s.Link}>
+                <motion.div className={s.Link}>
                     <motion.div
                         className={s.Sw}
                         ref={swipeAreaRef}
@@ -90,7 +73,9 @@ const Swipe = ({children}) => {
                         dragConstraints={{left: 0, right: 0}}
                         dragElastic={0}
                         onDragEnd={handleDragEnd}
-                        onTapStart={handleTapStart}/>
+                        onTapStart={handleTapStart}
+                        onTap={(e, info) => handleTap(e, info, activeSlide)} // Передаем ID конкретного слайда
+                    />
 
 
                     {React.Children.map(children, (child, index) => {
@@ -129,7 +114,7 @@ const Swipe = ({children}) => {
                             </motion.div>
                         );
                     })}
-                </Link>
+                </motion.div>
             </div>
 
 
