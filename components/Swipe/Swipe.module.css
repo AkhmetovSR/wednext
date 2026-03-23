@@ -86,26 +86,15 @@
     height: 84%;
     z-index: 15;
 }
-.href{
-    color: black;
-    z-index: 15;
-}
 .Sw{
     display: grid;
     position: absolute;
     width: 65%;
     height: 84%;
-    z-index: 15;
+    z-index: 25;
     bottom: 8%;
     left: 17%;
-    touch-action: pan-y pinch-zoom; /* Вместо auto */
-    user-select: none;
-    -webkit-tap-highlight-color: transparent;
     /*border: 2px solid blue;*/
-}
-.Sw.dragComplete {
-    pointer-events: none;
-    touch-action: auto;
 }
 .CardCont {
     position: absolute;
