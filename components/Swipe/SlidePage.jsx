@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import { useCarouselState } from '@/components/Providers/Context';
 import s from '@/components/Swipe/Swipe.module.css';
@@ -50,10 +51,10 @@ export default function SlidePage() {
                 layoutId={`slide-${selectedSlideId || slideIdNum}`}
                 transition={{ duration: 0.3, delay: 0 }}
             >
-                <div className={s.Back} onClick={closeSlide}>
+                <Link href="/" className={s.Back} onClick={closeSlide}> {/* ← заменить на Link */}
                     <div className={s.ArrL}></div>
                     <div className={s.See}>К шаблонам</div>
-                </div>
+                </Link>
                 {slideContent.div}
             </motion.div>
         </motion.div>

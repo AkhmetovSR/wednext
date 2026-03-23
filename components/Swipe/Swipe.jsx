@@ -2,7 +2,7 @@
 
 import {motion} from "framer-motion";
 import React, {useEffect, useRef} from "react";
-import {useParams} from 'next/navigation';
+import {useParams, useRouter} from 'next/navigation';
 import Link from "next/link";
 import s from "@/components/Swipe/Swipe.module.css";
 import {useCarouselState, useControl} from "@/components/Providers/Context";
@@ -26,10 +26,22 @@ const Swipe = ({children}) => {
     const slideId = params?.slideId;
     const totalSlides = React.Children.count(children);
     const swipeAreaRef = useRef(null);
+    const router = useRouter();
 
-    useAutoSlide(slideMove, selectedSlideId, totalSlides, setActiveSlide, 1);
+    // useAutoSlide(slideMove, selectedSlideId, totalSlides, setActiveSlide, 1);
 
-    const {handleTap, handleTapStart, handleDragEnd} = SwipeSlide(
+    useEffect(() => {
+        if (router && totalSlides) {
+            console.log('🔵 Начинаем предзагрузку слайдов, всего:', totalSlides);
+            for (let i = 1; i <= totalSlides; i++) {
+                console.log(`🔵 Предзагрузка слайда ${i}`);
+                router.prefetch(`/${i}`);
+            }
+            console.log('🔵 Предзагрузка завершена');
+        }
+    }, [totalSlides, router]);
+
+    const {handleTapStart, handleDragEnd} = SwipeSlide(
         activeSlide,
         setActiveSlide,
         totalSlides,
@@ -64,16 +76,13 @@ const Swipe = ({children}) => {
 
     if (slideId) return null;
 
-    // Текущий активный слайд (тот, который нужно открыть)
-    const currentActiveSlideId = React.Children.toArray(children)[activeSlide]?.props["data-id"];
-
     return (
         <motion.div className={s.Main}>
             <Title activeSlide={activeSlide}></Title>
 
             <div className={s.carousel}>
                 {/* Link на область свайпа, но открывает активный слайд */}
-                <Link href={`/${ activeSlide + 1}`} className={s.Link}>
+                <Link href={`/${activeSlide + 1}`} prefetch className={s.Link}>
                     <motion.div
                         className={s.Sw}
                         ref={swipeAreaRef}
