@@ -2,11 +2,9 @@
 
 import { useCarouselState } from "@/components/Providers/Context"
 import { useState } from "react";
-import { useRouter } from "next/navigation"; // ← правильный импорт
 
 export const SwipeSlide = (activeSlide, setActiveSlide, totalSlides) => {
-    const router = useRouter(); // ← вызываем хук
-    const { selectedSlideId, setSlideMove } = useCarouselState();
+    const { selectedSlideId, setSlideMove, setIsSlideOpen, setBb } = useCarouselState();
     const [startTapX, setStartTapX] = useState(0);
 
     const goToNextSlide = () => {
@@ -29,10 +27,8 @@ export const SwipeSlide = (activeSlide, setActiveSlide, totalSlides) => {
 
     const SwipeLoop = (offsetX, velocityX) => {
         if (selectedSlideId) return;
-
         const swipeThreshold = 5;
         const swipePower = Math.abs(offsetX) * velocityX;
-
         if (swipePower < -swipeThreshold) {
             goToNextSlide();
         } else if (swipePower > swipeThreshold) {
@@ -50,12 +46,14 @@ export const SwipeSlide = (activeSlide, setActiveSlide, totalSlides) => {
         setSlideMove(false);
     };
 
-    const handleTap = (e, info) => {
-        const deltaX = Math.abs(info.point.x - startTapX);
-        if (!selectedSlideId && deltaX < 10) {
-            router.push(`/${activeSlide + 1}`); // + 1 потому, что activeSlide на 1 единицу меньше.
-        }
+    const handleTap = (e, info, id) => {
+        // Тап обрабатывается Link в Swipe, здесь только свайпы
         setSlideMove(false);
+    };
+
+    const closeSlide = () => {
+        setBb(false);
+        setIsSlideOpen(false);
     };
 
     return {
@@ -64,6 +62,7 @@ export const SwipeSlide = (activeSlide, setActiveSlide, totalSlides) => {
         handleTapStart,
         handleTap,
         goToNextSlide,
-        goToPrevSlide
+        goToPrevSlide,
+        closeSlide
     };
 };

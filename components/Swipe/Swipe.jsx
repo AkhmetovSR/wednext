@@ -3,6 +3,7 @@
 import {motion} from "framer-motion";
 import React, {useEffect, useRef} from "react";
 import {useParams, useRouter} from 'next/navigation';
+import Link from "next/link";
 import s from "@/components/Swipe/Swipe.module.css";
 import {useCarouselState} from "@/components/Providers/Context";
 import CarouselNavigation from "@/components/Carousel/CarouselNavigation";
@@ -30,7 +31,7 @@ const Swipe = ({children}) => {
     // Автопролистывание (до тапа или свайпа)
     useAutoSlide(slideMove, selectedSlideId, totalSlides, setActiveSlide, 1);
     // Свайпы
-    const {handleTap, handleTapStart, handleDragEnd} = SwipeSlide(activeSlide, setActiveSlide, totalSlides);
+    const {handleTapStart, handleDragEnd} = SwipeSlide(activeSlide, setActiveSlide, totalSlides, null);
     // Синхронизация активного слайда с URL (Чтобы при закрытии слайда и возврате на главную карусель показывала тот же слайд, который только что был открыт)
     useEffect(() => {
         if (slideId) {
@@ -65,7 +66,7 @@ const Swipe = ({children}) => {
 
             <div className={s.carousel}>
                 {/* Link на область свайпа, но открывает активный слайд */}
-                <motion.div className={s.Link}>
+                <Link href={`/${activeSlide + 1}`} prefetch className={s.Link}>
                     <motion.div
                         className={s.Sw}
                         ref={swipeAreaRef}
@@ -73,9 +74,7 @@ const Swipe = ({children}) => {
                         dragConstraints={{left: 0, right: 0}}
                         dragElastic={0}
                         onDragEnd={handleDragEnd}
-                        onTapStart={handleTapStart}
-                        onTap={(e, info) => handleTap(e, info, activeSlide)} // Передаем ID конкретного слайда
-                    />
+                        onTapStart={handleTapStart}/>
 
 
                     {React.Children.map(children, (child, index) => {
@@ -114,7 +113,7 @@ const Swipe = ({children}) => {
                             </motion.div>
                         );
                     })}
-                </motion.div>
+                </Link>
             </div>
 
 
