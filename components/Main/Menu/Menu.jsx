@@ -7,7 +7,6 @@ import { motion } from "framer-motion";
 
 export default function Menu() {
     const pathname = usePathname(); // получаем текущий путь
-
     const isActive = (path) => {
         return pathname === path;
     };
