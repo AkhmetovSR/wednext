@@ -90,37 +90,37 @@
     background-image: url("/images/Home.png");
 }
 .ImgPolicy{
-    background-image: url("../../../public/images/Policy.png");
+    background-image: url("/images/Policy.png");
 }
 .ImgHowMake{
-    background-image: url("../../../public/images/HowMake.png");
+    background-image: url("/images/HowMake.png");
 }
 .ImgCompany{
-    background-image: url("../../../public/images/Company.png");
+    background-image: url("/images/Company.png");
 }
 .ImgOffer{
-    background-image: url("../../../public/images/offer1.png");
+    background-image: url("/images/offer1.png");
 }
 .imgHome{
-    background-image: url("../../../public/images/Home9.png");
+    background-image: url("/images/Home9.png");
 }
 .imgEvent{
-    background-image: url("/public/images/Event11.png");
+    background-image: url("images/Event11.png");
 }
 .imgInfo{
-    background-image: url("/public/images/Info.png");
+    background-image: url("/images/Info.png");
 }
 .imgAnket{
-    background-image: url("/public/images/Anket1.png");
+    background-image: url("/images/Anket1.png");
 }
 .imgAnalyt{
-    background-image: url("/public/images/Guests.webp");
+    background-image: url("/images/Guests.webp");
 }
 .imgSave{
-    background-image: url("/public/images/Save.png");
+    background-image: url("/images/Save.png");
 }
 .imgByu{
-    background-image: url("/public/images/Cart.png");
+    background-image: url("/images/Cart.png");
 }
 .BtnName, .BtnNameT{
     text-align: center;
