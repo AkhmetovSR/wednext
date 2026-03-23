@@ -1,7 +1,7 @@
 'use client';
 
 import {motion} from "framer-motion";
-import React, {useEffect, useRef} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import {useParams, useRouter} from 'next/navigation';
 import Link from "next/link";
 import s from "@/components/Swipe/Swipe.module.css";
@@ -13,7 +13,7 @@ import Title from "@/components/Swipe/Title";
 
 const Swipe = ({children}) => {
     // const {paramN} = useControl();
-    const {setBb, selectedSlideId, setSelectedSlideId, activeSlide, setActiveSlide, slideMove, setSlideMove} = useCarouselState();
+    const {setBb, selectedSlideId, setSelectedSlideId, activeSlide, setActiveSlide, autoSlide, setAutoSlide} = useCarouselState();
     const params = useParams();
     const slideId = params?.slideId;
     const totalSlides = React.Children.count(children);
@@ -29,14 +29,14 @@ const Swipe = ({children}) => {
         }
     }, [totalSlides, router]);
     // Автопролистывание (до тапа или свайпа)
-    useAutoSlide(slideMove, selectedSlideId, totalSlides, setActiveSlide, 1);
+    useAutoSlide(autoSlide, selectedSlideId, totalSlides, setActiveSlide, 1);
     // Свайпы
-    const {handleTapStart, handleDragEnd} = SwipeSlide(activeSlide, setActiveSlide, totalSlides, null);
+    const {handleTapStart, handleDragEnd, handleTap} = SwipeSlide(activeSlide, setActiveSlide, totalSlides);
     // Синхронизация активного слайда с URL (Чтобы при закрытии слайда и возврате на главную карусель показывала тот же слайд, который только что был открыт)
     useEffect(() => {
         if (slideId) {
             const id = parseInt(slideId);
-            setSlideMove(false);
+            setAutoSlide(false);
             if (!isNaN(id) && id >= 1 && id <= totalSlides) {
                 setSelectedSlideId(id);
                 setActiveSlide(id - 1);
@@ -45,7 +45,7 @@ const Swipe = ({children}) => {
             setSelectedSlideId(null);
             setBb(false);
         }
-    }, [slideId, totalSlides, setSelectedSlideId, setBb, setActiveSlide, setSlideMove]);
+    }, [slideId, totalSlides, setSelectedSlideId, setBb, setActiveSlide, setAutoSlide]);
     const getSlidePosition = (index) => {
         let position = index - activeSlide;
         if (totalSlides > 3) {
@@ -65,8 +65,6 @@ const Swipe = ({children}) => {
             <Title activeSlide={activeSlide}></Title>
 
             <div className={s.carousel}>
-                {/* Link на область свайпа, но открывает активный слайд */}
-                <Link href={`/${activeSlide + 1}`} prefetch className={s.Link}>
                     <motion.div
                         className={s.Sw}
                         ref={swipeAreaRef}
@@ -74,9 +72,9 @@ const Swipe = ({children}) => {
                         dragConstraints={{left: 0, right: 0}}
                         dragElastic={0}
                         onDragEnd={handleDragEnd}
-                        onTapStart={handleTapStart}/>
-
-
+                        onTapStart={handleTapStart}
+                        onTap={handleTap}
+                    />
                     {React.Children.map(children, (child, index) => {
                         const id = child.props["data-id"];
                         const position = getSlidePosition(index);
@@ -113,9 +111,7 @@ const Swipe = ({children}) => {
                             </motion.div>
                         );
                     })}
-                </Link>
             </div>
-
 
             {!selectedSlideId && (
                 <motion.div className={s.divNavi}>
@@ -123,7 +119,7 @@ const Swipe = ({children}) => {
                 </motion.div>
             )}
         </motion.div>
-);
+    );
 };
 
 export default Swipe;

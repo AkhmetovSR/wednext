@@ -36,7 +36,7 @@ export const CarouselStateProvider = ({ children }) => {
     const [itemList, setItemList] = useState(null);
     const [elemState, setElemState] = useState("");
     const [activeSlide, setActiveSlide] = useState(3);
-    const [slideMove, setSlideMove] = useState(true);
+    const [autoSlide, setAutoSlide] = useState(true);
     const [showAttention, setShowAttention] = useState(true);
 
     const value = {
@@ -72,8 +72,8 @@ export const CarouselStateProvider = ({ children }) => {
         setElemState,
         activeSlide,
         setActiveSlide,
-        slideMove,
-        setSlideMove,
+        autoSlide,
+        setAutoSlide,
         showAttention,
         setShowAttention
     };
