@@ -69,6 +69,19 @@
     -webkit-text-fill-color: transparent;
 }
 .carousel {
+    border: 2px solid red;
+    width: 100%;
+
+    height: 100%;
+    perspective: 500px;
+    transform-style: preserve-3d;
+    display: grid;
+    /*justify-items: center;*/
+    /*align-items: center;*/
+    z-index: 100;
+
+}
+.Link{
     /*border: 2px solid red;*/
     width: 100%;
     height: 100%;
@@ -77,24 +90,70 @@
     display: grid;
     justify-items: center;
     align-items: center;
-    z-index: 100;
-
 }
-.Link{
-    border: 2px solid red;
-    width: 65%;
-    height: 84%;
-    z-index: 15;
+.info{
+    /*border: 2px solid red;*/
+    /*width: 65%;*/
+    /*height: 84%;*/
+    position: absolute;
+    color: red;
+    font-weight: bold;
+    z-index: 20;
+    font-size: 30px;
 }
-.Sw{
+.Sw {
     display: grid;
     position: absolute;
-    width: 65%;
-    height: 84%;
+    width: 100%;
+    height: 85%;
     z-index: 25;
-    bottom: 8%;
-    left: 17%;
-    /*border: 2px solid blue;*/
+    bottom: 7%;
+    left: 0;
+    background-color: rgba(255, 255, 255, 0.61);
+    border: 1px solid blue;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.1s ease;
+}
+
+.info {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 26;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(10px);
+    padding: 8px 16px;
+    border-radius: 20px;
+    color: white;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    pointer-events: none;
+    white-space: nowrap;
+    font-weight: normal;
+}
+
+.arrow {
+    font-size: 16px;
+    transition: transform 0.3s ease;
+}
+
+/* Анимация при наведении на info (если нужно) */
+.info:hover .arrow {
+    transform: translateX(4px);
+}
+
+/* Стили для разных состояний Sw */
+.Sw.dragging {
+    background-color: rgba(239, 68, 68, 0.4) !important;
+}
+
+.Sw.tapping {
+    background-color: rgba(34, 197, 94, 0.3) !important;
 }
 .CardCont {
     position: absolute;
