@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from "framer-motion";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import { useParams, useRouter } from 'next/navigation';
 import Link from "next/link";
 import s from "@/components/Swipe/Swipe.module.css";
@@ -17,21 +17,10 @@ const Swipe = ({ children }) => {
     const slideId = params?.slideId;
     const totalSlides = React.Children.count(children);
     const swipeAreaRef = useRef(null);
-    const linkRef = useRef(null);
     const router = useRouter();
 
-    // Состояния для анимации фона
-    const [bgColor, setBgColor] = useState('rgba(255, 255, 255, 0.61)');
-    const dragTimeoutRef = useRef(null);
-    const clickTimeoutRef = useRef(null);
-    const [startTapX, setStartTapX] = useState(0);
-    const [shouldIgnoreTap, setShouldIgnoreTap] = useState(false);
-
-    // Функция сброса цвета
-    const resetBgColor = () => {
-        setBgColor('rgba(255, 255, 255, 0.61)');
-    };
-
+    // Вся логика жестов вынесена в хук
+    const {handleTapStart, handleTap, handleDragStart, handleDragEnd, setLinkRef} = SwipeSlide(activeSlide, setActiveSlide, totalSlides);
     // Предзагрузка слайдов
     useEffect(() => {
         if (router && totalSlides) {
@@ -40,101 +29,8 @@ const Swipe = ({ children }) => {
             }
         }
     }, [totalSlides, router]);
-
     // Автопролистывание
     useAutoSlide(autoSlide, selectedSlideId, totalSlides, setActiveSlide, 1);
-
-    // Свайпы
-    const { handleTapStart: originalHandleTapStart, handleDragEnd } = SwipeSlide(activeSlide, setActiveSlide, totalSlides);
-
-    // Очистка таймеров при размонтировании
-    useEffect(() => {
-        return () => {
-            if (dragTimeoutRef.current) clearTimeout(dragTimeoutRef.current);
-            if (clickTimeoutRef.current) clearTimeout(clickTimeoutRef.current);
-        };
-    }, []);
-
-    // Обработчик начала тапа (для определения свайпа)
-    const handleTapStart = (e, info) => {
-        console.log('🔵 TAP START');
-        setStartTapX(info.point.x);
-        setShouldIgnoreTap(false);
-
-        // Очищаем таймеры
-        if (dragTimeoutRef.current) clearTimeout(dragTimeoutRef.current);
-        if (clickTimeoutRef.current) clearTimeout(clickTimeoutRef.current);
-
-        originalHandleTapStart(e, info);
-    };
-
-    // Обработчик завершения тапа (для анимации и клика)
-    const handleTap = (e, info) => {
-        const deltaX = Math.abs(info.point.x - startTapX);
-        console.log('👆 TAP END', { deltaX });
-
-        // Если это был свайп (движение больше 10px), игнорируем
-        if (deltaX > 10) {
-            console.log('🚫 Was swipe, ignoring tap');
-            setShouldIgnoreTap(true);
-            return;
-        }
-
-        // Если уже игнорируем, не делаем ничего
-        if (shouldIgnoreTap) {
-            console.log('🚫 Tap ignored');
-            return;
-        }
-
-        // Если нет открытого слайда, меняем цвет на зеленый и кликаем по Link
-        if (!selectedSlideId) {
-            console.log('✅ Valid tap - opening slide');
-
-            // Меняем фон на зеленый
-            setBgColor('rgba(34, 197, 94, 0.3)');
-
-            // Сбрасываем фон через 200мс
-            if (clickTimeoutRef.current) clearTimeout(clickTimeoutRef.current);
-            clickTimeoutRef.current = setTimeout(() => {
-                resetBgColor();
-            }, 200);
-
-            // Имитируем клик по Link
-            if (linkRef.current) {
-                linkRef.current.click();
-            }
-        }
-    };
-
-    // Обработчик начала drag (красный цвет)
-    const handleDragStart = () => {
-        console.log('🟢 DRAG START');
-
-        // Очищаем таймеры
-        if (dragTimeoutRef.current) clearTimeout(dragTimeoutRef.current);
-        if (clickTimeoutRef.current) clearTimeout(clickTimeoutRef.current);
-
-        // Меняем фон на красный
-        setBgColor('rgba(239, 68, 68, 0.4)');
-        setShouldIgnoreTap(true);
-    };
-
-    // Обработчик окончания drag
-    const handleDragEndWrapper = (event, info) => {
-        console.log('🔴 DRAG END');
-
-        // Очищаем предыдущий таймер
-        if (dragTimeoutRef.current) clearTimeout(dragTimeoutRef.current);
-
-        // Сбрасываем фон через 300мс
-        dragTimeoutRef.current = setTimeout(() => {
-            resetBgColor();
-        }, 300);
-
-        // Вызываем оригинальный обработчик свайпа
-        handleDragEnd(event, info);
-    };
-
     // Синхронизация активного слайда с URL
     useEffect(() => {
         if (slideId) {
@@ -149,7 +45,6 @@ const Swipe = ({ children }) => {
             setBb(false);
         }
     }, [slideId, totalSlides, setSelectedSlideId, setBb, setActiveSlide, setAutoSlide]);
-
     const getSlidePosition = (index) => {
         let position = index - activeSlide;
         if (totalSlides > 3) {
@@ -170,12 +65,7 @@ const Swipe = ({ children }) => {
             <Title activeSlide={activeSlide} />
 
             <div className={s.carousel}>
-                <Link
-                    ref={linkRef}
-                    href={`/${activeSlide + 1}`}
-                    prefetch
-                    className={s.Link}
-                >
+                <Link ref={setLinkRef} href={`/${activeSlide + 1}`} prefetch className={s.Link}>
                     <motion.div
                         className={s.Sw}
                         ref={swipeAreaRef}
@@ -183,20 +73,17 @@ const Swipe = ({ children }) => {
                         dragConstraints={{ left: 0, right: 0 }}
                         dragElastic={0}
                         onDragStart={handleDragStart}
-                        onDragEnd={handleDragEndWrapper}
+                        onDragEnd={handleDragEnd}
                         onTapStart={handleTapStart}
                         onTap={handleTap}
-                        style={{
-                            backgroundColor: bgColor,
-                            transition: 'background-color 0.15s ease',
-                            cursor: 'pointer'
-                        }}
+                        style={{ cursor: 'pointer' }}
                     >
                         <div className={s.info}>
                             <span>Открыть слайд {activeSlide + 1}</span>
                             <span className={s.arrow}>→</span>
                         </div>
                     </motion.div>
+
                     {React.Children.map(children, (child, index) => {
                         const id = child.props["data-id"];
                         const position = getSlidePosition(index);
