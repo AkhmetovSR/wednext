@@ -2,7 +2,7 @@
 import s from "@/components/Main/MainStyle.module.css";
 import { motion } from 'framer-motion';
 import {useWeddingData} from "@/components/Providers/Context";
-import {AddEditForm} from "@/components/Main/Home/Templates/Functions/AddEditForm";
+import {OpenAddEditForm} from "@/components/Main/Home/Templates/Functions/openAddEditForm";
 import {useParams} from "next/navigation";
 // import { useDynamicFont } from '@/components/Main/Home/Templates/Functions/useDynamicFont';
 // import styles from './WifeAndMan.module.css';
@@ -10,7 +10,7 @@ import {useParams} from "next/navigation";
 export default function WifeAndMan({customClasses, isSlideOpen}) {
     const {weddingData} = useWeddingData();
     const {newlyWed1, newlyWed2} = weddingData;
-    const {openForm} = AddEditForm();
+    const {openForm} = OpenAddEditForm();
 
     console.log(isSlideOpen)
     return (

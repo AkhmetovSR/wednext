@@ -1,4 +1,4 @@
-import s from "@/components/Main/Home/Templates/Froms/AddRemEditBtn.module.css";
+import s from "@/components/Main/Home/Templates/Forms/AddRemEditBtn.module.css";
 import {motion} from "framer-motion";
 
 export default function AnalyticBtn({

@@ -1,12 +1,12 @@
-import s from "@/components/Main/Home/Templates/Froms/AddRemEditBtn.module.css";
+import s from "@/components/Main/Home/Templates/Forms/AddRemEditBtn.module.css";
 import {motion} from "framer-motion";
 import {useCarouselState, usePageContext, useWeddingData} from "@/components/Providers/Context";
-import {AddEditForm} from "@/components/Main/Home/Templates/Functions/AddEditForm";
+import {OpenAddEditForm} from "@/components/Main/Home/Templates/Functions/openAddEditForm";
 
 export default function AddRemEditBtn({isSlideOpen}) {
     const {setEventList, setWishList} = useWeddingData();
     const {reorderingStates, setReorderingStates} = useCarouselState();
-    const {openForm} = AddEditForm();
+    const {openForm} = OpenAddEditForm();
     const { activePage } = usePageContext();
 
     const deleteList = () => {

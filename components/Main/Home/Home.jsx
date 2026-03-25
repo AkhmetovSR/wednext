@@ -1,6 +1,9 @@
 'use client';
 import s from '@/components/Main/Home/Home.module.css';
 import Carousel from "@/components/Carousel/Carousel";
+import BlackBackground from "@/components/Main/Home/Templates/Forms/BlackBackground";
+import {useCarouselState, useControl} from "@/components/Providers/Context";
+import React from "react";
 
 export default function HomePage() {
     return (

@@ -20,7 +20,7 @@ export default function Menu() {
 
             <Link href="/Instruction" className={isActive('/Instruction') ? `${s.MenuButton} ${s.MenuButtonActive}` : s.MenuButton}>
                 <div className={s.ImgHowMake}></div>
-                <div className={s.BtnName}>Описание</div>
+                <div className={s.BtnName}>Инструкция</div>
             </Link>
 
             <Link href="/Policy" className={isActive('/Policy') ? `${s.MenuButton} ${s.MenuButtonActive}` : s.MenuButton}>

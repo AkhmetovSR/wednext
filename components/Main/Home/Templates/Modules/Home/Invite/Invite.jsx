@@ -1,12 +1,12 @@
 import s from "@/components/Main/MainStyle.module.css";
 import {motion} from "framer-motion";
 import {useWeddingData} from "@/components/Providers/Context";
-import {AddEditForm} from "@/components/Main/Home/Templates/Functions/AddEditForm";
+import {OpenAddEditForm} from "@/components/Main/Home/Templates/Functions/openAddEditForm";
 
 export default function Invite({customClasses, isSlideOpen}) {
     const {weddingData} = useWeddingData();
     const {invite} = weddingData;
-    const {openForm} = AddEditForm();
+    const {openForm} = OpenAddEditForm();
 
     return (
         <motion.div className={`${s.invite} ${customClasses?.invite || ""} ${isSlideOpen ? s.open : s.closed}`} onClick={() => {openForm('invite')}}>

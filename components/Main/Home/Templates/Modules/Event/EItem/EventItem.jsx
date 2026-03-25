@@ -1,7 +1,7 @@
 import {motion} from "framer-motion";
 import m from "@/components/Main/Home/Home.module.css";
 import {useWeddingData} from "@/components/Providers/Context";
-import {AddEditForm} from "@/components/Main/Home/Templates/Functions/AddEditForm";
+import {OpenAddEditForm} from "@/components/Main/Home/Templates/Functions/openAddEditForm";
 import {RemoveFromList} from "@/components/Main/Home/Templates/Functions/RemoveFromList";
 import {TimeFormat} from "@/components/Main/Home/Templates/Functions/TimeFormat";
 import {useDragItem} from "@/components/Main/Home/Templates/Functions/useDragItem";
@@ -9,7 +9,7 @@ import {useCallback} from "react";
 
 export default function EventItem({id, time, title, description, customClasses, isSlideOpen, deviceInfo, isReordering}) {
     const {setWeddingData} = useWeddingData();
-    const {openForm} = AddEditForm();
+    const {openForm} = OpenAddEditForm();
     const {controls, isDragging, setIsDragging, handleDragStart, handleDragEnd, handleTouchStart, handleTouchEnd,
         touchStartRef, paramN, isE} = useDragItem(id, 'eventList', setWeddingData, deviceInfo, isReordering);
 

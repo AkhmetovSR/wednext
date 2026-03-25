@@ -1,33 +1,9 @@
 'use client';
+import { useEffect } from 'react';
 
-import { useState, useEffect } from 'react';
-import { useParams, useRouter } from 'next/navigation'; // изменены импорты
-
-export const useSlideManagement = (totalSlides, setSelectedSlideId, setActiveSlide, setBb) => {
-    const params = useParams(); // изменен способ получения params
-    const slideId = params?.slideId; // получение slideId
-    const router = useRouter(); // useNavigate → useRouter
-
+export const useAutoSlide = (autoSlide, selectedSlideId, totalSlides, setActiveSlide, slideDirection) => {
     useEffect(() => {
-        if (slideId) {
-            const id = parseInt(slideId);
-            if (!isNaN(id) && id >= 1 && id <= totalSlides) {
-                setSelectedSlideId(id);
-                setActiveSlide(id - 1);
-            }
-        } else {
-            setSelectedSlideId(null);
-            setBb(false);
-        }
-    }, [slideId, totalSlides, setSelectedSlideId, setBb, setActiveSlide]);
-
-    // Если нужно использовать router где-то еще
-    return { router };
-};
-
-export const useAutoSlide = (slideMove, selectedSlideId, totalSlides, setActiveSlide, slideDirection) => {
-    useEffect(() => {
-        if (!slideMove || selectedSlideId || totalSlides === 0) return;
+        if (!autoSlide || selectedSlideId || totalSlides === 0) return;
 
         const interval = setInterval(() => {
             setActiveSlide(prev => {
@@ -44,5 +20,5 @@ export const useAutoSlide = (slideMove, selectedSlideId, totalSlides, setActiveS
         }, 5000);
 
         return () => clearInterval(interval);
-    }, [slideMove, selectedSlideId, totalSlides, setActiveSlide, slideDirection]);
+    }, [autoSlide, selectedSlideId, totalSlides, setActiveSlide, slideDirection]);
 };

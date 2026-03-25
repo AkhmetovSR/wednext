@@ -9,13 +9,13 @@ import DayTitle from "@/components/Main/Home/Templates/Modules/Home/Date/TextDat
 import Invite from "@/components/Main/Home/Templates/Modules/Home/Invite/Invite";
 import Intro from "@/components/Main/Home/Templates/Modules/Home/Intro/Intro";
 import {useWeddingData} from "@/components/Providers/Context";
-import {AddEditForm} from "@/components/Main/Home/Templates/Functions/AddEditForm";
+import {OpenAddEditForm} from "@/components/Main/Home/Templates/Functions/openAddEditForm";
 
 export default function HomeT3({customClasses, isSlideOpen}) {
     const {weddingData} = useWeddingData();
     const {newlyWed1, newlyWed2} = weddingData;
     const coefficient = calculateFontSize(newlyWed1, newlyWed2, isSlideOpen);
-    const { openForm } = AddEditForm();
+    const { openForm } = OpenAddEditForm();
     return (
         <motion.div className={s.HomeT3}>
             <motion.div className={s.divIntro}><Intro customClasses={customClasses} isSlideOpen={isSlideOpen}/></motion.div>

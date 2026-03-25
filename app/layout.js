@@ -4,6 +4,8 @@ import Providers from '@/components/Providers/Providers';
 import main from "@/components/Main/Home/Home.module.css";
 import Menu from "@/components/Main/Menu/Menu";
 import s from "@/components/Main/Home/Home.module.css";
+import BlackBackground from "@/components/Main/Home/Templates/Forms/BlackBackground";
+import React from "react";
 
 
 const geistSans = Geist({

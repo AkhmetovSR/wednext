@@ -1,6 +1,6 @@
 'use client';
 
-import React, {useState, useEffect, useMemo, useCallback} from 'react';
+import React, {useMemo, useCallback} from 'react';
 import {
     WeddingDataContext,
     ControlContext,
@@ -15,18 +15,16 @@ import {
 } from './Context';
 import { UseWedDaTaLoad } from '@/hooks/useWedDaTaLoad';
 import { UseCheckLoad } from '@/hooks/useCheckLoad';
+import { useSearchParams } from 'next/navigation';
 
 export default function Providers({ children }) {
-    const [urlParams, setUrlParams] = useState({n: null, f: null, e: null});
-    useEffect(() => {
-        const url = new URL(window.location.href);
-        setUrlParams({
-            n: url.searchParams.get("n"),
-            f: url.searchParams.get("f"),
-            e: url.searchParams.get("e")
-        });
-    }, []);
-    const {isLoading, paramN, isF, isE, err, weddingData, setWeddingData, setErr, setIsLoading} = UseWedDaTaLoad(urlParams.n, urlParams.f, urlParams.e);
+    const searchParams = useSearchParams(); // Автоматически обновляется
+    const urlParamsValue = useMemo(() => ({
+        n: searchParams?.get("n") || null,
+        f: searchParams?.get("f") || null,
+        e: searchParams?.get("e") || null
+    }), [searchParams]); // Будет обновляться при изменении URL
+    const {isLoading, paramN, isF, isE, err, weddingData, setWeddingData, setErr, setIsLoading} = UseWedDaTaLoad(urlParamsValue.n, urlParamsValue.f, urlParamsValue.e);
     const allResourcesLoaded = UseCheckLoad(isLoading, err, weddingData);
     const isContentReady = !isLoading && allResourcesLoaded && !err;
     const weddingDataValue = useMemo(() => ({
@@ -84,11 +82,6 @@ export default function Providers({ children }) {
         handleSave,
         handleRetry
     }), [handleSave, handleRetry, setIsLoading, setErr]);
-    const urlParamsValue = useMemo(() => ({
-        nParam: urlParams.n,
-        fParam: urlParams.f,
-        eParam: urlParams.e
-    }), [urlParams.n, urlParams.f, urlParams.e]);
 
     return (
         <UrlParamsContext.Provider value={urlParamsValue}>
@@ -99,10 +92,7 @@ export default function Providers({ children }) {
                             <CarouselStateProvider>
                                 <PolicyStateProvider>
                                     <PositionProvider>
-                                        <PageProvider
-                                            initialPage="home"
-                                            pages={['home', 'wish', 'event', 'rsvp', 'analytics']}
-                                        >
+                                        <PageProvider initialPage="home" pages={['home', 'wish', 'event', 'rsvp', 'analytics']}>
                                             <PageToSlideIndexProvider>
                                                 {children}
                                             </PageToSlideIndexProvider>

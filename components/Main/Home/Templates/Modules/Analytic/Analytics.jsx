@@ -3,7 +3,7 @@ import {motion} from "framer-motion";
 import {useState, useMemo, useRef} from "react";
 import s from "@/components/Main/Home/Templates/Modules/Analytic/Analytic.module.css";
 import {useCarouselState, useControl, useWeddingData} from "@/components/Providers/Context";
-import AnalyticBtn from "@/components/Main/Home/Templates/Froms/AnalyticBtn";
+import AnalyticBtn from "@/components/Main/Home/Templates/Forms/AnalyticBtn";
 import UnVisibleBtn from "@/components/Main/Home/Templates/Functions/UnVisibleBtn";
 import {initialGuestYes} from "@/initData/initialWedData";
 import {initialGuestNot} from "@/initData/initialWedData";

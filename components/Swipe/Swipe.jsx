@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import React, { useEffect, useRef } from "react";
-import { useParams, useRouter } from 'next/navigation';
+import { useParams } from 'next/navigation';
 import Link from "next/link";
 import s from "@/components/Swipe/Swipe.module.css";
 import { useCarouselState } from "@/components/Providers/Context";
@@ -10,6 +10,8 @@ import CarouselNavigation from "@/components/Carousel/CarouselNavigation";
 import { SwipeSlide } from "@/hooks/useSwipeSlide";
 import { useAutoSlide } from "@/hooks/useSlideManagement";
 import Title from "@/components/Swipe/Title";
+import { getSlidePosition } from '@/utils/slidePosition';
+import {useSlideSync} from "@/hooks/useSlideSync";
 
 const Swipe = ({ children }) => {
     const { setBb, selectedSlideId, setSelectedSlideId, activeSlide, setActiveSlide, autoSlide, setAutoSlide } = useCarouselState();
@@ -17,46 +19,13 @@ const Swipe = ({ children }) => {
     const slideId = params?.slideId;
     const totalSlides = React.Children.count(children);
     const swipeAreaRef = useRef(null);
-    const router = useRouter();
 
-    // Вся логика жестов вынесена в хук
+    // Свайпы
     const {handleTapStart, handleTap, handleDragStart, handleDragEnd, setLinkRef} = SwipeSlide(activeSlide, setActiveSlide, totalSlides);
-    // Предзагрузка слайдов
-    useEffect(() => {
-        if (router && totalSlides) {
-            for (let i = 1; i <= totalSlides; i++) {
-                router.prefetch(`/${i}`);
-            }
-        }
-    }, [totalSlides, router]);
     // Автопролистывание
     useAutoSlide(autoSlide, selectedSlideId, totalSlides, setActiveSlide, 1);
     // Синхронизация активного слайда с URL
-    useEffect(() => {
-        if (slideId) {
-            const id = parseInt(slideId);
-            setAutoSlide(false);
-            if (!isNaN(id) && id >= 1 && id <= totalSlides) {
-                setSelectedSlideId(id);
-                setActiveSlide(id - 1);
-            }
-        } else {
-            setSelectedSlideId(null);
-            setBb(false);
-        }
-    }, [slideId, totalSlides, setSelectedSlideId, setBb, setActiveSlide, setAutoSlide]);
-    const getSlidePosition = (index) => {
-        let position = index - activeSlide;
-        if (totalSlides > 3) {
-            if (position > Math.floor(totalSlides / 2)) {
-                position = position - totalSlides;
-            } else if (position < -Math.floor(totalSlides / 2)) {
-                position = position + totalSlides;
-            }
-        }
-        return position;
-    };
-
+    useSlideSync(slideId, totalSlides, setSelectedSlideId, setBb, setActiveSlide, setAutoSlide);
     // Исчезновение карусели
     if (slideId) return null;
 
@@ -67,7 +36,7 @@ const Swipe = ({ children }) => {
             <div className={s.carousel}>
                 <Link ref={setLinkRef} href={`/${activeSlide + 1}`} prefetch className={s.Link}>
                     <motion.div
-                        className={s.Sw}
+                        className={s.SwipeZone}
                         ref={swipeAreaRef}
                         drag="x"
                         dragConstraints={{ left: 0, right: 0 }}
@@ -86,7 +55,7 @@ const Swipe = ({ children }) => {
 
                     {React.Children.map(children, (child, index) => {
                         const id = child.props["data-id"];
-                        const position = getSlidePosition(index);
+                        const position = getSlidePosition(index, activeSlide, totalSlides);
                         const isActive = index === activeSlide;
                         if (Math.abs(position) > 1) return null;
 

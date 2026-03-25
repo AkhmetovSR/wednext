@@ -1,12 +1,16 @@
 .Menu {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(30px, 1fr));
-    background: #ffffff;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
     width: 80%;
     height: 80%;
-    box-shadow: 1px 2px 4px rgb(198, 198, 198);
-    border-radius: 10px;
+    box-shadow: 0 0 0 0.5px rgba(0, 0, 0, 0.05), 0 8px 20px rgba(0, 0, 0, 0.08);
+    border-radius: 24px;
+    -webkit-backdrop-filter: blur(20px);
+    /*border: 2px solid red;*/
 }
+
 .MenuButton {
     overflow: hidden;
     display: grid;
@@ -16,32 +20,86 @@
     justify-items: center;
     align-content: center;
     scale: 0.9;
-    /*border: 1px solid red;*/
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 16px;
+    cursor: pointer;
+    position: relative;
+}
+
+.MenuButton:hover {
+    background: rgba(0, 0, 0, 0.02);
+}
+
+.MenuButton:active {
+    transform: scale(0.92);
 }
 
 .MenuButtonActive {
-    background-color: white;
-    border-radius: 15px;
+    background: rgba(0, 0, 0, 0.03);
+    border-radius: 16px;
     position: relative;
     overflow: hidden;
-    scale: 1.05;
-    box-shadow: 0 2px 8px rgba(177, 156, 217, 0.25);
+    scale: 0.95;
     transition-duration: 0.2s;
 }
 
-/* Внутренний слой */
+/* Полоска внутри кнопки сверху */
+.MenuButtonActive::before {
+    content: '';
+    position: absolute;
+    /*top: 0;*/
+    /*left: 20%;*/
+    width: 100%;
+    height: 4px;
+    background: #00b8ff;
+    border-radius: 20px;
+    animation: glowPulse 2s ease-in-out infinite;
+    /*box-shadow: 0 0 8px rgba(0, 122, 255, 0.6);*/
+}
+
+/* Эффект свечения от полоски */
 .MenuButtonActive::after {
     content: '';
     position: absolute;
     top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: white;
-    border-radius: 15px;
-    z-index: -1;
+    left: 15%;
+    width: 70%;
+    height: 12px;
+    /*background: radial-gradient(ellipse at center,*/
+    /*rgba(0, 122, 255, 0.25) 0%,*/
+    /*rgba(94, 92, 224, 0.15) 40%,*/
+    /*transparent 70%*/
+    /*);*/
+    filter: blur(4px);
+    pointer-events: none;
+    animation: glowSpread 2s ease-in-out infinite;
 }
 
+/*@keyframes glowPulse {*/
+/*    0%, 100% {*/
+/*        opacity: 0.8;*/
+/*        height: 3px;*/
+/*        box-shadow: 0 0 6px rgba(0, 122, 255, 0.5);*/
+/*    }*/
+/*    50% {*/
+/*        opacity: 1;*/
+/*        height: 4px;*/
+/*        box-shadow: 0 0 12px rgba(0, 122, 255, 0.8);*/
+/*    }*/
+/*}*/
+
+@keyframes glowSpread {
+    0%, 100% {
+        opacity: 0.4;
+        height: 10px;
+    }
+    50% {
+        opacity: 0.6;
+        height: 14px;
+    }
+}
+
+/* Активные иконки - стиль iPhone */
 .MenuButtonActive .ImgHome,
 .MenuButtonActive .ImgPolicy,
 .MenuButtonActive .ImgHowMake,
@@ -53,10 +111,9 @@
 .MenuButtonActive .imgAnket,
 .MenuButtonActive .imgAnalyt,
 .MenuButtonActive .imgSave,
-.MenuButtonActive .imgByu
-{
-    opacity: 0.65;
-    filter: invert(12%) sepia(0%) saturate(40%) hue-rotate(180deg) brightness(100%) contrast(80%);
+.MenuButtonActive .imgByu {
+    opacity: 1;
+    /*filter: brightness(0) saturate(100%) invert(35%) sepia(100%) saturate(1000%) hue-rotate(200deg) brightness(95%);*/
     animation: iconFloat 2.5s ease-in-out infinite;
 }
 
@@ -65,116 +122,72 @@
         transform: translateY(0);
     }
     50% {
-        transform: translateY(-3px);
+        transform: translateY(-2px);
     }
 }
-.MenuButtonActive .BtnName, .MenuButtonActive {
-    color: #9CA3AF; /* Очень светлый серый */
-    position: relative;
-    overflow: hidden;
-    --base-font-size: 9px;
-}
-.BtnNameT{
-    font-size: calc(var(--base-font-size) * var(--font-scale));
-    --base-font-size: 9px;
-}
-.ImgHome, .ImgPolicy, .ImgHowMake, .ImgCompany, .ImgOffer, .imgHome, .imgEvent, .imgInfo, .imgAnket, .imgAnalyt, .imgSave, .imgByu{
+
+/* Иконки */
+.ImgHome, .ImgPolicy, .ImgHowMake, .ImgCompany, .ImgOffer,
+.imgHome, .imgEvent, .imgInfo, .imgAnket, .imgAnalyt, .imgSave, .imgByu {
     width: 35%;
-    /*height: 100%;*/
-    opacity: 0.3;
+    opacity: 0.45;
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
+    transition: all 0.25s ease;
 }
-.ImgHome{
-    background-image: url("/images/Home.png");
+
+.MenuButton:hover .ImgHome,
+.MenuButton:hover .ImgPolicy,
+.MenuButton:hover .ImgHowMake,
+.MenuButton:hover .ImgCompany,
+.MenuButton:hover .ImgOffer {
+    opacity: 0.7;
+    transform: scale(1.03);
 }
-.ImgPolicy{
-    background-image: url("/images/Policy.png");
-}
-.ImgHowMake{
-    background-image: url("/images/HowMake.png");
-}
-.ImgCompany{
-    background-image: url("/images/Company.png");
-}
-.ImgOffer{
-    background-image: url("/images/offer1.png");
-}
-.imgHome{
-    background-image: url("/images/Home9.png");
-}
-.imgEvent{
-    background-image: url("/images/Event11.png");
-}
-.imgInfo{
-    background-image: url("/images/Info.png");
-}
-.imgAnket{
-    background-image: url("/images/Anket1.png");
-}
-.imgAnalyt{
-    background-image: url("/images/Guests.webp");
-}
-.imgSave{
-    background-image: url("/images/Save.png");
-}
-.imgByu{
-    background-image: url("/images/Cart.png");
-}
-.BtnName, .BtnNameT{
+
+/* Изображения */
+.ImgHome { background-image: url("/images/Home.png"); }
+.ImgPolicy { background-image: url("/images/Policy.png"); }
+.ImgHowMake { background-image: url("/images/HowMake.png"); }
+.ImgCompany { background-image: url("/images/Company.png"); }
+.ImgOffer { background-image: url("/images/offer1.png"); }
+.imgHome { background-image: url("/images/Home9.png"); }
+.imgEvent { background-image: url("/images/Event11.png"); }
+.imgInfo { background-image: url("/images/Info.png"); }
+.imgAnket { background-image: url("/images/Anket1.png"); }
+.imgAnalyt { background-image: url("/images/Guests.webp"); }
+.imgSave { background-image: url("/images/Save.png"); }
+.imgByu { background-image: url("/images/Cart.png"); }
+
+/* Текст - стиль iPhone */
+.BtnName {
     text-align: center;
     overflow: hidden;
-    color: #7a7a7a;
+    font-size: 0.65rem;
+    font-weight: 500;
+    color: #8e8e93;
+    transition: all 0.2s ease;
+    letter-spacing: -0.2px;
 }
-.BtnName{
-    font-size: 9px;
+
+.MenuButtonActive .BtnName {
+    /*color: #007aff;*/
+    font-weight: bold;
 }
-.BtnNameT{
-    --base-font-size: 9px;
+
+.MenuButton:hover .BtnName {
+    color: #00b8ff;
 }
-/* Мелкие смартфоны (портретный режим) типа iphone4*/
-@media (max-width: 359px) and (max-height: 480px){
-    .BtnName{
-        font-size: 9px;
-    }
-    .BtnNameT{
-        --base-font-size: 9px;
-    }
-}
-/* 2. iPhone 6/7/8/SE (375px) - попадает сюда */
-@media (min-width: 375px) {
-    .BtnName{
-        font-size: 11px;
-    }
-    .BtnNameT{
-        --base-font-size: 11px;
-    }
-}
-/* [slideId]. iPhone Plus/XR (414px) - попадает сюда */
-@media (min-width: 414px) {
-    .BtnName{
-        font-size: 12px;
-    }
-    .BtnNameT{
-        --base-font-size: 12px;
-    }
-}
-/* 4. iPhone 16 Pro Max (~430px+) - попадает сюда */
-@media (min-width: 428px) {
-    .BtnName{
-        font-size: 13px;
-    }
-    .BtnNameT{
-        --base-font-size: 13px;
-    }
-}
-/* 5. Galaxy Z Fold 5 (~717px+) - попадает сюда */
-@media (min-width: 768px) {
-    .BtnName{
-        font-size: 13px;
-    }
-    .BtnNameT{
-        --base-font-size: 13px;
-    }
+
+/*.BtnNameT {*/
+/*    text-align: center;*/
+/*    overflow: hidden;*/
+/*    color: #ff0909;*/
+/*    font-size: 0.65rem;*/
+/*    font-weight: 500;*/
+/*}*/
+
+.MenuButtonActive .BtnNameT {
+    color: #e6e6e6;
 }

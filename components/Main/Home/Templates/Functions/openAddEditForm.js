@@ -1,8 +1,7 @@
-'use client';
 import {useCarouselState, useControl, useErrorState, useWeddingData} from "@/components/Providers/Context";
 import {useEffect, useState} from "react";
 
-export const useAddEditForm = () => {
+export const OpenAddEditForm = () => {
     const { weddingData, setWeddingData, setNewlyWed1, setNewlyWed2, addEvent, updateEvent, addWish, updateWish, setDate} = useWeddingData();
     const {newlyWed1, newlyWed2, intro, invite, eventList, wishList} = weddingData;
     const { setName1Error, setName2Error, setEmptyError} = useErrorState();

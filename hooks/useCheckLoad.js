@@ -6,11 +6,9 @@ export function UseCheckLoad(isLoading, err, weddingData) {
     useEffect(() => {
         const checkAllResources = async () => {
             if (isLoading || err) return;
-
             try {
                 // Ждем загрузки шрифтов
                 await document.fonts.ready;
-
                 // Проверяем загрузку изображений
                 const images = Array.from(document.images);
                 const imagePromises = images.map(img => {

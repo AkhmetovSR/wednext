@@ -4,7 +4,7 @@ import main from "@/components/Main/Home/Home.module.css";
 import WishItem from "@/components/Main/Home/Templates/Modules/Wish/WItem/WishItem";
 import {ReorderList} from "@/components/Main/Home/Templates/Functions/ReorderList";
 import {useCarouselState, useControl, useWeddingData} from "@/components/Providers/Context";
-import AddRemEditBtn from "@/components/Main/Home/Templates/Froms/AddRemEditBtn";
+import AddRemEditBtn from "@/components/Main/Home/Templates/Forms/AddRemEditBtn";
 import UnVisibleBtn from "@/components/Main/Home/Templates/Functions/UnVisibleBtn";
 import NotList from "@/components/Main/Home/Templates/Modules/Help/NotList";
 import {HideBtn} from "@/components/Main/Home/Templates/Functions/HideBtn";

@@ -2,22 +2,23 @@
 
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
-import { useCarouselState } from '@/components/Providers/Context';
+import {useCarouselState, useControl} from '@/components/Providers/Context';
 import s from '@/components/Swipe/Swipe.module.css';
 import { motion } from "framer-motion";
 import { tempArr } from "@/components/Carousel/tempArray";
 import {SwipeSlide} from "@/hooks/useSwipeSlide";
-import {useEffect} from "react";
+import React, {useEffect} from "react";
+import BlackBackground from "@/components/Main/Home/Templates/Forms/BlackBackground";
+import {OpenAddEditForm} from "@/components/Main/Home/Templates/Functions/openAddEditForm";
 
 export default function SlidePage() {
     const params = useParams();
     const slideId = params?.slideId;
-    const { selectedSlideId, setSelectedSlideId } = useCarouselState();
-    console.log("slideId" + slideId)
+    const {paramN, isE} = useControl();
+    const {selectedSlideId, setSelectedSlideId, bb} = useCarouselState();
 
     const { closeSlide } = SwipeSlide();
-    useEffect(() => {
-        setSelectedSlideId(parseInt(slideId)); // устанавливаем в контекст
+    useEffect(() => {setSelectedSlideId(parseInt(slideId)); // устанавливаем в контекст
     }, [slideId, setSelectedSlideId]);
     // Поиск слайда
     const slideIdNum = parseInt(slideId);
@@ -25,9 +26,7 @@ export default function SlidePage() {
 
     if (!slideContent) {
         return (
-            <motion.div className={s.fullscreenOverlay}
-
-            >
+            <motion.div className={s.fullscreenOverlay}>
                 <div className={s.fullscreenContent}>
                     <div className={s.Back} onClick={closeSlide}>
                         <div className={s.ArrL}></div>
@@ -46,6 +45,7 @@ export default function SlidePage() {
 
     return (
         <motion.div className={s.fullscreenOverlay}>
+            {bb && (!paramN || isE) && (<BlackBackground/>)}
             <motion.div
                 className={s.fullscreenContent}
                 layoutId={`slide-${selectedSlideId || slideIdNum}`}

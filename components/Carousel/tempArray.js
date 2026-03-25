@@ -53,35 +53,35 @@ const UnderDevelopment = ({ slideNumber }) => (
             Слайд {slideNumber}
         </div>
 
-        {/*/!* Анимация "скоро" *!/*/}
-        {/*<div style={{*/}
-        {/*    display: 'flex',*/}
-        {/*    gap: '8px',*/}
-        {/*    marginTop: '10px'*/}
-        {/*}}>*/}
-        {/*    {['С', 'к', 'о', 'р', 'о'].map((letter, i) => (*/}
-        {/*        <span key={i} style={{*/}
-        {/*            color: 'rgba(99, 102, 241, 0.8)',*/}
-        {/*            fontSize: '12px',*/}
-        {/*            fontWeight: '500',*/}
-        {/*            animation: `bounce 0.5s ease-in-out ${i * 0.1}s infinite`*/}
-        {/*        }}>*/}
-        {/*            {letter}*/}
-        {/*        </span>*/}
-        {/*    ))}*/}
-        {/*</div>*/}
+        {/* Анимация "скоро" */}
+        <div style={{
+            display: 'flex',
+            gap: '8px',
+            marginTop: '10px'
+        }}>
+            {['С', 'к', 'о', 'р', 'о'].map((letter, i) => (
+                <span key={i} style={{
+                    color: 'rgba(99, 102, 241, 0.8)',
+                    fontSize: '12px',
+                    fontWeight: '500',
+                    animation: `bounce 0.5s ease-in-out ${i * 0.1}s infinite`
+                }}>
+                    {letter}
+                </span>
+            ))}
+        </div>
 
-        {/*/!* Стили анимаций *!/*/}
-        {/*<style jsx>{`*/}
-        {/*    @keyframes pulse {*/}
-        {/*        0%, 100% { transform: scale(1); opacity: 0.5; }*/}
-        {/*        50% { transform: scale(1.1); opacity: 0.8; }*/}
-        {/*    }*/}
-        {/*    @keyframes bounce {*/}
-        {/*        0%, 100% { transform: translateY(0); }*/}
-        {/*        50% { transform: translateY(-5px); }*/}
-        {/*    }*/}
-        {/*`}</style>*/}
+        {/* Стили анимаций */}
+        <style jsx>{`
+            @keyframes pulse {
+                0%, 100% { transform: scale(1); opacity: 0.5; }
+                50% { transform: scale(1.1); opacity: 0.8; }
+            }
+            @keyframes bounce {
+                0%, 100% { transform: translateY(0); }
+                50% { transform: translateY(-5px); }
+            }
+        `}</style>
     </div>
 );
 

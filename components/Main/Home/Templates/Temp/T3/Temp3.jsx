@@ -3,7 +3,7 @@ import s from "@/components/Main/Home/Templates/Temp/T3/Temp3.module.css";
 import HomeT3 from "@/components/Main/Home/Templates/Temp/T3/HomeT3";
 import {motion} from "framer-motion";
 import FireFly from "@/components/Main/Home/Templates/Functions/FireFly";
-import {usePageContext} from "@/components/Providers/Context";
+import {useCarouselState, usePageContext} from "@/components/Providers/Context";
 import { useParams } from "next/navigation";
 import EventList from "@/components/Main/Home/Templates/Modules/Event/EventList";
 import {cstmAnalytic, cstmEvent, cstmHome, cstmMenu, cstmRSVP, cstmTemp, cstmWish} from "@/components/Main/Home/Templates/cstmStyle";
@@ -18,6 +18,8 @@ export default function Temp3() {
     const params = useParams();
     const slideId = params?.slideId;
     const isSlideOpen = !!slideId; // 🔥 isSlideOpen определяется по наличию slideId в URL
+    const {selectedSlideId, bb, setBb, buy, setBuy} = useCarouselState();
+    console.log("bb " + bb)
 
     return (
         <motion.div className={`${m.Main} ${customClasses?.Main || ""}`}>
