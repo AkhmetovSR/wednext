@@ -4,10 +4,10 @@
     height: 100%;
     top: 0;
     left: 0;
-    /*border: 2px solid blue;*/
+    border: 2px solid blue;
     background: rgba(0, 0, 0, 0.8);
     display: grid;
-    z-index: 1000000000000000;
+    z-index: 100;
 }
 .FU{
     background: white;

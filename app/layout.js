@@ -4,7 +4,6 @@ import Providers from '@/components/Providers/Providers';
 import main from "@/components/Main/Home/Home.module.css";
 import Menu from "@/components/Main/Menu/Menu";
 import s from "@/components/Main/Home/Home.module.css";
-import BlackBackground from "@/components/Main/Home/Templates/Forms/BlackBackground";
 import React from "react";
 
 
@@ -26,17 +25,17 @@ export const metadata = {
 export default function RootLayout({children}) {
     return (
         <html lang="ru">
+        <head><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no"/></head>
         <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <Providers>
             <div className={main.Main}>
                 <div className={main.Content}>
-                    {children} {/* ← сюда будут подставляться разные страницы */}
+                    {children}
                 </div>
                 <div className={main.Menu}>
-                    <Menu/> {/* НЕ РЕНДЕРИТСЯ! */}
+                    <Menu/>
                 </div>
                 <div className={s.Block}>Для просмотра, пожалуйста <br/>переверните устройство.</div>
-                {/* Заглушка! */}
             </div>
         </Providers>
         </body>

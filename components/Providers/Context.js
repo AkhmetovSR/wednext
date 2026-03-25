@@ -43,7 +43,7 @@ export const CarouselStateProvider = ({ children }) => {
         reorderingStates,
         setReorderingStates,
         selectedSlideId,
-        setSelectedSlideId, // устанавливаем в контекст в SlidePage (useEffect)
+        setSelectedSlideId, // устанавливаем в контекст в SlidePage (useEffect) -
         isSlideOpen,
         setIsSlideOpen,
         buy,

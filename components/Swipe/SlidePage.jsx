@@ -9,7 +9,6 @@ import { tempArr } from "@/components/Carousel/tempArray";
 import {SwipeSlide} from "@/hooks/useSwipeSlide";
 import React, {useEffect} from "react";
 import BlackBackground from "@/components/Main/Home/Templates/Forms/BlackBackground";
-import {OpenAddEditForm} from "@/components/Main/Home/Templates/Functions/openAddEditForm";
 
 export default function SlidePage() {
     const params = useParams();
@@ -18,8 +17,8 @@ export default function SlidePage() {
     const {selectedSlideId, setSelectedSlideId, bb} = useCarouselState();
 
     const { closeSlide } = SwipeSlide();
-    useEffect(() => {setSelectedSlideId(parseInt(slideId)); // устанавливаем в контекст
-    }, [slideId, setSelectedSlideId]);
+    // устанавливаем в контекст
+    useEffect(() => {setSelectedSlideId(parseInt(slideId));}, [slideId, setSelectedSlideId]);
     // Поиск слайда
     const slideIdNum = parseInt(slideId);
     const slideContent = tempArr.find(item => item.id === parseInt(slideIdNum));
@@ -45,18 +44,18 @@ export default function SlidePage() {
 
     return (
         <motion.div className={s.fullscreenOverlay}>
-            {bb && (!paramN || isE) && (<BlackBackground/>)}
             <motion.div
                 className={s.fullscreenContent}
                 layoutId={`slide-${selectedSlideId || slideIdNum}`}
                 transition={{ duration: 0.3, delay: 0 }}
             >
-                <Link href="/" className={s.Back} onClick={closeSlide}> {/* ← заменить на Link */}
+                <Link href="/" className={s.Back}>
                     <div className={s.ArrL}></div>
                     <div className={s.See}>К шаблонам</div>
                 </Link>
                 {slideContent.div}
             </motion.div>
+            {bb && (!paramN || isE) && (<BlackBackground/>)} {/*!!!!!!!!!!!!!!!!!!!!!! Проверить условия */}
         </motion.div>
     );
 }
