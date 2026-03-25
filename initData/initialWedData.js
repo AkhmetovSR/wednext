@@ -2,8 +2,8 @@ import { InitialEvents } from "@/initData/initialEvents";
 import { InitialWishes } from "@/initData/initialWishes";
 
 export const initialWeddingData = {
-    newlyWed1: "Сергей",
-    newlyWed2: "Марина",
+    newlyWed1: "Жених",
+    newlyWed2: "Невеста",
     intro: "ДОРОГИЕ И ЛЮБИМЫЕ НАШИ РОДИТЕЛИ, ДРУЗЬЯ И КОЛЛЕГИ!",
     invite: "С БОЛЬШИМ УДОВОЛЬСТВИЕМ ПРИГЛАШАЕМ ВАС НА НАШУ СВАДЬБУ!",
     date: new Date(),
