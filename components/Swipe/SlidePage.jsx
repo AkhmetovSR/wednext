@@ -44,6 +44,7 @@ export default function SlidePage() {
 
     return (
         <motion.div className={s.fullscreenOverlay}>
+            {bb && (!paramN || isE) && (<BlackBackground/>)} {/*!!!!!!!!!!!!!!!!!!!!!! Проверить условия */}
             <motion.div
                 className={s.fullscreenContent}
                 layoutId={`slide-${selectedSlideId || slideIdNum}`}
@@ -55,7 +56,7 @@ export default function SlidePage() {
                 </Link>
                 {slideContent.div}
             </motion.div>
-            {bb && (!paramN || isE) && (<BlackBackground/>)} {/*!!!!!!!!!!!!!!!!!!!!!! Проверить условия */}
+
         </motion.div>
     );
 }

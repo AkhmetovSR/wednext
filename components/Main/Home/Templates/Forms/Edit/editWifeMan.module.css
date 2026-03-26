@@ -1,0 +1,127 @@
+.Main{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    z-index: 10000;
+}
+.Sub{
+    background: white;
+    position: absolute;
+    top: 2%;
+    padding: 6%;
+    border-radius: 12px;
+    width: 70%;
+    height: 220px;
+    max-width: 500px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    justify-self: center;
+    display: grid;
+    grid-template-rows: 1fr 2fr 1fr;
+}
+.Main div{
+    /*border: 1px solid red*/
+}
+.exampleWifeMan{
+    text-align: center;
+    font-size: 12px;
+    /*font-size: 10px;*/
+}
+.Inputs{
+    display: grid;
+    gap: 0.5rem;
+    /*align-content: center;*/
+    /*border: 1px solid red*/
+}
+.Inputs div{
+    /*margin-bottom: 5%;*/
+}
+.Inputs input{
+    display: grid;
+    justify-self: center;
+    /*margin: 5%;*/
+    border-radius: 0.5rem;
+    /*background-color: #e6e6e6;*/
+    border: 1px solid #e6e6e6;
+    /*border: none;*/
+    width: 100%;
+    height: 2.2rem;
+    outline: none;
+    padding-left: 5%;
+    color: #9c9c9c;
+    font-size: 1rem;
+    /*font-size: 70%;*/
+}
+::placeholder{
+    color: #b8b8b8;
+}
+.btnWifeMan{
+    display: grid;
+    /*height: 5vh;*/
+    /*border: 1px solid red;*/
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    justify-items: center;
+}
+.btnWifeMan button{
+    width: 90%;
+    height: 70%;
+    border-radius: 10px;
+    border: none;
+    color: white;
+    font-size: 12px;
+}
+.Close{
+    background-color: #dadada;
+}
+.Save{
+    background-color: #D4C676;
+}
+.And{
+    display: grid;
+    /*border: 1px solid red;*/
+    align-items: end;
+    font-size: 3.5vh;
+}
+
+/* Мелкие смартфоны (портретный режим) типа iphone4*/
+@media (max-width: 359px) and (max-height: 480px){
+    .exampleWifeMan{
+        font-size: 12px;
+    }
+}
+/* Мелкие смартфоны (портретный режим) типа iphone5/5s*/
+@media (max-width: 359px) and (min-height: 481px) and (max-height: 570px){
+    .exampleWifeMan{
+        font-size: 13px;
+    }
+}
+/*Z Fold 5*/
+@media (max-width: 359px) and (min-height: 880px){
+
+}
+/* iPhone 6/7/8/SE/X/Galaxy S3,S5,S8/ Galaxy Note 2,3 */
+@media (min-width: 360px) and (max-width: 375px) {
+    .exampleWifeMan{
+        font-size: 14px;
+    }
+}
+/* iPhone XR/12 Pro/ 14 Pro MAX/ Pixel 7/ S20FE/ */
+@media (min-width: 376px) and (max-width: 460px) and (max-height: 719px){
+
+}
+/* iPhone 6/7/8 Plus */
+@media (min-width: 400px) and (min-height: 720px) and (max-height: 900px){
+    .exampleWifeMan{
+        font-size: 15px;
+    }
+}
+/* iPhone 15/16 Pro MAX */
+@media (min-width: 430px) and (min-height: 900px) {
+    .exampleWifeMan{
+        font-size: 16px;
+    }
+}

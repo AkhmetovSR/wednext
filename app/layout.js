@@ -25,7 +25,7 @@ export const metadata = {
 export default function RootLayout({children}) {
     return (
         <html lang="ru">
-        <head><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no"/></head>
+        {/*<head><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no"/></head>*/}
         <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <Providers>
             <div className={main.Main}>

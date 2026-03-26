@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from "framer-motion";
-import React, { useEffect, useRef } from "react";
+import React, { useRef } from "react";
 import { useParams } from 'next/navigation';
 import Link from "next/link";
 import s from "@/components/Swipe/Swipe.module.css";
