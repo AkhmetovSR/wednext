@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from "framer-motion";
-import React, { useRef } from "react";
+import React from "react";
 import { useParams } from 'next/navigation';
 import Link from "next/link";
 import s from "@/components/Swipe/Swipe.module.css";
@@ -12,7 +12,6 @@ import { useAutoSlide } from "@/hooks/useSlideManagement";
 import Title from "@/components/Swipe/Title";
 import { getSlidePosition } from '@/utils/slidePosition';
 import {useSlideSync} from "@/hooks/useSlideSync";
-import {useSwipeable} from "react-swipeable";
 
 const Swipe = ({ children }) => {
     const { setBb, selectedSlideId, setSelectedSlideId, activeSlide, setActiveSlide, autoSlide, setAutoSlide } = useCarouselState();
