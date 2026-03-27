@@ -7,21 +7,21 @@ import Link from "next/link";
 import s from "@/components/Swipe/Swipe.module.css";
 import { useCarouselState } from "@/components/Providers/Context";
 import CarouselNavigation from "@/components/Carousel/CarouselNavigation";
-import { SwipeSlide } from "@/hooks/useSwipeSlide";
+import {useSwipeSlide} from "@/hooks/useSwipeSlide";
 import { useAutoSlide } from "@/hooks/useSlideManagement";
 import Title from "@/components/Swipe/Title";
 import { getSlidePosition } from '@/utils/slidePosition';
 import {useSlideSync} from "@/hooks/useSlideSync";
+import {useSwipeable} from "react-swipeable";
 
 const Swipe = ({ children }) => {
     const { setBb, selectedSlideId, setSelectedSlideId, activeSlide, setActiveSlide, autoSlide, setAutoSlide } = useCarouselState();
     const params = useParams();
     const slideId = params?.slideId;
     const totalSlides = React.Children.count(children);
-    const swipeAreaRef = useRef(null);
 
     // Свайпы
-    const {handleTapStart, handleTap, handleDragStart, handleDragEnd, setLinkRef} = SwipeSlide(activeSlide, setActiveSlide, totalSlides);
+    const {swipeHandlers} = useSwipeSlide(activeSlide, setActiveSlide, totalSlides);
     // Автопролистывание
     useAutoSlide(autoSlide, selectedSlideId, totalSlides, setActiveSlide, 1);
     // Синхронизация активного слайда с URL
@@ -34,19 +34,8 @@ const Swipe = ({ children }) => {
             <Title activeSlide={activeSlide} />
 
             <div className={s.carousel}>
-                <Link ref={setLinkRef} href={`/${activeSlide + 1}`} prefetch className={s.Link}>
-                    <motion.div
-                        className={s.SwipeZone}
-                        ref={swipeAreaRef}
-                        drag="x"
-                        dragConstraints={{ left: 0, right: 0 }}
-                        dragElastic={0}
-                        onDragStart={handleDragStart}
-                        onDragEnd={handleDragEnd}
-                        onTapStart={handleTapStart}
-                        onTap={handleTap}
-                        style={{ cursor: 'pointer' }}
-                    >
+                <Link  href={`/${activeSlide + 1}`} prefetch className={s.Link}>
+                    <motion.div className={s.SwipeZone}{...swipeHandlers}>
                         <div className={s.info}>
                             <span>Открыть слайд {activeSlide + 1}</span>
                             <span className={s.arrow}>→</span>

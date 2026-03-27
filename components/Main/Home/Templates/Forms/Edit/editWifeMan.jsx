@@ -15,12 +15,12 @@ export default function EditWifeMan() {
     };
     return (
         <div className={s.Inputs}>
-            <motion.div><input value={newlyWed1} placeholder="имя молодожена"
+            <motion.div><input value={newlyWed1} placeholder="введите имя молодожена"
                                onChange={(e) => handleChange1(e.target.value)}
-                               style={{border: name1Error ? "1px solid red" : ""}}
+                               style={{border: name1Error ? "1px solid #fd9696" : ""}}
                                type="text" maxLength="17"
             /></motion.div>
-            <motion.div><input value={newlyWed2} placeholder="имя молодожена"
+            <motion.div><input value={newlyWed2} placeholder="введите имя молодожена"
                                onChange={(e) => handleChange2(e.target.value)}
                                style={{border: name2Error ? "1px solid red" : ""}}
                                type="text" maxLength="17"

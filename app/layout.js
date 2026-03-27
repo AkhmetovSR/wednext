@@ -6,7 +6,6 @@ import Menu from "@/components/Main/Menu/Menu";
 import s from "@/components/Main/Home/Home.module.css";
 import React from "react";
 
-
 const geistSans = Geist({
     variable: "--font-geist-sans",
     subsets: ["latin"],

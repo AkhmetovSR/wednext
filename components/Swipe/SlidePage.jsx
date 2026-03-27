@@ -6,7 +6,7 @@ import {useCarouselState, useControl} from '@/components/Providers/Context';
 import s from '@/components/Swipe/Swipe.module.css';
 import { motion } from "framer-motion";
 import { tempArr } from "@/components/Carousel/tempArray";
-import {SwipeSlide} from "@/hooks/useSwipeSlide";
+import {useSwipeSlide} from "@/hooks/useSwipeSlide";
 import React, {useEffect} from "react";
 import BlackBackground from "@/components/Main/Home/Templates/Forms/BlackBackground";
 
@@ -16,7 +16,7 @@ export default function SlidePage() {
     const {paramN, isE} = useControl();
     const {selectedSlideId, setSelectedSlideId, bb} = useCarouselState();
 
-    const { closeSlide } = SwipeSlide();
+    const { closeSlide } = useSwipeSlide();
     // устанавливаем в контекст
     useEffect(() => {setSelectedSlideId(parseInt(slideId));}, [slideId, setSelectedSlideId]);
     // Поиск слайда

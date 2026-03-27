@@ -4,7 +4,7 @@
     height: 100%;
     top: 0;
     left: 0;
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0.7);
     display: grid;
     z-index: 4;
 }
@@ -14,15 +14,13 @@
     height: 100%;
 }
 .FU{
-    background: white;
+    background: #faf9f9;
     position: absolute;
-    top: 3rem;
-    padding: 6%;
-    border-radius: 12px;
+    top: 4rem;
+    padding: 1.5rem;
+    border-radius: 1.5rem;
     width: 80%;
     height: auto;
-    /*max-width: 500px;*/
-    /*box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);*/
     justify-self: center;
     display: grid;
     grid-template-rows: auto auto;
@@ -33,10 +31,11 @@
     /*border: 1px solid blue;*/
 }
 .Title{
-    color: #afafaf;
+    color: #959595;
     text-align: center;
     margin-bottom: 5%;
     font-size: 1rem;
+    font-weight: bold;
 }
 .divBtn{
     display: grid;

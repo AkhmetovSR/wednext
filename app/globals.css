@@ -1,10 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Forum&display=swap');
 
+/* Подключаем Carlito */
+@font-face {
+  font-family: 'Lora';
+  src: url('/fonts/Lora-Regular.ttf') format('truetype');
+}
+
 :root {
   --scale: clamp(14px, 4vw, 18px);
   --font-vibes: 'Great Vibes', cursive;
   --font-forum: 'Forum', serif;
   --font-cursive: cursive;
+  --font-lora: 'Lora', serif;  /* ← исправлено */
 }
 
 html {
@@ -30,7 +37,8 @@ body {
 }
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  /*font-family: var(--font-carlito);  !* ← теперь используем переменную *!*/
+  /*font-family: Arial, Helvetica, sans-serif;*/
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

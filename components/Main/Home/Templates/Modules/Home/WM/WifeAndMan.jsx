@@ -12,7 +12,6 @@ export default function WifeAndMan({customClasses, isSlideOpen}) {
     const {newlyWed1, newlyWed2} = weddingData;
     const {openForm} = OpenAddEditForm();
 
-    console.log(isSlideOpen)
     return (
         <motion.div className={`${s.WM} ${customClasses?.WM || ""} ${isSlideOpen ? s.open : s.closed}`} onClick={() => {openForm('wm')}}>
             <motion.div className={`${s.WM1} ${customClasses?.WM1 || ""}`}>{newlyWed1}</motion.div>
