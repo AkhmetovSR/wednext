@@ -1,15 +1,31 @@
-@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Forum&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes');
 
-/* Подключаем Carlito */
+/* Подключаем локальные шрифты */
+@font-face {
+  font-family: 'Forum';
+  src: url('/fonts/Forum-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Montserrat';
+  src: url('/fonts/Montserrat-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'MPLUSRounded1c';
+  src: url('/fonts/MPLUSRounded1c-Regular.ttf') format('truetype');
+}
 @font-face {
   font-family: 'Lora';
   src: url('/fonts/Lora-Regular.ttf') format('truetype');
 }
 
+
+
 :root {
   --scale: clamp(14px, 4vw, 18px);
   --font-vibes: 'Great Vibes', cursive;
   --font-forum: 'Forum', serif;
+  --font-montserrat: 'Montserrat', serif;
+  --font-mPlus: 'MPLUSRounded1c', serif;
   --font-cursive: cursive;
   --font-lora: 'Lora', serif;  /* ← исправлено */
 }

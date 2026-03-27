@@ -43,25 +43,15 @@ export default function EventItem({id, time, title, description, customClasses, 
                     onTouchEnd={handleTouchEnd}
                     onTouchCancel={() => touchStartRef.current = null}
         >
-            <motion.div className={`${m.Time} ${customClasses?.Time || ""}`}
-                        initial={{"--font-scale": isSlideOpen ? 1 : 0.7}}
-                        animate={{"--font-scale": isSlideOpen ? 1 : 0.7}}
-                        onClick={handleClick}
-            >
+            <motion.div className={`${m.Time} ${customClasses?.Time || ""} ${isSlideOpen ? m.open : m.closed}`} onClick={handleClick}>
                 {TimeFormat(time)}
             </motion.div>
 
             <div className={`${m.Event} ${customClasses?.Event || ""}`} onClick={handleClick}>
-                <motion.div className={`${m.EventName} ${customClasses?.EventName || ""}`}
-                            initial={{"--font-scale": isSlideOpen ? 1 : 0.7}}
-                            animate={{"--font-scale": isSlideOpen ? 1 : 0.7}}
-                >
+                <motion.div className={`${m.EventName} ${customClasses?.EventName || ""} ${isSlideOpen ? m.open : m.closed}`}>
                     {title}
                 </motion.div>
-                <motion.div className={`${m.EventDesc} ${customClasses?.EventDesc || ""}`}
-                            initial={{"--font-scale": isSlideOpen ? 1 : 0.7}}
-                            animate={{"--font-scale": isSlideOpen ? 1 : 0.7}}
-                >
+                <motion.div className={`${m.EventDesc} ${customClasses?.EventDesc || ""} ${isSlideOpen ? m.open : m.closed}`}>
                     {description}
                 </motion.div>
             </div>

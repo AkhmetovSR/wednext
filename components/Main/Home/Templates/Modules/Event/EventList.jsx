@@ -35,7 +35,7 @@ export default function EventList({customClasses, isSlideOpen}) {
                                 WebkitUserSelect: 'none'
                             } : {}}
                 >
-                    {(eventList.length === 0 && (!paramN || isE)) && <NotList customClasses={customClasses}/>}
+                    {(eventList.length === 0 && (!f)) && <NotList customClasses={customClasses} isSlideOpen={isSlideOpen}/>}
                     <Reorder.Group as="div"
                                    className={`${m.Events} ${isReordering ? m.reordering : ''} ${customClasses?.Events || ""}`}
                                    values={eventList}

@@ -131,10 +131,12 @@
     text-align: center;
     color: #CEC58E;
     font-family: var(--font-forum);
-    line-height: 1;
-    /*color: black;*/
-    --base-font-size: 22px;
-    /*border: 1px solid blue;*/
+}
+.open.Time{
+    font-size: 1.6rem;
+}
+.closed.Time {
+    font-size: 1rem;
 }
 .Event {
     border-left: 1px solid #CEC58E;
@@ -149,16 +151,22 @@
     overflow: hidden;
     grid-template-columns: 90% 8%;
 }
-.EventDesc, .WishDesc {
-    font-family: var(--font-mpl);
-    color: #777777;
-    --base-font-size: 17px;
+.open.EventName{
+    font-size: 1.3rem;
 }
-
-.NotList{
-    color: #7e7e7e;
-    text-align: center;
-    align-content: center;
+.closed.EventName {
+    font-size: 0.8rem;
+}
+.EventDesc, .WishDesc {
+    font-family: var( --font-forum);
+    color: #c3c3c3;
+    line-height: 1.3;
+}
+.open.EventDesc, .open.WishDesc {
+    font-size: 1.3rem;
+}
+.closed.EventDesc, .closed.WishDesc {
+    font-size: 0.8rem;
 }
 .deleteButton{
     /*background: rgba(255, 255, 255, 0.66);*/

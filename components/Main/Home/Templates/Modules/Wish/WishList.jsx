@@ -1,33 +1,33 @@
 import {motion, Reorder} from "framer-motion";
-import m from "@/components/Main/Home/Home.module.css";
-import main from "@/components/Main/Home/Home.module.css";
+import m from "@/components/Main/MainStyle.module.css";
 import WishItem from "@/components/Main/Home/Templates/Modules/Wish/WItem/WishItem";
 import {ReorderList} from "@/components/Main/Home/Templates/Functions/ReorderList";
-import {useCarouselState, useControl, useWeddingData} from "@/components/Providers/Context";
+import {UrlParamsContext, useCarouselState, useWeddingData} from "@/components/Providers/Context";
 import AddRemEditBtn from "@/components/Main/Home/Templates/Forms/AddRemEditBtn";
 import UnVisibleBtn from "@/components/Main/Home/Templates/Functions/UnVisibleBtn";
 import NotList from "@/components/Main/Home/Templates/Modules/Help/NotList";
 import {HideBtn} from "@/components/Main/Home/Templates/Functions/HideBtn";
+import {useContext} from "react";
 
 export default function WishList({customClasses, isSlideOpen}) {
     const {weddingData, setWeddingData} = useWeddingData();
     const {wishList} = weddingData;
-    const {paramN, isE} = useControl();
+    const {f} = useContext(UrlParamsContext);
     const {reorderingStates} = useCarouselState();
     const isReordering = reorderingStates.wish;
     const handleReorder = ReorderList(setWeddingData, 'wishList');
     const {scrollRef, deviceInfo} = HideBtn(reorderingStates.event, 'wishList');
 
     return (
-        <motion.div className={`${main.HEWRATemp} ${customClasses?.HEWRATemp || ""}`}>
-            <motion.div className={`${main.WishFrame} ${customClasses?.WishFrame || ""}`}>
-                <motion.div className={`${main.WishTitle} ${customClasses?.WishTitle || ""}`}
+        <motion.div className={`${m.HEWRATemp} ${customClasses?.HEWRATemp || ""}`}>
+            <motion.div className={`${m.WishFrame} ${customClasses?.WishFrame || ""}`}>
+                <motion.div className={`${m.WishTitle} ${customClasses?.WishTitle || ""}`}
                             initial={{"--font-scale": isSlideOpen ? 1 : 0.7}}
                             animate={{"--font-scale": isSlideOpen ? 1 : 0.7}}
                 >
                     Доп. инф-я
                 </motion.div>
-                <motion.div className={`${main.EWRAContent} ${customClasses?.EWRAContent || ""}`}
+                <motion.div className={`${m.EWRAContent} ${customClasses?.EWRAContent || ""}`}
                             ref={scrollRef}
                             style={isReordering ? {
                                 touchAction: 'none',
@@ -62,7 +62,7 @@ export default function WishList({customClasses, isSlideOpen}) {
                         ))}
                     </Reorder.Group>
                 </motion.div>
-                {(!paramN || isE) && (
+                {(!f) && (
                     <UnVisibleBtn containerRef={scrollRef}>
                         <AddRemEditBtn isSlideOpen={isSlideOpen}/>
                     </UnVisibleBtn>

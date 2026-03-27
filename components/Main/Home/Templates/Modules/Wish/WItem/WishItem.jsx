@@ -1,5 +1,5 @@
 import {motion} from "framer-motion";
-import m from "@/components/Main/Home/Home.module.css";
+import m from "@/components/Main/MainStyle.module.css";
 import {useWeddingData} from "@/components/Providers/Context";
 import {OpenAddEditForm} from "@/components/Main/Home/Templates/Functions/openAddEditForm";
 import {RemoveFromList} from "@/components/Main/Home/Templates/Functions/RemoveFromList";
@@ -42,11 +42,7 @@ export default function WishItem({id, text, customClasses, isSlideOpen, deviceIn
                     onTouchEnd={handleTouchEnd}
                     onTouchCancel={() => touchStartRef.current = null}
         >
-            <motion.div className={`${m.WishDesc} ${customClasses?.WishDesc || ""}`}
-                        initial={{"--font-scale": isSlideOpen ? 1 : 0.7}}
-                        animate={{"--font-scale": isSlideOpen ? 1 : 0.7}}
-                        onClick={handleClick}
-            >
+            <motion.div className={`${m.WishDesc} ${customClasses?.WishDesc || ""} ${isSlideOpen ? m.open : m.closed}`} onClick={handleClick}>
                 {text}
             </motion.div>
             {!isReordering && (!paramN || isE) && (

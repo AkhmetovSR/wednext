@@ -1,5 +1,13 @@
 .NotList{
     text-align: center;
     align-content: center;
-    color: #7a7a7a;
+    color: #d3d3d3;
+    width: 80%;
+    font-family: var(--font-forum);
+}
+.open.NotList{
+    font-size: 1.4rem;
+}
+.closed.NotList {
+    font-size: 1rem;
 }

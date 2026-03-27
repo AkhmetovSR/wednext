@@ -3,7 +3,7 @@ import s from "@/components/Main/Home/Templates/Temp/T3/Temp3.module.css";
 import HomeT3 from "@/components/Main/Home/Templates/Temp/T3/HomeT3";
 import {motion} from "framer-motion";
 import FireFly from "@/components/Main/Home/Templates/Functions/FireFly";
-import {useCarouselState, usePageContext} from "@/components/Providers/Context";
+import {usePageContext} from "@/components/Providers/Context";
 import { useParams } from "next/navigation";
 import EventList from "@/components/Main/Home/Templates/Modules/Event/EventList";
 import {cstmAnalytic, cstmEvent, cstmHome, cstmMenu, cstmRSVP, cstmTemp, cstmWish} from "@/components/Main/Home/Templates/cstmStyle";
@@ -25,7 +25,7 @@ export default function Temp3() {
             <div className={m.Content}>
                 {activePage === 'home' && (<HomeT3 customClasses={cstmHome(s)} isSlideOpen={isSlideOpen}/>)}
                 {activePage === 'event' && (<EventList customClasses={cstmEvent(s)} isSlideOpen={isSlideOpen}/>)}
-                {activePage === 'wish' && (<WishList customClasses={cstmWish(s)}/>)}
+                {activePage === 'wish' && (<WishList customClasses={cstmWish(s)} isSlideOpen={isSlideOpen}/>)}
                 {activePage === 'rsvp' && (<RSVP customClasses={cstmRSVP(s)}/>)}
                 {activePage === 'analytics' && (<Analytics customClasses={cstmAnalytic(s)}/>)}
             </div>
