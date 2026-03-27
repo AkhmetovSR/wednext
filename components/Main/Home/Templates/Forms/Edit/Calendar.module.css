@@ -90,28 +90,25 @@
     font-size: 1rem;
 }
 
-.calendarGrid {
-    transition: transform 0.3s ease;
-}
+/*.calendarGrid {*/
+/*    transition: transform 0.3s ease;*/
+/*}*/
 
-/* Для визуальной обратной связи при свайпе */
-.swipeArea:active {
-    /*border: 1px solid red;*/
-    cursor: grab;
-}
+/*!* Для визуальной обратной связи при свайпе *!*/
+/*.swipeArea:active {*/
+/*    !*border: 1px solid red;*!*/
+/*    cursor: grab;*/
+/*}*/
 
-.swipeArea::after {
-    position: absolute;
-    bottom: 1%;
-    color: #282828;
-    /*content: "← Свайп для смены месяца →";*/
-    display: block;
-    text-align: center;
-    align-items: end;
-    /*color: #ec0000;*/
-    font-size: 20px;
-    padding: 10px 0;
-    opacity: 0.6;
-    /*border: 1px solid red;*/
-    /*width: 60%;*/
-}
+/*.swipeArea::after {*/
+/*    position: absolute;*/
+/*    bottom: 1%;*/
+/*    color: #282828;*/
+/*    display: block;*/
+/*    text-align: center;*/
+/*    align-items: end;*/
+/*    !*color: #ec0000;*!*/
+/*    font-size: 20px;*/
+/*    padding: 10px 0;*/
+/*    opacity: 0.6;*/
+/*}*/

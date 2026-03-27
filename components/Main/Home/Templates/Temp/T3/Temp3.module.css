@@ -145,7 +145,7 @@
 
 /*------ Event & Wish ------*/
 .customTime, .customEventName{
-
+    /*border: 1px solid red;*/
 }
 .customEventDesc, .customWishDesc{
     color: white;
@@ -169,4 +169,9 @@
 }
 .customOtherLine{
     border-bottom: 1px solid white;
+}
+
+.customMenu{
+    border: 1px solid red;
+    color: grey;
 }

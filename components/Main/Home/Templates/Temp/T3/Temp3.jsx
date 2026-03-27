@@ -18,22 +18,19 @@ export default function Temp3() {
     const params = useParams();
     const slideId = params?.slideId;
     const isSlideOpen = !!slideId; // 🔥 isSlideOpen определяется по наличию slideId в URL
-    const {selectedSlideId, bb, setBb, buy, setBuy} = useCarouselState();
-    console.log("bb " + bb)
 
     return (
         <motion.div className={`${m.Main} ${customClasses?.Main || ""}`}>
             <div className={s.BG}></div>
             <div className={m.Content}>
-                {/*{activePage === 'home' && (<motion.div key="home"><HomeT3 isSlideOpen={isSlideOpen}/></motion.div>)}*/}
                 {activePage === 'home' && (<HomeT3 customClasses={cstmHome(s)} isSlideOpen={isSlideOpen}/>)}
-                {activePage === 'event' && (<EventList customClasses={cstmEvent(s)}/>)}
+                {activePage === 'event' && (<EventList customClasses={cstmEvent(s)} isSlideOpen={isSlideOpen}/>)}
                 {activePage === 'wish' && (<WishList customClasses={cstmWish(s)}/>)}
                 {activePage === 'rsvp' && (<RSVP customClasses={cstmRSVP(s)}/>)}
                 {activePage === 'analytics' && (<Analytics customClasses={cstmAnalytic(s)}/>)}
             </div>
             <div className={m.Menu}>
-                <MenuTemp customClasses={cstmMenu}></MenuTemp>
+                <MenuTemp customClasses={cstmMenu(s)} isSlideOpen={isSlideOpen}></MenuTemp>
             </div>
             <motion.div initial={{opacity: 0}} animate={{opacity: 1}} transition={{duration: 4}}>
                 {isSlideOpen && <FireFly isSlideOpen={isSlideOpen}/>}

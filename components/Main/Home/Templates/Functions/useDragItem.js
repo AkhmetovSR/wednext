@@ -1,4 +1,3 @@
-// hooks/useDragItem.js
 import { useAnimation} from "framer-motion";
 import { SwipeRemove } from "@/components/Main/Home/Templates/Functions/SwipeRemove";
 import {useControl} from "@/components/Providers/Context";
@@ -6,7 +5,6 @@ import {useCallback, useRef, useState} from "react";
 
 export const useDragItem = (id, listType, setWeddingData, deviceInfo, isReordering) => {
     const { paramN, isE } = useControl();
-
     const controls = useAnimation();
     const [isDragging, setIsDragging] = useState(false);
     const touchStartRef = useRef(null);

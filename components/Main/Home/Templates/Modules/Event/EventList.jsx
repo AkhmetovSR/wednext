@@ -1,17 +1,18 @@
 import {motion, Reorder} from "framer-motion";
-import m from "@/components/Main/Home/Home.module.css";
+import m from "@/components/Main/MainStyle.module.css";
 import EventItem from "@/components/Main/Home/Templates/Modules/Event/EItem/EventItem";
 import {ReorderList} from "@/components/Main/Home/Templates/Functions/ReorderList";
-import {useCarouselState, useControl, useWeddingData} from "@/components/Providers/Context";
+import {useCarouselState, UrlParamsContext, useWeddingData} from "@/components/Providers/Context";
 import AddRemEditBtn from "@/components/Main/Home/Templates/Forms/AddRemEditBtn";
 import UnVisibleBtn from "@/components/Main/Home/Templates/Functions/UnVisibleBtn";
 import NotList from "@/components/Main/Home/Templates/Modules/Help/NotList";
 import {HideBtn} from "@/components/Main/Home/Templates/Functions/HideBtn";
+import {useContext} from "react";
 
 export default function EventList({customClasses, isSlideOpen}) {
     const {weddingData, setWeddingData} = useWeddingData();
     const {eventList} = weddingData;
-    const {paramN, isE} = useControl();
+    const {f} = useContext(UrlParamsContext);
     const {reorderingStates} = useCarouselState();
     const isReordering = reorderingStates.event;
     const handleReorder = ReorderList(setWeddingData, 'eventList');
@@ -61,7 +62,7 @@ export default function EventList({customClasses, isSlideOpen}) {
                         ))}
                     </Reorder.Group>
                 </motion.div>
-                {(!paramN || isE) && (
+                {(!f) && (
                     <UnVisibleBtn containerRef={scrollRef}>
                         <AddRemEditBtn isSlideOpen={isSlideOpen}/>
                     </UnVisibleBtn>

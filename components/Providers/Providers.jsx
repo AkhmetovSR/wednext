@@ -21,9 +21,9 @@ export default function Providers({ children }) {
     useEffect(() => {
         const url = new URL(window.location.href);
         setUrlParams({
-            n: url.searchParams.get("n"),
-            f: url.searchParams.get("f"),
-            e: url.searchParams.get("e")
+            nParam: url.searchParams.get("n"),
+            fParam: url.searchParams.get("f"),
+            eParam: url.searchParams.get("e")
         });
     }, []);
     const {isLoading, paramN, isF, isE, err, weddingData, setWeddingData, setErr, setIsLoading} = UseWedDaTaLoad(urlParams.n, urlParams.f, urlParams.e);
@@ -85,10 +85,10 @@ export default function Providers({ children }) {
         handleRetry
     }), [handleSave, handleRetry, setIsLoading, setErr]);
     const urlParamsValue = useMemo(() => ({
-        nParam: urlParams.n,
-        fParam: urlParams.f,
-        eParam: urlParams.e
-    }), [urlParams.n, urlParams.f, urlParams.e]);
+        n: urlParams.nParam,
+        f: urlParams.fParam,
+        e: urlParams.eParam
+    }), [urlParams.nParam, urlParams.fParam, urlParams.eParam]);
 
     return (
         <UrlParamsContext.Provider value={urlParamsValue}>

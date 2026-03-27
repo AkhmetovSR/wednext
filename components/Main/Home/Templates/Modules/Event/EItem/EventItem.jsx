@@ -1,5 +1,5 @@
 import {motion} from "framer-motion";
-import m from "@/components/Main/Home/Home.module.css";
+import m from "@/components/Main/MainStyle.module.css";
 import {useWeddingData} from "@/components/Providers/Context";
 import {OpenAddEditForm} from "@/components/Main/Home/Templates/Functions/openAddEditForm";
 import {RemoveFromList} from "@/components/Main/Home/Templates/Functions/RemoveFromList";

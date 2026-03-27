@@ -20,7 +20,7 @@ export default function HomeT3({customClasses, isSlideOpen}) {
         <motion.div className={s.HomeT3}>
             <motion.div className={s.divIntro}><Intro customClasses={customClasses} isSlideOpen={isSlideOpen}/></motion.div>
             <motion.div className={`${s.divWM} divWM`}>
-                <WifeAndMan customClasses={customClasses} isSlideOpen={isSlideOpen} style={{'--font-coefficient': coefficient}}/>
+                <WifeAndMan customClasses={customClasses} isSlideOpen={isSlideOpen} coefficient={coefficient}/>
             </motion.div>
             <motion.div className={s.divInvite}><Invite customClasses={customClasses} isSlideOpen={isSlideOpen}/></motion.div>
             <motion.div className={s.divDate}>

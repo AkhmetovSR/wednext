@@ -15,8 +15,6 @@ export default function MenuTemp({customClasses, isSlideOpen}) {
     const {selectedSlideId} = useCarouselState();
     const {handleSave} = useContext(OperationsContext);
     const handleClick = (id) => {
-        console.log("asd")
-        console.log(activePage)
         Vibro(5);
         if (selectedSlideId === 4 || selectedSlideId === 3 || selectedSlideId === 6 || selectedSlideId === 11 || selectedSlideId === 7) {
             changePage(id);

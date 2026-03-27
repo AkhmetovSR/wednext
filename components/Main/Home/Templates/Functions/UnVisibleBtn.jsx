@@ -1,6 +1,6 @@
 import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import { useRef, useEffect, useState, useCallback } from "react";
-import s from "@/components/Main/Home/Home.module.css"
+import s from "@/components/Main/MainStyle.module.css"
 
 export default function UnVisibleBtn({ children, containerRef }) {
     const internalRef = useRef(null);

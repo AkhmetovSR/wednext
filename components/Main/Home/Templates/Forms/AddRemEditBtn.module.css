@@ -40,20 +40,3 @@
     /*font-weight: bold;*/
     /*border: 1px solid red;*/
 }
-
-/* 375px - 413px: ×1.09 */
-@media (min-width: 375px) {
-    .Btns button { font-size: 12px; } /* 11 × 1.09 */
-}
-/* 414px - 427px: ×1.14 */
-@media (min-width: 414px) {
-    .Btns button { font-size: 13px; } /* 11 × 1.14 */
-}
-/* 428px+ : ×1.18 */
-@media (min-width: 428px) {
-    .Btns button { font-size: 13px; } /* 11 × 1.18 */
-}
-/* 768px+ : ×1.27 */
-@media (min-width: 768px) {
-    .Btns button { font-size: 14px; } /* 11 × 1.27 */
-}
