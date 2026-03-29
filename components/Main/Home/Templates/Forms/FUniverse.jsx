@@ -8,11 +8,11 @@ import EditInvite from "@/components/Main/Home/Templates/Forms/Edit/editInvite";
 import EditWifeMan from "@/components/Main/Home/Templates/Forms/Edit/editWifeMan";
 // import EditWish from "./Edit/editWish";
 import Calendar from "@/components/Main/Home/Templates/Forms/Edit/Calendar";
-// import EditEvent from "./Edit/editEvent";
+import EditEvent from "@/components/Main/Home/Templates/Forms/Edit/editEvent";
 import {OpenAddEditForm} from "@/components/Main/Home/Templates/Functions/openAddEditForm";
 import {useCarouselState} from "@/components/Providers/Context";
 
-export default function FUniverse() {
+export default function FUniverse(slideId) {
     const {
         isAddEditE,
         isAddEditW,
@@ -49,7 +49,7 @@ export default function FUniverse() {
             {isEditIntro && <EditIntro />}
             {isEditInvite && <EditInvite />}
             {isEditWifeMan && (<div><div className={s.Title}>Введите имена жениха и невесты</div><EditWifeMan/></div>)}
-            {/*{isAddEditE && (<EditEvent eventVal={eventVal} setEventVal={setEventVal}/>)}*/}
+            {isAddEditE && (<EditEvent eventVal={eventVal} setEventVal={setEventVal}/>)}
             {/*{isAddEditW && (<EditWish wishVal={wishVal} setWishVal={setWishVal}/>)}*/}
             {isCalendarOpen && (<Calendar onClose={() => setIsCalendarOpen(false)}/>)}
             {!isCalendarOpen && (

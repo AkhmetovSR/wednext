@@ -1,10 +1,9 @@
 import {Geist, Geist_Mono} from "next/font/google";
-import "./globals.css";
+import "@/app/globals.css";
 import Providers from '@/components/Providers/Providers';
 import main from "@/components/Main/Home/Home.module.css";
 import Menu from "@/components/Main/Menu/Menu";
 import s from "@/components/Main/Home/Home.module.css";
-import React from "react";
 
 const geistSans = Geist({
     variable: "--font-geist-sans",
@@ -24,10 +23,12 @@ export const metadata = {
 export default function RootLayout({children}) {
     return (
         <html lang="ru">
-        {/*<head><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no"/></head>*/}
+        <head>
+            <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+        </head>
         <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <Providers>
-            <div className={main.Main}>
+        <div className={main.Main}>
                 <div className={main.Content}>
                     {children}
                 </div>
