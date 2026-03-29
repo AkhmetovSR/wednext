@@ -1,15 +1,12 @@
 'use client';
 import s from '@/components/Main/Home/Home.module.css';
-import Carousel from "@/components/Carousel/Carousel";
-import BlackBackground from "@/components/Main/Home/Templates/Forms/BlackBackground";
-import {useCarouselState, useControl} from "@/components/Providers/Context";
+import Carousel from "@/components/CarouselSwipe/Carousel";
 import React from "react";
 
 export default function HomePage() {
     return (
         <div className={s.Main}>
             <Carousel/>
-            {/*Сюда добавить SetBB*/}
         </div>
     );
 }
@@ -22,9 +19,7 @@ export default function HomePage() {
 {/*                      transition: 'opacity 0.5s ease-in-out',*/}
 {/*                      pointerEvents: isContentReady ? 'auto' : 'none'*/}
 {/*                    }}>*/}
-{/*                      <div className={s.Block}>*/}
-{/*                        Для просмотра, пожалуйста <br/>переверните устройство.*/}
-{/*                      </div>*/}
+
 {/*<Home/>*/}
 {/*                    </div>*/}
 

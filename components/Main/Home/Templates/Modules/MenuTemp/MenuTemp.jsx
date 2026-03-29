@@ -5,24 +5,23 @@ import {Vibro} from "@/components/Main/Home/Templates/Functions/Vibro";
 import {OperationsContext, useCarouselState, useControl, usePageContext, usePositionState, useWeddingData} from "@/components/Providers/Context";
 
 
-export default function MenuTemp({customClasses, isSlideOpen}) {
+export default function MenuTemp({customClasses, isSlideOpen, slideId}) {
     const {paramN, isE, isF} = useControl();
     const {setBuy} = useCarouselState();
     const {weddingData} = useWeddingData();
     const {eventList, wishList} = weddingData;
     const {activePage, changePage} = usePageContext();
     const {setScl, setY1, setY2, setY3, setY4, setSclHome, setOpacityH} = usePositionState();
-    const {selectedSlideId} = useCarouselState();
     const {handleSave} = useContext(OperationsContext);
     const handleClick = (id) => {
         Vibro(5);
-        if (selectedSlideId === 4 || selectedSlideId === 3 || selectedSlideId === 6 || selectedSlideId === 11 || selectedSlideId === 7) {
+        if (slideId === 4 || slideId === 3 || slideId === 6 || slideId === 11 || slideId === 7) {
             changePage(id);
         }
-        if (selectedSlideId === 2) {
+        if (slideId === 2) {
             handlePageChange(id);
         }
-        if (selectedSlideId === 5 && id === 'home') {
+        if (slideId === 5 && id === 'home') {
             setScl(1);
             setY1(0);
             setY2(0)
@@ -32,7 +31,7 @@ export default function MenuTemp({customClasses, isSlideOpen}) {
             setOpacityH(1)
             changePage(id);
         }
-        if (selectedSlideId === 5 && id === 'event') {
+        if (slideId === 5 && id === 'event') {
             setScl(1.2);
             setY1(-10);
             setY2(20)
@@ -42,7 +41,7 @@ export default function MenuTemp({customClasses, isSlideOpen}) {
             setOpacityH(0)
             changePage(id);
         }
-        if (selectedSlideId === 5 && id === 'wish') {
+        if (slideId === 5 && id === 'wish') {
             setScl(1.4);
             setY1(-10);
             setY2(50)
@@ -50,10 +49,10 @@ export default function MenuTemp({customClasses, isSlideOpen}) {
             setY4(300)
             changePage(id);
         }
-        if (selectedSlideId === 5 && id === 'rsvp') {
+        if (slideId === 5 && id === 'rsvp') {
             changePage(id);
         }
-        if (selectedSlideId === 5 && id === 'analytics') {
+        if (slideId === 5 && id === 'analytics') {
             changePage(id);
         }
     };

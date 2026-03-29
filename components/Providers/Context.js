@@ -21,7 +21,6 @@ export const CarouselStateProvider = ({ children }) => {
         event: false,
         wish: false
     });
-    const [selectedSlideId, setSelectedSlideId] = useState(null);
     const [isSlideOpen, setIsSlideOpen] = useState(false);
     const [buy, setBuy] = useState(false);
     const [bb, setBb] = useState(false);
@@ -42,8 +41,6 @@ export const CarouselStateProvider = ({ children }) => {
     const value = {
         reorderingStates,
         setReorderingStates,
-        selectedSlideId,
-        setSelectedSlideId, // устанавливаем в контекст в SlidePage (useEffect) -
         isSlideOpen,
         setIsSlideOpen,
         buy,

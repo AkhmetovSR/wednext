@@ -1,39 +1,36 @@
 'use client';
-
 import { motion } from "framer-motion";
 import React from "react";
 import { useParams } from 'next/navigation';
 import Link from "next/link";
-import s from "@/components/Swipe/Swipe.module.css";
+import s from "@/components/CarouselSwipe/Swipe.module.css";
 import { useCarouselState } from "@/components/Providers/Context";
-import CarouselNavigation from "@/components/Carousel/CarouselNavigation";
+import CarouselNavigation from "@/components/CarouselSwipe/CarouselNavigation";
 import {useSwipeSlide} from "@/hooks/useSwipeSlide";
 import { useAutoSlide } from "@/hooks/useSlideManagement";
-import Title from "@/components/Swipe/Title";
+import Title from "@/components/CarouselSwipe/Title";
 import { getSlidePosition } from '@/utils/slidePosition';
 import {useSlideSync} from "@/hooks/useSlideSync";
 
 const Swipe = ({ children }) => {
-    const { setBb, selectedSlideId, setSelectedSlideId, activeSlide, setActiveSlide, autoSlide, setAutoSlide } = useCarouselState();
+    const { setBb, activeSlide, setActiveSlide, autoSlide, setAutoSlide } = useCarouselState();
     const params = useParams();
     const slideId = params?.slideId;
     const totalSlides = React.Children.count(children);
 
     // Свайпы
-    const {swipeHandlers} = useSwipeSlide(activeSlide, setActiveSlide, totalSlides);
+    const {swipeHandlers} = useSwipeSlide(totalSlides);
     // Автопролистывание
-    useAutoSlide(autoSlide, selectedSlideId, totalSlides, setActiveSlide, 1);
+    useAutoSlide(autoSlide, slideId, totalSlides, setActiveSlide, 1);
     // Синхронизация активного слайда с URL
-    useSlideSync(slideId, totalSlides, setSelectedSlideId, setBb, setActiveSlide, setAutoSlide);
-    // Исчезновение карусели
-    if (slideId) return null;
+    useSlideSync(slideId, totalSlides, setBb, setActiveSlide, setAutoSlide);
 
     return (
         <motion.div className={s.Main}>
-            <Title activeSlide={activeSlide} />
+            <Title/>
 
             <div className={s.carousel}>
-                <Link  href={`/${activeSlide + 1}`} prefetch className={s.Link}>
+                <Link  href={`/temp/${activeSlide + 1}`} prefetch className={s.Link}>
                     <motion.div className={s.SwipeZone}{...swipeHandlers}>
                         <div className={s.info}>
                             <span>Открыть слайд {activeSlide + 1}</span>
@@ -50,11 +47,8 @@ const Swipe = ({ children }) => {
                         return (
                             <motion.div
                                 key={id}
-                                className={`${s.CardCont} ${isActive ? s.activeCard : ''}`}
-                                style={{
-                                    zIndex: totalSlides - Math.abs(position),
-                                    pointerEvents: 'none',
-                                }}
+                                className={`${s.CardCont}`}
+                                style={{zIndex: totalSlides - Math.abs(position)}}
                                 layoutId={`slide-${id}`}
                                 initial={false}
                                 animate={{
@@ -67,7 +61,7 @@ const Swipe = ({ children }) => {
                                 }}
                                 transition={{ duration: 0.3, ease: "easeOut", type: "tween" }}
                             >
-                                {!selectedSlideId && isActive && (
+                                {!slideId && isActive && ( // Отображение кнопки на НЕ открытом (!slideId) и только центральном слайде
                                     <div className={s.Watch}>
                                         <div className={s.Eye}></div>
                                         <div className={s.See}>Посмотреть</div>
@@ -80,13 +74,11 @@ const Swipe = ({ children }) => {
                 </Link>
             </div>
 
-            {!selectedSlideId && (
                 <motion.div className={s.divNavi}>
                     <div className={s.navi}>
                         <CarouselNavigation />
                     </div>
                 </motion.div>
-            )}
         </motion.div>
     );
 };

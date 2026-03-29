@@ -17,12 +17,10 @@ const CarouselNavigation = () => {
         "1000 ₽",
         "2 000 ₽"
     ];
-    const {activeSlide, setActiveSlide} = useCarouselState();
+    const { activeSlide } = useCarouselState();
     const totalSlides = price.length;
     // Используем хук свайпа с функциями навигации
-    const {goToNextSlide, goToPrevSlide} = useSwipeSlide(activeSlide, setActiveSlide, totalSlides);
-    // Не показываем кнопки когда слайд открыт в полноэкранном режиме
-    // if (selectedSlideId) {return null;} ???????????????????????
+    const {goToNextSlide, goToPrevSlide} = useSwipeSlide(totalSlides);
     // Получаем названия для отображения с циклической логикой
     const currentSlideName = price[activeSlide];
 

@@ -1,9 +1,9 @@
 'use client';
 import { useEffect } from 'react';
 
-export const useAutoSlide = (autoSlide, selectedSlideId, totalSlides, setActiveSlide, slideDirection) => {
+export const useAutoSlide = (autoSlide, slideId, totalSlides, setActiveSlide, slideDirection) => {
     useEffect(() => {
-        if (!autoSlide || selectedSlideId || totalSlides === 0) return;
+        if (!autoSlide || slideId || totalSlides === 0) return;
 
         const interval = setInterval(() => {
             setActiveSlide(prev => {
@@ -20,5 +20,5 @@ export const useAutoSlide = (autoSlide, selectedSlideId, totalSlides, setActiveS
         }, 5000);
 
         return () => clearInterval(interval);
-    }, [autoSlide, selectedSlideId, totalSlides, setActiveSlide, slideDirection]);
+    }, [autoSlide, slideId, totalSlides, setActiveSlide, slideDirection]);
 };

@@ -7,7 +7,6 @@ export default function WifeAndMan({customClasses, isSlideOpen, coefficient}) {
     const {weddingData} = useWeddingData();
     const {newlyWed1, newlyWed2} = weddingData;
     const {openForm} = OpenAddEditForm();
-    console.log(coefficient)
 
     return (
         <motion.div className={`${s.WM} ${customClasses?.WM || ""} ${isSlideOpen ? s.open : s.closed}`} onClick={() => {openForm('wm')}} style={{ '--font-coefficient': coefficient }}>

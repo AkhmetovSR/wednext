@@ -1,16 +1,20 @@
 import {useCarouselState, useControl, useErrorState, useWeddingData} from "@/components/Providers/Context";
 import {useEffect, useState} from "react";
+import {useParams} from "next/navigation";
 
 export const OpenAddEditForm = () => {
     const { weddingData, setWeddingData, setNewlyWed1, setNewlyWed2, addEvent, updateEvent, addWish, updateWish, setDate} = useWeddingData();
     const {newlyWed1, newlyWed2, intro, invite, eventList, wishList} = weddingData;
     const { setName1Error, setName2Error, setEmptyError} = useErrorState();
     const {paramN, isE} = useControl();
+
+    const params = useParams();
+    const slideId = parseInt(params?.slideId);
+    const isSlideOpen = !!slideId; // isSlideOpen определяется по наличию slideId в URL
     // Состояния для возврата значений при отмене
     const [copyMW1, setCopyMW1] = useState(newlyWed1);
     const [copyMW2, setCopyMW2] = useState(newlyWed2);
     const {
-        selectedSlideId,
         isReordering,
         bb,
         setBb,
@@ -44,8 +48,7 @@ export const OpenAddEditForm = () => {
     }, [bb, setIsAddEditE, setIsAddEditW, setIsCalendarOpen, setIsEditIntro, setIsEditInvite, setIsEditWifeMan]);
 
     const openForm = (title, id) => {
-        console.log("click")
-        if ((!paramN || isE) && selectedSlideId) {
+        if ((!paramN || isE) && isSlideOpen) {
             switch (title) {
                 case 'intro':
                     setElemState(intro);

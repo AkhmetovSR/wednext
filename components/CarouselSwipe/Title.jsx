@@ -1,8 +1,8 @@
 'use client';
 import { motion } from "framer-motion";
-import s from "@/components/Swipe/Swipe.module.css";
+import s from "@/components/CarouselSwipe/Swipe.module.css";
 
-const Title = ({ children }) => {
+export default function Title(){
     return (
         <motion.div className={s.Main}>
             <div className={s.divTitle}>
@@ -14,5 +14,3 @@ const Title = ({ children }) => {
         </motion.div>
     );
 };
-
-export default Title;

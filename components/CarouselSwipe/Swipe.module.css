@@ -94,6 +94,7 @@
     left: 0;
     cursor: pointer;
     transition: background-color 0.1s ease;
+    /*border: 1px solid red;*/
 }
 
 .info {
@@ -181,6 +182,14 @@
     font-size: 10px;
     color: white;
 }
+.noSlde{
+    width: 100%;
+    height: 100%;
+    color: #fd9696;
+    display: grid;
+    text-align: center;
+    align-items: center;
+}
 .closeButton {
     position: absolute;
     top: 10px;
@@ -197,14 +206,14 @@
     font-size: 30px;
     z-index: 10000;
 }
-.Veil{
-    position: absolute;
-    height: 83%;
-    width: 100%;
-    z-index: 100000;
-    background-color: rgba(255, 255, 255, 0);
-    /*border: 2px solid red;*/
-    outline: none;
-    top: 0;
-    left: 0;
-}
+/*.Veil{*/
+/*    position: absolute;*/
+/*    height: 83%;*/
+/*    width: 100%;*/
+/*    z-index: 100000;*/
+/*    background-color: rgba(255, 255, 255, 0);*/
+/*    !*border: 2px solid red;*!*/
+/*    outline: none;*/
+/*    top: 0;*/
+/*    left: 0;*/
+/*}*/

@@ -1,3 +1,4 @@
+'use client';
 import m from "@/components/Main/Home/Home.module.css";
 import s from "@/components/Main/Home/Templates/Temp/T3/Temp3.module.css";
 import HomeT3 from "@/components/Main/Home/Templates/Temp/T3/HomeT3";
@@ -16,8 +17,8 @@ export default function Temp3() {
     const {activePage} = usePageContext();
     const customClasses = cstmTemp(s);
     const params = useParams();
-    const slideId = params?.slideId;
-    const isSlideOpen = !!slideId; // 🔥 isSlideOpen определяется по наличию slideId в URL
+    const slideId = parseInt(params?.slideId);
+    const isSlideOpen = !!slideId; // isSlideOpen определяется по наличию slideId в URL
 
     return (
         <motion.div className={`${m.Main} ${customClasses?.Main || ""}`}>
@@ -30,7 +31,7 @@ export default function Temp3() {
                 {activePage === 'analytics' && (<Analytics customClasses={cstmAnalytic(s)}/>)}
             </div>
             <div className={m.Menu}>
-                <MenuTemp customClasses={cstmMenu(s)} isSlideOpen={isSlideOpen}></MenuTemp>
+                <MenuTemp customClasses={cstmMenu(s)} isSlideOpen={isSlideOpen} slideId={slideId}></MenuTemp>
             </div>
             <motion.div initial={{opacity: 0}} animate={{opacity: 1}} transition={{duration: 4}}>
                 {isSlideOpen && <FireFly isSlideOpen={isSlideOpen}/>}
