@@ -1,5 +1,4 @@
 'use client';
-
 import {motion} from "framer-motion";
 import {useState} from "react";
 import s from "@/components/Main/Home/Templates/Forms/FUniverse.module.css";

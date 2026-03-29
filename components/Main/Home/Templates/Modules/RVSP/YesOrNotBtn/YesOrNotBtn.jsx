@@ -3,9 +3,7 @@ import {motion} from "framer-motion";
 
 export default function YesOrNotBtn({isSlideOpen, customClasses, yesOrNot, setYesOrNot}) {
     return (
-        <motion.div className={`${s.RYesOrNot} ${customClasses?.RYesOrNot || ""}`}
-                    initial={{scale: isSlideOpen ? 1 : 0.9}} animate={{scale: isSlideOpen ? 1 : 0.9}}
-        >
+        <motion.div className={`${s.RYesOrNot} ${customClasses?.RYesOrNot || ""}`} initial={{scale: isSlideOpen ? 1 : 0.9}} animate={{scale: isSlideOpen ? 1 : 0.9}}>
             <motion.button className={`${s.YesOrNotBtn} ${customClasses?.YesOrNotBtn || ""} ${yesOrNot ? s.active : ""} ${yesOrNot ? customClasses.active : ""}`}
                            onClick={() => setYesOrNot(true)}
                            initial={{"--font-scale": isSlideOpen ? 1 : 0.7}} animate={{"--font-scale": isSlideOpen ? 1 : 0.7}}

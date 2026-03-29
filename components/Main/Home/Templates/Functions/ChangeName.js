@@ -1,4 +1,7 @@
 // Изменение первой буквы на заглавную
+import {useWeddingData} from "@/components/Providers/Context";
+import {useParams} from "next/navigation";
+
 export const formatName = (name, limit) => {
     if (!name) return '';
     return name
@@ -12,9 +15,14 @@ export const formatName = (name, limit) => {
         .replace(/\s+/g, ' '); // Убираем множественные пробелы
 };
 
-export const calculateFontSize = (text1 = '', text2 = '', isSlideOpen) => {
-    const length1 = Math.min(text1?.length || 0, 17);
-    const length2 = Math.min(text2?.length || 0, 17);
+export const useCalculateFontSize = () => {
+    const {weddingData} = useWeddingData();
+    const {newlyWed1, newlyWed2} = weddingData;
+    const params = useParams();
+    const slideId = parseInt(params?.slideId);
+    const isSlideOpen = !!slideId; // isSlideOpen определяется по наличию slideId в URL
+    const length1 = Math.min(newlyWed1?.length || 0, 17);
+    const length2 = Math.min(newlyWed2?.length || 0, 17);
     const maxLength = Math.max(length1, length2);
     const fontSizeCoefficients = {
         1: 3.0,

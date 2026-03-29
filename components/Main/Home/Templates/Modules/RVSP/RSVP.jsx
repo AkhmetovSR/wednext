@@ -1,5 +1,5 @@
 import s from "@/components/Main/Home/Templates/Modules/RVSP/RSVP.module.css";
-import main from "@/components/Main/Home/Home.module.css";
+import m from "@/components/Main/MainStyle.module.css";
 import rvsp from "@/utils/api/rvsp";
 import CookieManager from "@/components/Main/Home/Templates/Functions/CookieManager";
 import {useControl, useOperations, usePolicyState} from "@/components/Providers/Context";
@@ -9,8 +9,9 @@ import AlcoPrefer from "@/components/Main/Home/Templates/Modules/RVSP/AlcoPrefer
 import InputFIO from "@/components/Main/Home/Templates/Modules/RVSP/Input/InputFIO";
 import {motion} from "framer-motion";
 import {useEffect, useState} from "react";
+import {useParams} from "next/navigation";
 
-export default function RSVP({customClasses, isSlideOpen}) {
+export default function RSVP({customClasses}) {
     const { setIsLoading, setErr } = useOperations();
     const { cookieAccepted,  setShowCookieBanner } = usePolicyState();
     // const [selectedOption, setSelectedOption] = useState("1");
@@ -23,6 +24,9 @@ export default function RSVP({customClasses, isSlideOpen}) {
     //     setSelectedOption(value);
     // };
     // const {setErr} = useErrorState();
+    const params = useParams();
+    const slideId = parseInt(params?.slideId);
+    const isSlideOpen = !!slideId; // isSlideOpen определяется по наличию slideId в URL
     const {paramN, isE} = useControl();
     // Состояния ошибок при валидации ФИО гостя
     const [nameError, setNameError] = useState(false);
@@ -54,14 +58,7 @@ export default function RSVP({customClasses, isSlideOpen}) {
     const handleDrinkSelect = (id) => {
         setAlcoStates(prev => ({...prev, [id]: !prev[id]}));
     };
-    // Отслеживаем изменение cookieAccepted, когда пользователь принял политику
-    useEffect(() => {
-        if (waitingForCookie && cookieAccepted) {
-            // Пользователь принял cookie, продолжаем выполнение
-            setWaitingForCookie(false);
-            proceedWithSubmission();
-        }
-    }, [cookieAccepted, waitingForCookie]);
+
     // Функция для продолжения отправки после принятия cookie
     const proceedWithSubmission = () => {
         const nameValid = FIO.length >= 1 && FIO.length <= 60;
@@ -96,6 +93,14 @@ export default function RSVP({customClasses, isSlideOpen}) {
             rvsp.updateGuestConfirm(prepareData, setCooId, cookId, setErr, setIsLoading);
         }
     };
+    // Отслеживаем изменение cookieAccepted, когда пользователь принял политику
+    useEffect(() => {
+        if (waitingForCookie && cookieAccepted) {
+            // Пользователь принял cookie, продолжаем выполнение
+            setWaitingForCookie(false);
+            proceedWithSubmission();
+        }
+    }, [setWaitingForCookie, cookieAccepted, waitingForCookie]);
     // Основная функция отправки
     function addGuest() {
         if (!cookieAccepted) {
@@ -110,10 +115,10 @@ export default function RSVP({customClasses, isSlideOpen}) {
     }
     // const [addGuset, setAddGuset] = useState(false);
     return (
-        <motion.div className={`${main.HEWRATemp} ${customClasses?.HEWRATemp || ""}`}>
-            <motion.div className={`${main.RSVPFrame} ${customClasses?.RSVPFrame || ""}`}>
-                <motion.div className={`${main.RVSPTitle} ${customClasses?.RVSPTitle || ""}`} initial={{"--font-scale": isSlideOpen ? 1 : 0.7}} animate={{"--font-scale": isSlideOpen ? 1 : 0.7}}>Анкета гостя</motion.div>
-                <motion.div className={`${main.EWRAContent} ${customClasses?.EWRAContent || ""}`}>
+        <motion.div className={`${m.HEWRATemp} ${customClasses?.HEWRATemp || ""}`}>
+            <motion.div className={`${m.RSVPFrame} ${customClasses?.RSVPFrame || ""}`}>
+                <motion.div className={`${m.RVSPTitle} ${customClasses?.RVSPTitle || ""} ${isSlideOpen ? m.open : m.closed}`}>Анкета гостя</motion.div>
+                <motion.div className={`${m.EWRAContent} ${customClasses?.EWRAContent || ""}`}>
 
                     <motion.div className={`${s.RSVP} ${customClasses?.RSVP || ""}`}>
                         {!cooId && <InputFIO isSlideOpen={isSlideOpen} FIO={FIO} setFIO={setFIO} nameError={nameError} setNameError={setNameError}/>}

@@ -24,9 +24,9 @@ export default function Temp3() {
         <motion.div className={`${m.Main} ${customClasses?.Main || ""}`}>
             <div className={s.BG}></div>
             <div className={m.Content}>
-                {activePage === 'home' && (<HomeT3 customClasses={cstmHome(s)} isSlideOpen={isSlideOpen}/>)}
-                {activePage === 'event' && (<EventList customClasses={cstmEvent(s)} isSlideOpen={isSlideOpen}/>)}
-                {activePage === 'wish' && (<WishList customClasses={cstmWish(s)} isSlideOpen={isSlideOpen}/>)}
+                {activePage === 'home' && (<HomeT3 customClasses={cstmHome(s)}/>)}
+                {activePage === 'event' && (<EventList customClasses={cstmEvent(s)}/>)}
+                {activePage === 'wish' && (<WishList customClasses={cstmWish(s)}/>)}
                 {activePage === 'rsvp' && (<RSVP customClasses={cstmRSVP(s)}/>)}
                 {activePage === 'analytics' && (<Analytics customClasses={cstmAnalytic(s)}/>)}
             </div>

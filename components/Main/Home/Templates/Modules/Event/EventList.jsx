@@ -8,11 +8,15 @@ import UnVisibleBtn from "@/components/Main/Home/Templates/Functions/UnVisibleBt
 import NotList from "@/components/Main/Home/Templates/Modules/Help/NotList";
 import {HideBtn} from "@/components/Main/Home/Templates/Functions/HideBtn";
 import {useContext} from "react";
+import {useParams} from "next/navigation";
 
-export default function EventList({customClasses, isSlideOpen}) {
+export default function EventList({customClasses}) {
     const {weddingData, setWeddingData} = useWeddingData();
     const {eventList} = weddingData;
     const {f} = useContext(UrlParamsContext);
+    const params = useParams();
+    const slideId = parseInt(params?.slideId);
+    const isSlideOpen = !!slideId; // isSlideOpen определяется по наличию slideId в URL
     const {reorderingStates} = useCarouselState();
     const isReordering = reorderingStates.event;
     const handleReorder = ReorderList(setWeddingData, 'eventList');
@@ -21,10 +25,7 @@ export default function EventList({customClasses, isSlideOpen}) {
     return (
         <motion.div className={`${m.HEWRATemp} ${customClasses?.HEWRATemp || ""}`}>
             <motion.div className={`${m.EventFrame} ${customClasses?.EventFrame || ""}`}>
-                <motion.div className={`${m.EventTitle} ${customClasses?.EventTitle || ""}`}
-                            initial={{"--font-scale": isSlideOpen ? 1 : 0.7}}
-                            animate={{"--font-scale": isSlideOpen ? 1 : 0.7}}
-                >
+                <motion.div className={`${m.EventTitle} ${customClasses?.EventTitle || ""} ${isSlideOpen ? m.open : m.closed}`}>
                     Программа дня
                 </motion.div>
                 <motion.div className={`${m.EWRAContent} ${customClasses?.EWRAContent || ""}`}

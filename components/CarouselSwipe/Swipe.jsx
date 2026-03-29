@@ -32,10 +32,10 @@ const Swipe = ({ children }) => {
             <div className={s.carousel}>
                 <Link  href={`/temp/${activeSlide + 1}`} prefetch className={s.Link}>
                     <motion.div className={s.SwipeZone}{...swipeHandlers}>
-                        <div className={s.info}>
-                            <span>Открыть слайд {activeSlide + 1}</span>
-                            <span className={s.arrow}>→</span>
-                        </div>
+                        {/*<div className={s.info}>*/}
+                        {/*    <span>Открыть слайд {activeSlide + 1}</span>*/}
+                        {/*    <span className={s.arrow}>→</span>*/}
+                        {/*</div>*/}
                     </motion.div>
 
                     {React.Children.map(children, (child, index) => {

@@ -8,10 +8,14 @@ import UnVisibleBtn from "@/components/Main/Home/Templates/Functions/UnVisibleBt
 import NotList from "@/components/Main/Home/Templates/Modules/Help/NotList";
 import {HideBtn} from "@/components/Main/Home/Templates/Functions/HideBtn";
 import {useContext} from "react";
+import {useParams} from "next/navigation";
 
-export default function WishList({customClasses, isSlideOpen}) {
+export default function WishList({customClasses}) {
     const {weddingData, setWeddingData} = useWeddingData();
     const {wishList} = weddingData;
+    const params = useParams();
+    const slideId = parseInt(params?.slideId);
+    const isSlideOpen = !!slideId; // isSlideOpen определяется по наличию slideId в URL
     const {f} = useContext(UrlParamsContext);
     const {reorderingStates} = useCarouselState();
     const isReordering = reorderingStates.wish;
@@ -21,10 +25,7 @@ export default function WishList({customClasses, isSlideOpen}) {
     return (
         <motion.div className={`${m.HEWRATemp} ${customClasses?.HEWRATemp || ""}`}>
             <motion.div className={`${m.WishFrame} ${customClasses?.WishFrame || ""}`}>
-                <motion.div className={`${m.WishTitle} ${customClasses?.WishTitle || ""}`}
-                            initial={{"--font-scale": isSlideOpen ? 1 : 0.7}}
-                            animate={{"--font-scale": isSlideOpen ? 1 : 0.7}}
-                >
+                <motion.div className={`${m.WishTitle} ${customClasses?.WishTitle || ""} ${isSlideOpen ? m.open : m.closed}`}>
                     Доп. инф-я
                 </motion.div>
                 <motion.div className={`${m.EWRAContent} ${customClasses?.EWRAContent || ""}`}
@@ -35,7 +36,7 @@ export default function WishList({customClasses, isSlideOpen}) {
                                 WebkitUserSelect: 'none'
                             } : {}}
                 >
-                    {(wishList.length === 0 && (!paramN || isE)) && <NotList customClasses={customClasses}/>}
+                    {(wishList.length === 0) && !f && <NotList customClasses={customClasses}/>}
                     <Reorder.Group as="div"
                                    className={`${m.Wish} ${isReordering ? m.reordering : ''} ${customClasses?.Wish || ""}`}
                                    values={wishList}

@@ -8,10 +8,12 @@ export default function InputFIO({isSlideOpen, customClasses, nameError, setName
                 <input className={`${s.RSVPFIO} ${customClasses?.RSVPFIO || ""}`}
                        style={{border: nameError ? "2px solid red" : ""}}
                        type="text" maxLength="60" placeholder="укажите Ваше ФИО"
-                       value={FIO} onChange={(e) => {
-                    setNameError(false);
-                    setFIO(formatName(e.target.value, 60));
-                }}/>
+                       value={FIO}
+                       onChange={(e) => {
+                           setNameError(false);
+                           setFIO(formatName(e.target.value, 60));
+                       }}
+                />
         </motion.div>
     );
 }
