@@ -161,6 +161,7 @@
     font-family: var( --font-forum);
     color: #c3c3c3;
     line-height: 1.3;
+    overflow: hidden;
 }
 .open.EventDesc, .open.WishDesc {
     font-size: 1.5rem;

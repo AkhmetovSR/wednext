@@ -1,0 +1,19 @@
+.WMinput, .IntroInviteInput, .inputTime, .inputTitle, .textDesc{
+    -webkit-appearance: none;
+    width: 100%;
+    padding: 0.5rem;
+    background-color: white;
+    border-radius: 0.7rem;
+    border: 1px solid #d1d1d1;
+    color: #9e9e9e;
+    text-align: start;
+    font-size: 1rem;
+    margin-top: 5%;
+}
+.IntroInviteInput, .textDesc, .TA{
+    height: 10rem;
+    /*resize: vertical;*/
+}
+.WMinput:focus, .IntroInviteInput:focus, .inputTime:focus, .inputTitle:focus, .textDesc:focus{
+    outline: 1px solid #41b5ff;
+}

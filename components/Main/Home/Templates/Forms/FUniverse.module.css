@@ -30,6 +30,27 @@
 .FU div{
     /*border: 1px solid blue;*/
 }
+.EditTitle{
+    overflow: hidden;
+    display: grid;
+    align-items: center;
+    grid-template-columns: auto auto;
+    /*border: 1px solid red;*/
+}
+.Name{
+    /*text-align: center;*/
+    font-weight: bold;
+    color: #7a7a7a;
+    font-size: 1rem;
+    /*border: 1px solid red;*/
+    padding-left: 0.3rem;
+}
+.Pencil{
+    /*border: 1px solid red;*/
+    font-size: 0.7rem;
+    display: grid;
+    justify-items: end;
+}
 .Title{
     color: #959595;
     text-align: center;

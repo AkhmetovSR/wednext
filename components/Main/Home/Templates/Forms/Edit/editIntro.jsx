@@ -1,4 +1,4 @@
-import s from "@/components/Main/Home/Templates/Forms/Edit/editIntroInvite.module.css";
+import s from "@/components/Main/Home/Templates/Forms/Edit/editForms.module.css";
 import {useCursorPosition} from "@/components/Main/Home/Templates/Functions/useCursorPosition";
 import {useWeddingData} from "@/components/Providers/Context";
 
@@ -13,7 +13,7 @@ export default function EditIntro() {
                       {...textareaProps}
                       value={intro}
                       placeholder="Введите вступительные слова..."
-                      className={s.TA}
+                      className={s.IntroInviteInput}
                       maxLength={60}
             ></textarea>
         </div>
