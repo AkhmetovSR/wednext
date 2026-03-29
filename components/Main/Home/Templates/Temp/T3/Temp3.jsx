@@ -31,10 +31,10 @@ export default function Temp3() {
                 {activePage === 'analytics' && (<Analytics customClasses={cstmAnalytic(s)}/>)}
             </div>
             <div className={m.Menu}>
-                <MenuTemp customClasses={cstmMenu(s)} isSlideOpen={isSlideOpen} slideId={slideId}></MenuTemp>
+                <MenuTemp customClasses={cstmMenu(s)}></MenuTemp>
             </div>
             <motion.div initial={{opacity: 0}} animate={{opacity: 1}} transition={{duration: 4}}>
-                {isSlideOpen && <FireFly isSlideOpen={isSlideOpen}/>}
+                {isSlideOpen && <FireFly/>}
             </motion.div>
         </motion.div>
     )

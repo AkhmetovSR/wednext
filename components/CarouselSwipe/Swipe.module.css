@@ -146,22 +146,27 @@
 }
 .Watch, .Back{
     position: absolute;
-    padding: 2% 5%;
     color: white;
+    /*padding: 0 0.5rem;*/
     z-index: 3;
     right: 0;
-    width: 100px;
     display: grid;
-    grid-template-columns: 20% 80%;
-    align-content: center;
+    text-align: center;
+    align-items: center;
+    font-size: 1rem;
+    font-family: var(--font-mPlus);
 }
 .Watch{
-    border-radius: 0 25px 0 25px;
+    border-radius: 0 5rem 0 4rem;
     background-color: #41b5ff;
+    height: 1.6rem;
+    width: 7.5rem;
 }
 .Back{
-    border-radius: 0 0 0 25px;
-    background-color: #fb4040;
+    border-radius: 0 0 0 1.5rem;
+    background-color: #ff5454;
+    height: 2.1rem;
+    width: 8rem;
 }
 .Eye, .ArrL{
     opacity: 100%;
@@ -176,11 +181,12 @@
     background-image: url("/images/ar3.webp");
 }
 .See{
-    text-align: center;
-    width: 100%;
-    overflow: hidden;
-    font-size: 10px;
-    color: white;
+    /*text-align: center;*/
+    /*width: 100%;*/
+    /*overflow: hidden;*/
+    /*font-size: 10px;*/
+    /*font-size: 1rem;*/
+    /*color: white;*/
 }
 .noSlde{
     width: 100%;

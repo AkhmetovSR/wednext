@@ -8,7 +8,6 @@ export default function Attention({ isSlideOpen, onClose }) {
     return (
         <motion.div
             className={s.Atten}
-            initial={{"--font-scale": isSlideOpen ? 1 : 0.7, x: 0 }}
             animate={attentionControls}
             onTap={onClose}
             drag="x"
@@ -22,7 +21,7 @@ export default function Attention({ isSlideOpen, onClose }) {
             whileDrag={{ cursor: "grabbing" }}
         >
             <div className={s.Attention}>
-                Эта страница доступна только Вам.<br/>Гости ее не увидят.
+                Эта страница доступна только<br/> Вам. Гости ее не увидят.
             </div>
             <button className={s.CloseButton} aria-label="Закрыть">
                 ×

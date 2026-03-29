@@ -65,29 +65,39 @@
 }
 .Atten{
     display: grid;
-    grid-template-columns: 93% 7%;
-    position: absolute;
-    width: 86%;
-    padding: 2%;
-    margin-bottom: 5%;
-    bottom: 17%;
-    border-radius: 15px;
+    justify-items: center;
+    /*grid-template-columns: 93% 7%;*/
+    position: sticky;
+    width: 100%;
+    padding: 0.3rem;
+    /*margin-bottom: 5%;*/
+    bottom: 2.5rem;
+    border-radius: 1.5rem;
     background-color: rgba(255, 255, 255);
     color: #bd0808;
     text-align: center;
-    --base-font-size: 14px;
+    font-size: 1.2rem;
     line-height: 1.5;
+    /*border: 1px solid red;*/
+}
+.Attention{
+    /*border: 1px solid red;*/
+    width: 90%;
 }
 .CloseButton {
+    position: absolute;
+    text-align: center;
+    right: 0;
     display: grid;
-    width: 24px;
-    height: 24px;
+    align-items: center;
+    width: 2rem;
+    height: 2rem;
     border: none;
-    background: #ff4444;
-    color: white;
-    border-radius: 50%;
+    background: #fd9696;
+    color: #ffffff;
+    border-radius: 0 1.5rem 0 1.3rem;
     cursor: pointer;
-    font-size: 18px;
+    font-size: 1rem;
 }
 
 /* 2. iPhone 6/7/8/SE (375px) - попадает сюда */

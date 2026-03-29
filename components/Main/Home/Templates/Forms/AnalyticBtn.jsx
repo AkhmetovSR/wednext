@@ -1,13 +1,11 @@
 import s from "@/components/Main/Home/Templates/Forms/AddRemEditBtn.module.css";
 import {motion} from "framer-motion";
+import {useParams} from "next/navigation";
 
-export default function AnalyticBtn({
-                                        customClasses,
-                                        isSlideOpen,
-                                        attendingCount,
-                                        notAttendingCount,
-                                        activeTab,
-                                        setActiveTab}) {
+export default function AnalyticBtn({customClasses, attendingCount, notAttendingCount, activeTab, setActiveTab}) {
+    const params = useParams();
+    const slideId = parseInt(params?.slideId);
+    const isSlideOpen = !!slideId; // isSlideOpen определяется по наличию slideId в URL
     return (
         <div className={s.AddWish}>
             {isSlideOpen && <motion.div className={s.Sub}>

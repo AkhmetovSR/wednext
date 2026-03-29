@@ -3,12 +3,16 @@ import {useContext} from "react";
 import m from "@/components/Main/Menu/Menu.module.css";
 import {Vibro} from "@/components/Main/Home/Templates/Functions/Vibro";
 import {OperationsContext, useCarouselState, useControl, usePageContext, usePositionState, useWeddingData} from "@/components/Providers/Context";
+import {useParams} from "next/navigation";
 
 
-export default function MenuTemp({customClasses, isSlideOpen, slideId}) {
+export default function MenuTemp({customClasses}) {
     const {paramN, isE, isF} = useControl();
     const {setBuy} = useCarouselState();
     const {weddingData} = useWeddingData();
+    const params = useParams();
+    const slideId = parseInt(params?.slideId);
+    const isSlideOpen = !!slideId; // isSlideOpen определяется по наличию slideId в URL
     const {eventList, wishList} = weddingData;
     const {activePage, changePage} = usePageContext();
     const {setScl, setY1, setY2, setY3, setY4, setSclHome, setOpacityH} = usePositionState();

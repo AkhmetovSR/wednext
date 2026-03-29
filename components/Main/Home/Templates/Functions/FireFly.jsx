@@ -1,6 +1,7 @@
 import { motion, useAnimation } from "framer-motion";
 import { useEffect, useState } from "react";
 import s from "./FireFly.module.css";
+import {useParams} from "next/navigation";
 
 const Firefly = ({ isSlideOpen }) => {
     const controls = useAnimation();
@@ -80,7 +81,10 @@ const Firefly = ({ isSlideOpen }) => {
 
 // Fireflies остаётся без изменений
 
-const Fireflies = ({ isSlideOpen }) => {
+const Fireflies = () => {
+    const params = useParams();
+    const slideId = parseInt(params?.slideId);
+    const isSlideOpen = !!slideId; // isSlideOpen определяется по наличию slideId в URL
     return (
         <div style={{
             position: "fixed",
@@ -100,80 +104,3 @@ const Fireflies = ({ isSlideOpen }) => {
 };
 
 export default Fireflies;
-
-// import { motion, useAnimation } from "framer-motion";
-// import { useEffect } from "react";
-// import s from "./FireFly.module.css";
-//
-// const Firefly = () => {
-//     const controls = useAnimation();
-//     const colorVariants = ["#fff3a0", "#f8ffa0", "#feff9c"];
-//
-//     useEffect(() => {
-//         let isMounted = true;
-//
-//         const animateMovement = async () => {
-//             if (!isMounted) return;
-//
-//             const newX = Math.random() * 100;
-//             const newY = Math.random() * 100;
-//
-//             try {
-//                 await controls.start({
-//                     x: `${newX}vw`,
-//                     y: `${newY}vh`,
-//                     scale: [1, 0.6, 1, 0.6, 1],
-//                     opacity: [0.8, 0.4, 1],
-//                     transition: {
-//                         duration: Math.random() * 4 + 20,
-//                         ease: "linear",
-//                     },
-//                 });
-//             } catch (e) {
-//                 // Игнорируем ошибки анимации при размонтировании
-//             }
-//
-//             if (isMounted) requestAnimationFrame(animateMovement);
-//         };
-//
-//         animateMovement();
-//
-//         return () => {
-//             isMounted = false;
-//             controls.stop();
-//         };
-//     }, [controls]);
-//
-//     return (
-//         <motion.div
-//             initial={{
-//                 x: `${Math.random() * 100}vw`,
-//                 y: `${Math.random() * 100}vh`,
-//                 opacity: 0.8,
-//                 scale: 1
-//             }}
-//             animate={controls}
-//             className={s.Unity}
-//         />
-//     );
-// };
-//
-// const Fireflies = () => {
-//     return (
-//         <div style={{
-//             position: "fixed",
-//             top: 0,
-//             left: 0,
-//             width: "100%",
-//             height: "100%",
-//             zIndex: 1,
-//             overflow: "hidden"
-//         }}>
-//             {[...Array(10)].map((_, index) => (
-//                 <Firefly key={index} />
-//             ))}
-//         </div>
-//     );
-// };
-//
-// export default Fireflies;

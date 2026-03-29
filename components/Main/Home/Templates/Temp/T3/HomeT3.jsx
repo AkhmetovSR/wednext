@@ -1,4 +1,3 @@
-'use client';
 import s from "@/components/Main/Home/Templates/Temp/T3/Temp3.module.css";
 import {motion} from "framer-motion";
 import {useCalculateFontSize} from "@/components/Main/Home/Templates/Functions/ChangeName";

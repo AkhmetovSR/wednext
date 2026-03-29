@@ -43,7 +43,7 @@ export default function SlidePage() {
             {bb && (!paramN || isE) && (<BlackBackground slideId={slideId}/>)} {/*!!!!!!!!!!!!!!!!!!!!!! Проверить условия */}
             <motion.div className={s.fullscreenContent} layoutId={`slide-${slideId || slideIdNum}`} transition={{ duration: 0.3, delay: 0 }}>
                 <Link href="/" className={s.Back}>
-                    <div className={s.ArrL}></div>
+                    {/*<div className={s.ArrL}></div>*/}
                     <div className={s.See}>К шаблонам</div>
                 </Link>
                 {slideContent.div}

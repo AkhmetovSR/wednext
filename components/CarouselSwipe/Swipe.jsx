@@ -63,7 +63,7 @@ const Swipe = ({ children }) => {
                             >
                                 {!slideId && isActive && ( // Отображение кнопки на НЕ открытом (!slideId) и только центральном слайде
                                     <div className={s.Watch}>
-                                        <div className={s.Eye}></div>
+                                        {/*<div className={s.Eye}></div>*/}
                                         <div className={s.See}>Посмотреть</div>
                                     </div>
                                 )}

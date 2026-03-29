@@ -1,4 +1,4 @@
-import main from "@/components/Main/Home/Home.module.css"
+import m from "@/components/Main/MainStyle.module.css"
 import {motion} from "framer-motion";
 import {useState, useMemo, useRef} from "react";
 import s from "@/components/Main/Home/Templates/Modules/Analytic/Analytic.module.css";
@@ -10,10 +10,14 @@ import {initialGuestNot} from "@/initData/initialWedData";
 import Attention from "@/components/Main/Home/Templates/Modules/Analytic/Attention";
 import DrinkSummary from "@/components/Main/Home/Templates/Modules/Analytic/DrinkSummary";
 import GuestList from "@/components/Main/Home/Templates/Modules/Analytic/GuestList";
+import {useParams} from "next/navigation";
 
 
 // Аналитика должна открываться при отсутствии параметра f
-export default function Analytics({customClasses, isSlideOpen}) {
+export default function Analytics({customClasses}) {
+    const params = useParams();
+    const slideId = parseInt(params?.slideId);
+    const isSlideOpen = !!slideId; // isSlideOpen определяется по наличию slideId в URL
     const { weddingData } = useWeddingData();
     const {isE, isF} = useControl();
     const {showAttention, setShowAttention} = useCarouselState();
@@ -63,12 +67,12 @@ export default function Analytics({customClasses, isSlideOpen}) {
     };
 
     return (
-        <div className={`${main.HEWRATemp} ${customClasses?.Analytics || ""}`}>
-            <motion.div className={`${main.AnalyticFrame} ${customClasses?.AnalyticFrame || ""}`}>
-                <motion.div className={`${main.AnalyticTitle} ${customClasses?.AnalyticTitle || ""}`} initial={{"--font-scale": isSlideOpen ? 1 : 0.7}} animate={{"--font-scale": isSlideOpen ? 1 : 0.7}}>
+        <div className={`${m.HEWRATemp} ${customClasses?.Analytics || ""}`}>
+            <motion.div className={`${m.AnalyticFrame} ${customClasses?.AnalyticFrame || ""}`}>
+                <motion.div className={`${m.AnalyticTitle} ${customClasses?.AnalyticTitle || ""} ${isSlideOpen ? m.open : m.closed}`}>
                     Сведения о гостях
                 </motion.div>
-                <motion.div className={`${main.EWRAContent} ${customClasses?.EWRAContent || ""}`} ref={scrollContainerRef}>
+                <motion.div className={`${m.EWRAContent} ${customClasses?.EWRAContent || ""}`} ref={scrollContainerRef}>
                     <motion.div className={`${s.Guests} ${customClasses?.Guests || ""}`} initial={{"--font-scale": isSlideOpen ? 1 : 0.7}} animate={{"--font-scale": isSlideOpen ? 1 : 0.7}}>
                         {activeTab === 'drinks' ? (<DrinkSummary totalDrinks={totalDrinks} wordsWithCount={wordsWithCount} customClasses={customClasses}/>
                         ) : (
@@ -76,7 +80,7 @@ export default function Analytics({customClasses, isSlideOpen}) {
                         )}
                     </motion.div>
                 </motion.div>
-                {showAttention && !isE && !isF && isSlideOpen && (<Attention isSlideOpen={isSlideOpen} onClose={() => setShowAttention(false)}/>)}
+                {showAttention && !isE && !isF && isSlideOpen && (<Attention onClose={() => setShowAttention(false)}/>)}
                 <UnVisibleBtn containerRef={scrollContainerRef}>
                     <AnalyticBtn isSlideOpen={isSlideOpen} activeTab={activeTab} setActiveTab={setActiveTab} attendingCount={safeGuestYes.length} notAttendingCount={safeGuestNot.length} customClasses={customClasses}/>
                 </UnVisibleBtn>
