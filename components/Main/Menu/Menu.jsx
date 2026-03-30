@@ -2,13 +2,14 @@
 
 import s from "./Menu.module.css";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { useSelectedLayoutSegment } from "next/navigation";
 import { motion } from "framer-motion";
 
 export default function Menu() {
-    const pathname = usePathname(); // получаем текущий путь
+    const segment = useSelectedLayoutSegment();
     const isActive = (path) => {
-        return pathname === path;
+        if (path === "/" && !segment) return true;
+        return `/${segment}` === path;
     };
 
     return (

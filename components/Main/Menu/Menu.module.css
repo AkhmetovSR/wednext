@@ -164,7 +164,7 @@
 .BtnName {
     text-align: center;
     overflow: hidden;
-    font-size: 0.65rem;
+    /*font-size: 0.65rem;*/
     font-weight: 500;
     color: #8e8e93;
     transition: all 0.2s ease;

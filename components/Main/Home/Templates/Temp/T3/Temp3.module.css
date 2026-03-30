@@ -172,6 +172,7 @@
 }
 
 .customMenu{
-    border: 1px solid red;
-    color: grey;
+    background-color: rgba(57, 57, 57, 0.49);
+    border: 1px solid #CEC58E;
+    color: #CEC58E;
 }

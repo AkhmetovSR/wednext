@@ -1,4 +1,6 @@
-import {createContext, useContext, useState} from 'react';
+import {createContext, useContext, useEffect, useState} from 'react';
+import {useParams} from "next/navigation";
+import {tempArr} from "@/initData/tempArray";
 
 export const UrlParamsContext = createContext({
     nParam: null,
@@ -17,6 +19,11 @@ export const OperationsContext = createContext();
 
 export const CarouselStateContext = createContext();
 export const CarouselStateProvider = ({ children }) => {
+    const params = useParams();
+    const slideIdParam = params?.slideId;
+    const slideIdNum = slideIdParam ? parseInt(slideIdParam) : null;
+    const isValidSlide = slideIdNum !== null && !isNaN(slideIdNum) && tempArr.some(item => item.id === slideIdNum); // Проверяем, существует ли слайд с таким ID в tempArr
+    const initialActiveSlide = isValidSlide ? slideIdNum - 1 : 2; // Если слайд не существует, то ставим центральным слайдом 2 шаблон
     const [reorderingStates, setReorderingStates] = useState({
         event: false,
         wish: false
@@ -34,7 +41,7 @@ export const CarouselStateProvider = ({ children }) => {
     const [isCalendarOpen, setIsCalendarOpen] = useState(false);
     const [itemList, setItemList] = useState(null);
     const [elemState, setElemState] = useState("");
-    const [activeSlide, setActiveSlide] = useState(3);
+    const [activeSlide, setActiveSlide] = useState(initialActiveSlide);
     const [autoSlide, setAutoSlide] = useState(true);
     const [showAttention, setShowAttention] = useState(true);
 

@@ -10,7 +10,7 @@ const nextConfig = {
     reactStrictMode: true,
 
     // Разрешаем доступ с других устройств в локальной сети
-    allowedDevOrigins: ['192.168.0.111', '*.local'],
+    allowedDevOrigins: ['192.168.0.112', '*.local'],
 
     turbopack: {
         root: path.resolve(__dirname),

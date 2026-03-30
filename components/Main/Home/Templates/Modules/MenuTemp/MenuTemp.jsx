@@ -1,6 +1,7 @@
 import {motion} from "framer-motion";
 import {useContext} from "react";
 import m from "@/components/Main/Menu/Menu.module.css";
+import s from "@/components/Main/Home/Templates/Modules/MenuTemp/MenuTemp.module.css"
 import {Vibro} from "@/components/Main/Home/Templates/Functions/Vibro";
 import {OperationsContext, useCarouselState, useControl, usePageContext, usePositionState, useWeddingData} from "@/components/Providers/Context";
 import {useParams} from "next/navigation";
@@ -63,61 +64,37 @@ export default function MenuTemp({customClasses}) {
     // Обработчик изменения слайда
     const handlePageChange = (page) => {changePage(page);};
     return (
-        <div className={`${m.Menu} ${customClasses?.Menu || ""}`}>
-            <motion.div className={activePage === "home" ? `${m.MenuButton} ${m.MenuButtonActive}` : m.MenuButton}
-                        onClick={() => handleClick("home")}
-                        initial={{"--font-scale": isSlideOpen ? 1 : 0.7}}
-                        animate={{"--font-scale": isSlideOpen ? 1 : 0.7}}
-            >
+        <div className={`${m.Menu} ${customClasses?.Menu || ""} ${isSlideOpen ? s.open : s.closed}`}>
+            <motion.div className={activePage === "home" ? `${m.MenuButton} ${m.MenuButtonActive}` : m.MenuButton} onClick={() => handleClick("home")}>
                 <div className={m.imgHome}></div>
                 <motion.div className={m.BtnNameT}>Ивент</motion.div>
             </motion.div>
 
             {(eventList?.length > 0 || ((!paramN || isE))) &&
-                <motion.div className={activePage === "event" ? `${m.MenuButton} ${m.MenuButtonActive}` : m.MenuButton}
-                            onClick={() => handleClick("event")}
-                            initial={{"--font-scale": isSlideOpen ? 1 : 0.7}}
-                            animate={{"--font-scale": isSlideOpen ? 1 : 0.7}}
-                >
+                <motion.div className={activePage === "event" ? `${m.MenuButton} ${m.MenuButtonActive}` : m.MenuButton} onClick={() => handleClick("event")}>
                     <div className={m.imgEvent}></div>
                     <motion.div className={m.BtnNameT}>План</motion.div>
                 </motion.div>}
 
             {(wishList?.length > 0 || ((!paramN || isE))) &&
-                <motion.div className={activePage === "wish" ? `${m.MenuButton} ${m.MenuButtonActive}` : m.MenuButton}
-                            onClick={() => handleClick("wish")}
-                            initial={{"--font-scale": isSlideOpen ? 1 : 0.7}}
-                            animate={{"--font-scale": isSlideOpen ? 1 : 0.7}}
-                >
+                <motion.div className={activePage === "wish" ? `${m.MenuButton} ${m.MenuButtonActive}` : m.MenuButton} onClick={() => handleClick("wish")}>
                     <div className={m.imgInfo}></div>
                     <motion.div className={m.BtnNameT}>Инфо</motion.div>
                 </motion.div>}
 
-            <motion.div className={activePage === "rsvp" ? `${m.MenuButton} ${m.MenuButtonActive}` : m.MenuButton}
-                        onClick={() => handleClick("rsvp")}
-                        initial={{"--font-scale": isSlideOpen ? 1 : 0.7}}
-                        animate={{"--font-scale": isSlideOpen ? 1 : 0.7}}
-            >
+            <motion.div className={activePage === "rsvp" ? `${m.MenuButton} ${m.MenuButtonActive}` : m.MenuButton} onClick={() => handleClick("rsvp")}>
                 <div className={m.imgAnket}></div>
                 <motion.div className={m.BtnNameT}>Анкета</motion.div>
             </motion.div>
 
-            {isSlideOpen && !isF && <motion.div className={activePage === "analytics" ? `${m.MenuButton} ${m.MenuButtonActive}` : m.MenuButton}
-                            onClick={() => handleClick("analytics")}
-                            initial={{"--font-scale": isSlideOpen ? 1 : 0.7}}
-                            animate={{"--font-scale": isSlideOpen ? 1 : 0.7}}
-                >
+            {isSlideOpen && !isF && <motion.div className={activePage === "analytics" ? `${m.MenuButton} ${m.MenuButtonActive}` : m.MenuButton} onClick={() => handleClick("analytics")}>
                 <div className={m.imgAnalyt}></div>
                 <motion.div className={m.BtnNameT}>Гости</motion.div>
             </motion.div>
             }
 
             {isSlideOpen && !paramN && !isE &&
-                <div className={m.MenuButton}
-                     onClick={() => {
-                         setBuy(true)
-                     }}
-                >
+                <div className={m.MenuButton} onClick={() => {setBuy(true)}}>
                     <div className={m.imgByu}></div>
                     <motion.div className={m.BtnNameT} initial={{"--font-scale": isSlideOpen ? 1 : 0.7}}
                                 animate={{"--font-scale": isSlideOpen ? 1 : 0.7}}>Заказать

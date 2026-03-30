@@ -1,0 +1,98 @@
+/* components/ui/AutoRedirect.module.css */
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+.card {
+    background: rgba(30, 30, 40, 0.95);
+    backdrop-filter: blur(12px);
+    border-radius: 24px;
+    padding: 32px 40px;
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    border: 1px solid rgba(206, 197, 142, 0.3);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.icon {
+    font-size: 48px;
+    margin-bottom: 16px;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: #CEC58E;
+    font-family: var(--font-vibes), cursive;
+}
+
+.message {
+    font-size: 14px;
+    color: #aaa;
+    margin-bottom: 20px;
+}
+
+.countdown {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 24px;
+}
+
+.number {
+    font-size: 48px;
+    font-weight: 700;
+    color: #CEC58E;
+    line-height: 1;
+}
+
+.unit {
+    font-size: 16px;
+    color: #888;
+}
+
+.progress {
+    width: 100%;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
+    overflow: hidden;
+    margin-bottom: 24px;
+}
+
+.progressBar {
+    height: 100%;
+    background: linear-gradient(90deg, #CEC58E, #B8AE7A);
+    border-radius: 3px;
+}
+
+.link {
+    display: inline-block;
+    padding: 10px 20px;
+    background: rgba(206, 197, 142, 0.2);
+    border: 1px solid #CEC58E;
+    border-radius: 30px;
+    color: #CEC58E;
+    text-decoration: none;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.link:hover {
+    background: rgba(206, 197, 142, 0.3);
+    transform: scale(1.02);
+}

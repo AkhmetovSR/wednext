@@ -7,7 +7,6 @@
  */
 export const getSlidePosition = (index, activeSlide, totalSlides) => {
     let position = index - activeSlide;
-
     if (totalSlides > 3) {
         if (position > Math.floor(totalSlides / 2)) {
             position = position - totalSlides;
@@ -15,6 +14,5 @@ export const getSlidePosition = (index, activeSlide, totalSlides) => {
             position = position + totalSlides;
         }
     }
-
     return position;
 };
