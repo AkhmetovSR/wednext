@@ -42,7 +42,7 @@ export default function SlidePage() {
     return (
         <motion.div className={s.fullscreenOverlay}>
             {bb && (!paramN || isE) && (<BlackBackground slideId={slideId}/>)} {/*!!!!!!!!!!!!!!!!!!!!!! Проверить условия */}
-            <motion.div className={s.fullscreenContent} layoutId={`slide-${slideId || slideIdNum}`} transition={{ duration: 0.3, delay: 0 }}>
+            <motion.div className={s.fullscreenContent} layoutId={`slide-${slideId || slideIdNum}`} transition={{ duration: 0.3, ease: "easeOut", type: "tween", delay: 0 }}>
                 <Link href="/" className={s.Back}>
                     <div className={s.See}>К шаблонам</div>
                 </Link>

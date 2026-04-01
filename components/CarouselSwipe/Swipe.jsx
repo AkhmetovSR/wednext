@@ -11,13 +11,15 @@ import { useAutoSlide } from "@/hooks/useSlideManagement";
 import Title from "@/components/CarouselSwipe/Title";
 import { getSlidePosition } from '@/utils/slidePosition';
 import {useSlideSync} from "@/hooks/useSlideSync";
+import Lottie from 'lottie-react';
+import animationData from '@/public/lottie/SwipeLeft.json';
+import tapAnimation from '@/public/lottie/tap.json';
 
 const Swipe = ({ children }) => {
     const { setBb, activeSlide, setActiveSlide, autoSlide, setAutoSlide } = useCarouselState();
     const params = useParams();
     const slideId = params?.slideId;
     const totalSlides = React.Children.count(children);
-
     const {swipeHandlers} = useSwipeSlide(totalSlides); //Свайпы
     useAutoSlide(autoSlide, slideId, totalSlides, setActiveSlide, 1); //Автопролистывание
     useSlideSync(slideId, totalSlides, setBb, setActiveSlide, setAutoSlide); //Синхронизация активного слайда с URL
@@ -36,20 +38,21 @@ const Swipe = ({ children }) => {
         10: 1399,
         11: 1499,
     };
-
     const currentPrice = prices[activeSlide + 1];
 
     return (
         <motion.div className={s.Main}>
             <Title/>
+
             <div className={s.carousel}>
-                    <motion.div className={s.SwipeZone} {...swipeHandlers}><Link href={`/temp/${activeSlide + 1}`} prefetch className={s.Link}/></motion.div>
-                    {React.Children.map(children, (child, index) => {
+                <motion.div className={s.SwipeZone} {...swipeHandlers}><Link href={`/temp/${activeSlide + 1}`} prefetch className={s.Link}/></motion.div>
+                {autoSlide && <motion.div className={s.swipeAnimation} initial={{opacity: 0}} animate={{opacity: 1}} transition={{duration: 1}}><Lottie animationData={animationData} loop={true} autoplay={true} style={{width: '8rem'}}/></motion.div>}
+                {!autoSlide && <motion.div className={s.tapAnimation} initial={{opacity: 0}} animate={{opacity: 1}} transition={{duration: 1.5, delay: 1}}><Lottie animationData={tapAnimation} loop={true} autoplay={true} style={{width: '8rem'}}/></motion.div>}
+                {React.Children.map(children, (child, index) => {
                         const id = child.props["data-id"];
                         const position = getSlidePosition(index, activeSlide, totalSlides);
                         const isActive = index === activeSlide;
-                        if (Math.abs(position) > 1) return null;
-
+                        if (Math.abs(position) > 2) return null;
                         return (
                             <motion.div
                                 key={id}
@@ -58,15 +61,14 @@ const Swipe = ({ children }) => {
                                 layoutId={`slide-${id}`}
                                 initial={false}
                                 animate={{
-                                    opacity: 1,
-                                    x: position * 130,
-                                    scale: Math.max(0.7, 1 - Math.abs(position) * 0.5),
-                                    rotateY: position * -30,
-                                    z: Math.abs(position) * -120,
-                                    filter: `blur(${Math.abs(position) * 2}px)`
+                                    opacity: 1 - Math.abs(position) * 0.1,
+                                    x: position * 140,
+                                    scale: Math.max(0.1, 1 - Math.abs(position) * 0.1),
+                                    rotateY: position * -15,
+                                    z: Math.abs(position) * -80,
+                                    filter: `blur(${Math.abs(position) * 3}px)`
                                 }}
-                                transition={{ duration: 0.3, ease: "easeOut", type: "tween" }}
-                            >
+                                transition={{ duration: 0.3, ease: "easeOut", type: "tween", delay: 0 }}>
                                 {!slideId && isActive && (<div className={s.Watch}>Посмотреть</div>)}
                                 {child}
                             </motion.div>
@@ -74,9 +76,9 @@ const Swipe = ({ children }) => {
                     })}
             </div>
 
-            <motion.div className={s.divNavi}>
-                    <CarouselNavigation />
-            </motion.div>
+            {/*<motion.div className={s.divNavi}>*/}
+            {/*        <CarouselNavigation />*/}
+            {/*</motion.div>*/}
         </motion.div>
     );
 };

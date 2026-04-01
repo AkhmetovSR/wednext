@@ -11,20 +11,88 @@
     overflow: hidden;
     /*border: 22px solid blue;*/
     display: grid;
-    grid-template-rows: 13% 74% 6%;
+    grid-template-rows: 17% 65% 9%;
     /*color: red;*/
 }
-.divTitle{
-    width: 100%;
-    display: grid;
-    justify-items: center;
-    margin-top: 5%;
+
+/* components/CarouselSwipe/Swipe.module.css */
+
+/* components/CarouselSwipe/Swipe.module.css */
+
+.divTitle {
     /*border: 1px solid red;*/
+    /*display: flex;*/
+    /*flex-direction: column;*/
+    display: grid;
+    align-content: center;
+    justify-content: center;
+    /*text-align: center;*/
+    /*padding: 16px 16px 8px;*/
+    /*position: relative;*/
+    /*z-index: 10;*/
+    /*gap: 4px;*/
+}
+
+.title {
+    font-family: 'Great Vibes', cursive;
+    /*font-weight: 300;*/
+    /*letter-spacing: 1px;*/
+    /*margin: 0;*/
+    /*line-height: 1.2;*/
+}
+
+/* Первая строка "Выбери свое" */
+.divTitle .title:first-of-type {
+    font-size: 1.2rem;
+    color: #8B7A5C;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-family: 'Forum', serif;
+    /*margin-bottom: 4px;*/
+    /*position: relative;*/
+}
+
+.divTitle .title:first-of-type::before,
+.divTitle .title:first-of-type::after {
+    content: "✦";
+    font-size: 1rem;
+    color: #CEC58E;
+    opacity: 0.7;
+    /*margin: 0 8px;*/
+}
+
+/* Основной заголовок */
+.divTitle .title:nth-child(2) {
+    /*font-size: 2rem;*/
+    /*font-weight: 400;*/
+    color: #5D4E34;
+    /*text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);*/
+    /*margin: 2px 0;*/
+    /*position: relative;*/
+    /*line-height: 1.1;*/
+}
+
+.divTitle .title:nth-child(2) strong {
+    /*font-weight: 500;*/
+    color: #CEC58E;
+    background: none;
+    /*-webkit-background-clip: unset;*/
+    /*background-clip: unset;*/
+}
+
+/* Третья строка "и отправь гостям" */
+.divTitle .title:last-of-type {
+    font-size: 1.2rem;
+    color: #9B8A6B;
+    font-family: 'Forum', serif;
+    letter-spacing: 1px;
+    /*text-transform: uppercase;*/
+    /*margin-top: 2px;*/
 }
 .divNavi{
     /*border: 1px solid red;*/
     display: grid;
-    align-items: start;
+    align-items: center;
     justify-items: center;
 }
 .navi{
@@ -36,7 +104,7 @@
 .title {
     width: 100%;
     margin: 0;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-weight: 300;
     letter-spacing: -0.02em;
@@ -47,6 +115,9 @@
     color: transparent;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     text-align: center;
+    /*border: 1px solid red;*/
+    /*display: grid;*/
+    /*align-items: center;*/
 }
 .shadow{
     width: 70%;
@@ -71,7 +142,7 @@
 .carousel {
     width: 100%;
     height: 100%;
-    perspective: 500px;
+    perspective: 100px;
     z-index: 1;
     display: grid;
     justify-items: center;
@@ -88,12 +159,28 @@
     position: absolute;
     width: 65%;
     height: 90%;
-    z-index: 25;
+    z-index: 30;
     bottom: 5%;
     left: 17%;
     cursor: pointer;
     transition: background-color 0.1s ease;
     /*border: 1px solid red;*/
+    /*background-color: #282828;*/
+}
+.swipeAnimation{
+    position: absolute;
+    /*border: 1px solid red;*/
+    top: 35%;
+    left: 32%;
+    z-index: 29;
+    /*background-color: #7a7a7a;*/
+}
+.tapAnimation{
+    position: absolute;
+    /*border: 1px solid red;*/
+    top: 40%;
+    left: 35%;
+    z-index: 29;
 }
 /*-------------------------------------------------------------------------*/
 .info {
@@ -179,40 +266,6 @@
     transform: translateX(4px);
 }
 
-/* Адаптивность для мобильных */
-@media (max-width: 768px) {
-    .info {
-        padding: 8px 16px;
-        gap: 12px;
-        min-width: 160px;
-    }
-
-    .priceValue {
-        font-size: 22px;
-    }
-
-    .openButton {
-        padding: 8px 16px;
-        font-size: 12px;
-    }
-
-    .arrowIcon {
-        width: 16px;
-        height: 16px;
-    }
-}
-
-/* Для планшетов */
-@media (min-width: 768px) and (max-width: 1024px) {
-    .info {
-        padding: 10px 20px;
-        gap: 16px;
-    }
-
-    .priceValue {
-        font-size: 24px;
-    }
-}
 /*--------------------------------------------------*/
 
 .arrow {
@@ -222,9 +275,9 @@
 
 .CardCont {
     position: absolute;
-    width: 65%;
+    width: 60%;
     height: 90%;
-    /*border: 10px solid red;*/
+    /*border: 1px solid red;*/
 }
 .fullscreenOverlay {
     position: absolute;

@@ -15,27 +15,28 @@
     justify-content: space-between;
     /*gap: 20px;*/
     height: 2.3rem;
-    width: 50%;
-
+    width: 60%;
+    /*border: 1px solid red;*/
     /*max-width: 280px;*/
     /*margin: 0 auto;*/
     padding: 2%;
-    background: #41b5ff;
+    background: #d6d6d6;
     /*backdrop-filter: blur(20px) brightness(1.02);*/
     /*-webkit-backdrop-filter: blur(20px) brightness(1.02);*/
     border-radius: 1.6rem;
-    box-shadow: 0 4px 20px rgba(110, 110, 110, 0.25), 0 0 0 0.5px rgba(83, 83, 83, 0.1) inset;
+    /*box-shadow: 0 4px 20px rgba(110, 88, 61, 0.25), 0 0 0 0.5px rgba(110, 87, 53, 0.1) inset;*/
 }
 
 .navButton {
     width: 1.6rem;
     height: 1.6rem;
-    background: rgba(255, 255, 255, 0.15);
+    background: rgba(154, 154, 154, 0.37);
     border: none;
     border-radius: 50%;
     cursor: pointer;
     transition: all 0.2s ease;
     position: relative;
+    /*border: 1px solid red;*/
     /*font-size: 12rem;*/
 }
 
@@ -50,7 +51,7 @@
     /*transform: translate(-50%, -50%);*/
     font-size: 1.3rem;
     /*font-weight: bold;*/
-    color: white;
+    color: #ffffff;
 }
 
 .navButton:first-child::before {
@@ -71,16 +72,21 @@
 }
 
 .priceContainer {
-    flex: 1;
+    padding-bottom: 8%;
+    width: 10rem;
+    /*border: 1px solid red;*/
+    /*flex: 1;*/
     text-align: center;
 }
 
 .priceValue {
-    font-size: 1.2rem;
-    /*font-weight: 500;*/
+    /*width: 100%;*/
+    /*margin-bottom: 1rem;*/
+    background: #d6d6d6;
+    padding: 0.5rem 2rem;
+    border-radius: 2rem;
+    font-size: 1.4rem;
+    font-weight: bold;
     color: #ffffff;
-    /*letter-spacing: -0.3px;*/
-    /*font-feature-settings: "tnum";*/
-    /*font-variant-numeric: tabular-nums;*/
-    /*text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);*/
+    /*border: 1px solid red;*/
 }

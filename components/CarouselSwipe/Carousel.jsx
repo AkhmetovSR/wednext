@@ -16,7 +16,7 @@ export default function Carousel() {
         // Если шаблонов нет показывать заглушку и кнопку, которая будет делать повторный релоад шаблонов???
         <Swipe>
             {tempArr.map((i) => (
-                <motion.div data-id={i.id} key={i.id} className={s.Carousel} transition={{ duration: 0.3, delay: 0 }}>
+                <motion.div data-id={i.id} key={i.id} className={s.Carousel}>
                     {i.div}
                 </motion.div>
             ))}
