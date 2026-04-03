@@ -46,7 +46,7 @@ const Swipe = ({ children }) => {
 
             <div className={s.carousel}>
                 <motion.div className={s.SwipeZone} {...swipeHandlers}><Link href={`/temp/${activeSlide + 1}`} prefetch className={s.Link}/></motion.div>
-                {autoSlide && <motion.div className={s.swipeAnimation} initial={{opacity: 0}} animate={{opacity: 1}} transition={{duration: 1}}><Lottie animationData={animationData} loop={true} autoplay={true} style={{width: '8rem'}}/></motion.div>}
+                {autoSlide && <motion.div className={s.swipeAnimation} initial={{opacity: 0}} animate={{opacity: 1}} transition={{duration: 1}}><Lottie animationData={animationData} loop={true} autoplay={true} style={{width: '100%'}}/></motion.div>}
                 {!autoSlide && <motion.div className={s.tapAnimation} initial={{opacity: 0}} animate={{opacity: 1}} transition={{duration: 1.5, delay: 1}}><Lottie animationData={tapAnimation} loop={true} autoplay={true} style={{width: '8rem'}}/></motion.div>}
                 {React.Children.map(children, (child, index) => {
                         const id = child.props["data-id"];
