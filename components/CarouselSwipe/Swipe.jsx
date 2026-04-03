@@ -13,7 +13,7 @@ import { getSlidePosition } from '@/utils/slidePosition';
 import {useSlideSync} from "@/hooks/useSlideSync";
 import Lottie from 'lottie-react';
 import animationData from '@/public/lottie/Swipe.json';
-import tapAnimation from '@/public/lottie/Swipe.json';
+import tapAnimation from '@/public/lottie/Tap.json';
 
 const Swipe = ({ children }) => {
     const { setBb, activeSlide, setActiveSlide, autoSlide, setAutoSlide } = useCarouselState();
