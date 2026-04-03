@@ -12,7 +12,7 @@ import Title from "@/components/CarouselSwipe/Title";
 import { getSlidePosition } from '@/utils/slidePosition';
 import {useSlideSync} from "@/hooks/useSlideSync";
 import Lottie from 'lottie-react';
-import animationData from '@/public/lottie/SwipeLeft.json';
+import animationData from '@/public/lottie/Swipe.json';
 import tapAnimation from '@/public/lottie/Swipe.json';
 
 const Swipe = ({ children }) => {
