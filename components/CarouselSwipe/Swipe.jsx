@@ -76,9 +76,9 @@ const Swipe = ({ children }) => {
                     })}
             </div>
 
-            <motion.div className={s.divNavi}>
-                    <CarouselNavigation />
-            </motion.div>
+            {/*<motion.div className={s.divNavi}>*/}
+            {/*        <CarouselNavigation />*/}
+            {/*</motion.div>*/}
         </motion.div>
     );
 };
