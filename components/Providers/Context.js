@@ -44,6 +44,7 @@ export const CarouselStateProvider = ({ children }) => {
     const [activeSlide, setActiveSlide] = useState(initialActiveSlide);
     const [autoSlide, setAutoSlide] = useState(true);
     const [showAttention, setShowAttention] = useState(true);
+    const [clickAnimation, setClickAnimation] = useState(true);
 
     const value = {
         reorderingStates,
@@ -79,7 +80,9 @@ export const CarouselStateProvider = ({ children }) => {
         autoSlide,
         setAutoSlide,
         showAttention,
-        setShowAttention
+        setShowAttention,
+        clickAnimation,
+        setClickAnimation
     };
     return (
         <CarouselStateContext.Provider value={value}>

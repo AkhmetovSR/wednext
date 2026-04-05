@@ -167,21 +167,27 @@
     /*border: 1px solid red;*/
     /*background-color: #282828;*/
 }
-.swipeAnimation{
+.swipeAnimation, .tapAnimation{
     position: absolute;
     /*border: 1px solid red;*/
-    top: 35%;
-    left: 32%;
+    /*display: grid;*/
+    /*justify-content: center;*/
+    width: 60%;
+    top: 45%;
+    left: 20%;
     z-index: 29;
+    /*background-color: rgba(0, 0, 0, 0.53);*/
+    /*border-radius: 15px;*/
     /*background-color: #7a7a7a;*/
 }
-.tapAnimation{
-    position: absolute;
-    /*border: 1px solid red;*/
-    top: 40%;
-    left: 35%;
-    z-index: 29;
-}
+/*.tapAnimation{*/
+/*    position: absolute;*/
+/*    border: 1px solid red;*/
+/*    width: 30%;*/
+/*    top: 40%;*/
+/*    left: 35%;*/
+/*    z-index: 29;*/
+/*}*/
 /*-------------------------------------------------------------------------*/
 .info {
     position: absolute;

@@ -6,7 +6,7 @@ import {useParams} from "next/navigation";
 export const useSwipeSlide = (totalSlides) => {
     const params = useParams();
     const slideId = params?.slideId;
-    const {setActiveSlide, setAutoSlide } = useCarouselState();
+    const {setActiveSlide, setAutoSlide} = useCarouselState();
 
     const goToNextSlide = () => {
         if (slideId) return;

@@ -5,7 +5,7 @@ import {useCarouselState, useControl} from '@/components/Providers/Context';
 import s from '@/components/CarouselSwipe/Swipe.module.css';
 import { motion } from "framer-motion";
 import { tempArr } from "@/initData/tempArray";
-import React from "react";
+import React, {useEffect} from "react";
 import BlackBackground from "@/components/Main/Home/Templates/Forms/BlackBackground";
 import AutoRedirect from "@/components/Main/Home/Templates/Functions/AutoRedirect";
 
@@ -13,9 +13,13 @@ export default function SlidePage() {
     const params = useParams();
     const slideId = params?.slideId;
     const {paramN, isE} = useControl();
-    const {bb} = useCarouselState();
+    const {bb, setClickAnimation} = useCarouselState();
     const slideIdNum = parseInt(slideId); //Поиск слайда
     const slideContent = tempArr.find(item => item.id === parseInt(slideIdNum));
+    useEffect(() => {
+        setClickAnimation(false);
+    }, [setClickAnimation]);
+
     if (!slideContent) {
         return (
             <motion.div className={s.fullscreenOverlay}>
