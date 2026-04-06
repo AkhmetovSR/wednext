@@ -1,193 +1,252 @@
 .Menu {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(30px, 1fr));
-    background: rgba(255, 255, 255, 0.95);
+    /*position: fixed;*/
+    width: 20rem;
+    /*bottom: 20px;*/
+    /*left: 50%;*/
+    /*transform: translateX(-50%);*/
+    display: flex;
+    gap: 0.35rem;
+    padding: 0.3rem 0.3rem;
+    border-radius: 2rem;
     backdrop-filter: blur(20px);
-    width: 80%;
-    height: 80%;
-    box-shadow: 0 0 0 0.5px rgba(0, 0, 0, 0.05), 0 8px 20px rgba(0, 0, 0, 0.08);
-    border-radius: 1.3rem;
-    -webkit-backdrop-filter: blur(20px);
-    /*border: 1px solid red;*/
+    /*background: linear-gradient(135deg,*/
+    /*rgba(255, 240, 245, 0.95) 0%,*/
+    /*rgba(255, 228, 240, 0.9) 100%);*/
+    border: 1px solid rgba(255, 200, 220, 0.5);
+    /*box-shadow:*/
+    /*        0 8px 32px rgba(255, 105, 180, 0.15),*/
+    /*        0 2px 4px rgba(255, 255, 255, 0.5) inset;*/
+    /*z-index: 1000;*/
+}
+
+.glassBackground {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 3rem;
+    overflow: hidden;
+    background: linear-gradient(135deg,
+    rgba(255, 255, 255, 0.4) 0%,
+    rgba(255, 200, 220, 0.2) 50%,
+    rgba(255, 182, 193, 0.1) 100%);
+}
+
+.liquidShine {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+            45deg,
+            transparent 30%,
+            rgba(255, 255, 255, 0.6) 50%,
+            transparent 70%
+    );
+    animation: shine 4s infinite;
+    pointer-events: none;
+}
+
+@keyframes shine {
+    0% {
+        transform: translateX(-100%) translateY(-100%) rotate(45deg);
+    }
+    100% {
+        transform: translateX(100%) translateY(100%) rotate(45deg);
+    }
 }
 
 .MenuButton {
-    overflow: hidden;
-    display: grid;
     text-decoration: none;
-    height: 100%;
-    grid-template-rows: 60% 30%;
-    justify-items: center;
-    align-content: center;
-    scale: 0.9;
-    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-    border-radius: 16px;
+    z-index: 1;
+}
+
+.buttonContent {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.7rem 0.9rem;
+    border-radius: 2rem;
     cursor: pointer;
-    position: relative;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.MenuButton:hover {
-    background: rgba(0, 0, 0, 0.02);
+.iconWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
 }
 
-.MenuButton:active {
-    transform: scale(0.92);
+.icon {
+    font-size: 1.3rem;
+    filter: drop-shadow(0 2px 4px rgba(255, 105, 180, 0.2));
+    transition: all 0.3s ease;
 }
 
-.MenuButtonActive {
-    background: rgba(0, 0, 0, 0.03);
-    border-radius: 16px;
-    position: relative;
+.BtnName {
+    font-size: 0.85rem;
+    font-weight: 600;
+    background: linear-gradient(135deg, #d14b8e, #f472b6);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
     overflow: hidden;
-    scale: 0.95;
-    transition-duration: 0.2s;
+    text-shadow: none;
 }
 
-/* Полоска внутри кнопки сверху */
-.MenuButtonActive::before {
-    content: '';
+.MenuButtonActive .buttonContent {
+    background: linear-gradient(135deg,
+    rgba(255, 255, 255, 0.9) 0%,
+    rgba(255, 228, 240, 0.8) 100%);
+    box-shadow:
+            0 4px 15px rgba(255, 105, 180, 0.2),
+            0 1px 3px rgba(255, 255, 255, 0.8) inset;
+}
+
+.MenuButtonActive .icon {
+    transform: scale(1.1);
+}
+
+.activeIndicator {
     position: absolute;
-    /*top: 0;*/
-    /*left: 20%;*/
-    width: 100%;
-    height: 4px;
-    background: #00b8ff;
-    border-radius: 20px;
-    animation: glowPulse 2s ease-in-out infinite;
-    /*box-shadow: 0 0 8px rgba(0, 122, 255, 0.6);*/
+    bottom: 4px;
+    left: 20%;
+    width: 60%;
+    height: 2px;
+    background: linear-gradient(90deg,
+    transparent,
+    #f472b6,
+    #ff69b4,
+    #f472b6,
+    transparent);
+    border-radius: 2px;
+    box-shadow: 0 0 6px rgba(255, 105, 180, 0.6);
 }
 
-/* Эффект свечения от полоски */
-.MenuButtonActive::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 15%;
-    width: 70%;
-    height: 12px;
-    /*background: radial-gradient(ellipse at center,*/
-    /*rgba(0, 122, 255, 0.25) 0%,*/
-    /*rgba(94, 92, 224, 0.15) 40%,*/
-    /*transparent 70%*/
-    /*);*/
-    filter: blur(4px);
-    pointer-events: none;
-    animation: glowSpread 2s ease-in-out infinite;
+/* Hover эффекты */
+.MenuButton:not(.MenuButtonActive):hover .buttonContent {
+    background: rgba(255, 255, 255, 0.5);
 }
 
-/*@keyframes glowPulse {*/
-/*    0%, 100% {*/
-/*        opacity: 0.8;*/
-/*        height: 3px;*/
-/*        box-shadow: 0 0 6px rgba(0, 122, 255, 0.5);*/
-/*    }*/
-/*    50% {*/
-/*        opacity: 1;*/
-/*        height: 4px;*/
-/*        box-shadow: 0 0 12px rgba(0, 122, 255, 0.8);*/
-/*    }*/
-/*}*/
+.MenuButton:not(.MenuButtonActive):hover .icon {
+    transform: scale(1.08);
+}
 
-@keyframes glowSpread {
-    0%, 100% {
-        opacity: 0.4;
-        height: 10px;
+/* Анимация появления */
+.MenuButton {
+    animation: fadeInUp 0.4s ease forwards;
+    opacity: 0;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
     }
-    50% {
-        opacity: 0.6;
-        height: 14px;
-    }
-}
-
-/* Активные иконки - стиль iPhone */
-.MenuButtonActive .ImgHome,
-.MenuButtonActive .ImgPolicy,
-.MenuButtonActive .ImgHowMake,
-.MenuButtonActive .ImgCompany,
-.MenuButtonActive .ImgOffer,
-.MenuButtonActive .imgHome,
-.MenuButtonActive .imgEvent,
-.MenuButtonActive .imgInfo,
-.MenuButtonActive .imgAnket,
-.MenuButtonActive .imgAnalyt,
-.MenuButtonActive .imgSave,
-.MenuButtonActive .imgByu {
-    opacity: 1;
-    /*filter: brightness(0) saturate(100%) invert(35%) sepia(100%) saturate(1000%) hue-rotate(200deg) brightness(95%);*/
-    animation: iconFloat 2.5s ease-in-out infinite;
-}
-
-@keyframes iconFloat {
-    0%, 100% {
+    to {
+        opacity: 1;
         transform: translateY(0);
     }
-    50% {
-        transform: translateY(-2px);
+}
+
+.MenuButton:nth-child(1) { animation-delay: 0.05s; }
+.MenuButton:nth-child(2) { animation-delay: 0.1s; }
+.MenuButton:nth-child(3) { animation-delay: 0.15s; }
+.MenuButton:nth-child(4) { animation-delay: 0.2s; }
+.MenuButton:nth-child(5) { animation-delay: 0.25s; }
+
+/* Эффект нажатия */
+.buttonContent:active {
+    transform: scale(0.95);
+}
+
+/* Декоративные элементы */
+.decorativeFlower1,
+.decorativeFlower2,
+.decorativeFlower3 {
+    position: absolute;
+    font-size: 0.8rem;
+    opacity: 0;
+    pointer-events: none;
+    animation: float 6s ease-in-out infinite;
+}
+
+.decorativeFlower1 {
+    top: -15px;
+    left: -10px;
+    animation-delay: 0s;
+}
+
+.decorativeFlower2 {
+    bottom: -15px;
+    right: -10px;
+    animation-delay: 2s;
+}
+
+.decorativeFlower3 {
+    top: -10px;
+    right: 30%;
+    animation-delay: 4s;
+}
+
+@keyframes float {
+    0% {
+        opacity: 0;
+        transform: translateY(0) rotate(0deg);
+    }
+    20% {
+        opacity: 0.6;
+    }
+    80% {
+        opacity: 0.6;
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-20px) rotate(360deg);
     }
 }
 
-/* Иконки */
-.ImgHome, .ImgPolicy, .ImgHowMake, .ImgCompany, .ImgOffer,
-.imgHome, .imgEvent, .imgInfo, .imgAnket, .imgAnalyt, .imgSave, .imgByu {
-    width: 35%;
-    opacity: 0.45;
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
-    transition: all 0.25s ease;
+/* Адаптивность */
+@media (max-width: 380px) {
+    .Menu {
+        gap: 0.2rem;
+        padding: 0.5rem;
+    }
+
+    .iconWrapper {
+        width: 24px;
+        height: 24px;
+    }
+
+    .icon {
+        font-size: 1.1rem;
+    }
+
+    .buttonContent {
+        padding: 0.6rem;
+    }
 }
 
-.MenuButton:hover .ImgHome,
-.MenuButton:hover .ImgPolicy,
-.MenuButton:hover .ImgHowMake,
-.MenuButton:hover .ImgCompany,
-.MenuButton:hover .ImgOffer {
-    opacity: 0.7;
-    transform: scale(1.03);
+/* Дополнительный эффект пульсации для активной кнопки */
+@keyframes gentlePulse {
+    0% {
+        box-shadow: 0 4px 15px rgba(255, 105, 180, 0.2);
+    }
+    50% {
+        box-shadow: 0 4px 20px rgba(255, 105, 180, 0.4);
+    }
+    100% {
+        box-shadow: 0 4px 15px rgba(255, 105, 180, 0.2);
+    }
 }
 
-/* Изображения */
-.ImgHome { background-image: url("/images/Home.png"); }
-.ImgPolicy { background-image: url("/images/Policy.png"); }
-.ImgHowMake { background-image: url("/images/HowMake.png"); }
-.ImgCompany { background-image: url("/images/Company.png"); }
-.ImgOffer { background-image: url("/images/offer1.png"); }
-.imgHome { background-image: url("/images/Home9.png"); }
-.imgEvent { background-image: url("/images/Event11.png"); }
-.imgInfo { background-image: url("/images/Info.png"); }
-.imgAnket { background-image: url("/images/Anket1.png"); }
-.imgAnalyt { background-image: url("/images/Guests.webp"); }
-.imgSave { background-image: url("/images/Save.png"); }
-.imgByu { background-image: url("/images/Cart.png"); }
-
-/* Текст - стиль iPhone */
-.BtnName {
-    text-align: center;
-    overflow: hidden;
-    /*font-size: 0.65rem;*/
-    font-weight: 500;
-    color: #8e8e93;
-    transition: all 0.2s ease;
-    letter-spacing: -0.2px;
-}
-
-.MenuButtonActive .BtnName {
-    /*color: #007aff;*/
-    font-weight: bold;
-}
-
-.MenuButton:hover .BtnName {
-    color: #00b8ff;
-}
-
-/*.BtnNameT {*/
-/*    text-align: center;*/
-/*    overflow: hidden;*/
-/*    color: #ff0909;*/
-/*    font-size: 0.65rem;*/
-/*    font-weight: 500;*/
-/*}*/
-
-.MenuButtonActive .BtnNameT {
-    color: #e6e6e6;
+.MenuButtonActive .buttonContent {
+    animation: gentlePulse 2s ease-in-out infinite;
 }
