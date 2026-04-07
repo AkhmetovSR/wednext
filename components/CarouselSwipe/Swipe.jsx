@@ -69,6 +69,10 @@ const Swipe = ({ children }) => {
                                     filter: `blur(${Math.abs(position) * 3}px)`
                                 }}
                                 transition={{ duration: 0.3, ease: "easeOut", type: "tween", delay: 0 }}>
+                                {/* Тень внутри карточки, но позади контента */}
+                                {isActive && (
+                                    <div className={s.CardShadowInner} />
+                                )}
                                 {!slideId && isActive && (<div className={s.Watch}>Посмотреть</div>)}
                                 {child}
                             </motion.div>

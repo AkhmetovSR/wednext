@@ -1,252 +1,48 @@
+.MenuContainer {
+    perspective: 300px;
+    perspective-origin: center top; /* Важно! Точка обзора сверху */
+    display: inline-block;
+}
+
 .Menu {
+    height: 4rem;
     width: 20rem;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(30px, 1fr));
-    gap: 0.35rem;
-    padding: 0.6rem 0.8rem;
     border-radius: 3rem;
-    backdrop-filter: blur(20px);
-    background: linear-gradient(135deg,
-    rgba(255, 240, 245, 0.95) 0%,
-    rgba(255, 228, 240, 0.9) 100%);
-    border: 1px solid rgba(255, 200, 220, 0.5);
+    background-color: #e6e6e6;
+
+    /* 3D трансформация */
+    perspective: 150px;
+    transform: rotateX(40deg);
+    transform-origin: center top;
+
+    /* Тень, следующая за наклоном */
     box-shadow:
-            0 8px 32px rgba(255, 105, 180, 0.15),
-            0 2px 4px rgba(255, 255, 255, 0.5) inset;
-    z-index: 1000;
+        /* Жесткая тень - создает эффект толщины */
+            0 0.6rem 0 -0.2rem rgb(184, 184, 184),
+                /* Мягкая тень сразу под элементом */
+            0 20px 15px -5px rgba(0, 0, 0, 0.3),
+                /* Рассеянная тень дальше */
+            0 20px 25px -8px rgba(0, 0, 0, 0.2);
+
+    /* Для плавности */
+    transition: all 0.2s ease;
 }
 
-.glassBackground {
+.divBtn{
+    display: grid;
+    justify-items: center;
+    width: 80%;
+    grid-template-columns: repeat(auto-fit, minmax(30px, 1fr));
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    border-radius: 3rem;
-    overflow: hidden;
-    background: linear-gradient(135deg,
-    rgba(255, 255, 255, 0.4) 0%,
-    rgba(255, 200, 220, 0.2) 50%,
-    rgba(255, 182, 193, 0.1) 100%);
+    bottom: 3.5rem;
+    /*border: 1px solid red;*/
 }
-
-.liquidShine {
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: linear-gradient(
-            45deg,
-            transparent 30%,
-            rgba(255, 255, 255, 0.6) 50%,
-            transparent 70%
-    );
-    animation: shine 4s infinite;
-    pointer-events: none;
+.icon{
+    font-size: 2rem;
 }
-
-@keyframes shine {
-    0% {
-        transform: translateX(-100%) translateY(-100%) rotate(45deg);
-    }
-    100% {
-        transform: translateX(100%) translateY(100%) rotate(45deg);
-    }
-}
-
-.MenuButton {
-    text-decoration: none;
-    z-index: 1;
-}
-
-.buttonContent {
-    position: relative;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.7rem 0.9rem;
-    border-radius: 2rem;
-    cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.iconWrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 28px;
-    height: 28px;
-}
-
-.icon {
-    font-size: 1.3rem;
-    filter: drop-shadow(0 2px 4px rgba(255, 105, 180, 0.2));
-    transition: all 0.3s ease;
-}
-
-.BtnName {
-    font-size: 0.85rem;
-    font-weight: 600;
-    background: linear-gradient(135deg, #d14b8e, #f472b6);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    letter-spacing: 0.5px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-shadow: none;
-}
-
-.MenuButtonActive .buttonContent {
-    background: linear-gradient(135deg,
-    rgba(255, 255, 255, 0.9) 0%,
-    rgba(255, 228, 240, 0.8) 100%);
-    box-shadow:
-            0 4px 15px rgba(255, 105, 180, 0.2),
-            0 1px 3px rgba(255, 255, 255, 0.8) inset;
-}
-
-.MenuButtonActive .icon {
-    transform: scale(1.1);
-}
-
-.activeIndicator {
-    position: absolute;
-    bottom: 4px;
-    left: 20%;
-    width: 60%;
-    height: 2px;
-    background: linear-gradient(90deg,
-    transparent,
-    #f472b6,
-    #ff69b4,
-    #f472b6,
-    transparent);
-    border-radius: 2px;
-    box-shadow: 0 0 6px rgba(255, 105, 180, 0.6);
-}
-
-/* Hover эффекты */
-.MenuButton:not(.MenuButtonActive):hover .buttonContent {
-    background: rgba(255, 255, 255, 0.5);
-}
-
-.MenuButton:not(.MenuButtonActive):hover .icon {
-    transform: scale(1.08);
-}
-
-/* Анимация появления */
-.MenuButton {
-    animation: fadeInUp 0.4s ease forwards;
-    opacity: 0;
-}
-
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.MenuButton:nth-child(1) { animation-delay: 0.05s; }
-.MenuButton:nth-child(2) { animation-delay: 0.1s; }
-.MenuButton:nth-child(3) { animation-delay: 0.15s; }
-.MenuButton:nth-child(4) { animation-delay: 0.2s; }
-.MenuButton:nth-child(5) { animation-delay: 0.25s; }
-
-/* Эффект нажатия */
-.buttonContent:active {
-    transform: scale(0.95);
-}
-
-/* Декоративные элементы */
-.decorativeFlower1,
-.decorativeFlower2,
-.decorativeFlower3 {
-    position: absolute;
-    font-size: 0.8rem;
-    opacity: 0;
-    pointer-events: none;
-    animation: float 6s ease-in-out infinite;
-}
-
-.decorativeFlower1 {
-    top: -15px;
-    left: -10px;
-    animation-delay: 0s;
-}
-
-.decorativeFlower2 {
-    bottom: -15px;
-    right: -10px;
-    animation-delay: 2s;
-}
-
-.decorativeFlower3 {
-    top: -10px;
-    right: 30%;
-    animation-delay: 4s;
-}
-
-@keyframes float {
-    0% {
-        opacity: 0;
-        transform: translateY(0) rotate(0deg);
-    }
-    20% {
-        opacity: 0.6;
-    }
-    80% {
-        opacity: 0.6;
-    }
-    100% {
-        opacity: 0;
-        transform: translateY(-20px) rotate(360deg);
-    }
-}
-
-/* Адаптивность */
-@media (max-width: 380px) {
-    .Menu {
-        gap: 0.2rem;
-        padding: 0.5rem;
-    }
-
-    .iconWrapper {
-        width: 24px;
-        height: 24px;
-    }
-
-    .icon {
-        font-size: 1.1rem;
-    }
-
-    .buttonContent {
-        padding: 0.6rem;
-    }
-}
-
-/* Дополнительный эффект пульсации для активной кнопки */
-@keyframes gentlePulse {
-    0% {
-        box-shadow: 0 4px 15px rgba(255, 105, 180, 0.2);
-    }
-    50% {
-        box-shadow: 0 4px 20px rgba(255, 105, 180, 0.4);
-    }
-    100% {
-        box-shadow: 0 4px 15px rgba(255, 105, 180, 0.2);
-    }
-}
-
-.MenuButtonActive .buttonContent {
-    animation: gentlePulse 2s ease-in-out infinite;
-}
+/*!* Эффект при наведении - усиливаем наклон *!*/
+/*.Menu:hover {*/
+/*    transform: rotateX(20deg);*/
+/*}*/

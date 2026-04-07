@@ -385,3 +385,25 @@
 /*    top: 0;*/
 /*    left: 0;*/
 /*}*/
+
+/* В Swipe.module.css */
+/*.CardCont {*/
+/*    position: relative;*/
+/*    !* Ваши существующие стили *!*/
+/*}*/
+
+.CardShadowInner {
+    position: absolute;
+    display: grid;
+    justify-self: center;
+    bottom: -5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    height: 55px;
+    background: radial-gradient(ellipse at center, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0) 70%);
+    border-radius: 50%;
+    filter: blur(6px);
+    pointer-events: none;
+    z-index: -1;
+}
