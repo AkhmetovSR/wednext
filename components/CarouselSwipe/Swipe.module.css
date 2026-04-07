@@ -393,13 +393,14 @@
 /*}*/
 
 .CardShadowInner {
+    /*border: 1px solid red;*/
     position: absolute;
     display: grid;
     justify-self: center;
-    bottom: -5rem;
+    bottom: -6rem;
     left: 50%;
     transform: translateX(-50%);
-    width: 90%;
+    width: 120%;
     height: 55px;
     background: radial-gradient(ellipse at center, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0) 70%);
     border-radius: 50%;

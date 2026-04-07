@@ -20,7 +20,7 @@ export default function Menu() {
     ];
 
     return (
-        <div>
+        <div className={s.M}>
             <motion.nav
                 className={s.MenuContainer}
                 initial={{opacity: 0, y: 20}}

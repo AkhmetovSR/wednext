@@ -1,3 +1,11 @@
+.M{
+    width: 100%;
+    display: grid;
+    justify-items: center;
+    position: absolute;
+    /*border: 1px solid red;*/
+    bottom: 2.5rem;
+}
 .MenuContainer {
     perspective: 300px;
     perspective-origin: center top; /* Важно! Точка обзора сверху */
@@ -5,11 +13,11 @@
 }
 
 .Menu {
-    height: 4rem;
+    height: 3.5rem;
     width: 20rem;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(30px, 1fr));
-    border-radius: 3rem;
+    border-radius: 1.5rem;
     background-color: #e6e6e6;
 
     /* 3D трансформация */
@@ -36,7 +44,7 @@
     width: 80%;
     grid-template-columns: repeat(auto-fit, minmax(30px, 1fr));
     position: absolute;
-    bottom: 3.5rem;
+    bottom: 2rem;
     /*border: 1px solid red;*/
 }
 .icon{
