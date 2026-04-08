@@ -4,7 +4,7 @@
     justify-items: center;
     position: absolute;
     /*border: 1px solid red;*/
-    bottom: 2.5rem;
+    bottom: 1.5rem;
 }
 .MenuContainer {
     perspective: 300px;
@@ -13,12 +13,11 @@
 }
 
 .Menu {
-    height: 3.5rem;
-    width: 20rem;
+    height: 2.5rem;
+    width: 17rem;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(30px, 1fr));
-    border-radius: 1.5rem;
-    background-color: #e6e6e6;
+    border-radius: 1rem;
 
     /* 3D трансформация */
     perspective: 150px;
@@ -27,24 +26,174 @@
 
     /* Тень, следующая за наклоном */
     box-shadow:
-        /* Жесткая тень - создает эффект толщины */
-            0 0.6rem 0 -0.2rem rgb(184, 184, 184),
-                /* Мягкая тень сразу под элементом */
-            0 20px 15px -5px rgba(0, 0, 0, 0.3),
-                /* Рассеянная тень дальше */
-            0 20px 25px -8px rgba(0, 0, 0, 0.2);
+            0 0.6rem 0 -0.2rem #8B5A2B,
+            0 20px 15px -5px rgba(0, 0, 0, 0.4),
+            0 20px 25px -8px rgba(0, 0, 0, 0.3);
 
-    /* Для плавности */
     transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
+
+    /* 🌳 Деревянная основа с текстурой */
+    background: repeating-linear-gradient(
+            90deg,
+            #A0522D 0px,
+            #A0522D 2px,
+            #8B4513 2px,
+            #8B4513 4px,
+            #B8652A 4px,
+            #B8652A 6px,
+            #9A4D1E 6px,
+            #9A4D1E 8px
+    );
+
+    /* Наложение градиента для объёма */
+    background-blend-mode: overlay;
+}
+
+/* Дополнительный слой для имитации деревянной текстуры */
+.Menu::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(
+            ellipse at 30% 50%,
+            rgba(0, 0, 0, 0.1) 0%,
+            rgba(0, 0, 0, 0.3) 100%
+    );
+    border-radius: inherit;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* ========== БЛИК 1: Верхний свет (лаковое покрытие) ========== */
+.Menu .varnish {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 45%;
+    background: linear-gradient(
+            to bottom,
+            rgba(255, 255, 255, 0.25) 0%,
+            rgba(255, 255, 255, 0.08) 40%,
+            transparent 100%
+    );
+    border-radius: 1.5rem 1.5rem 0 0;
+    pointer-events: none;
+    z-index: 2;
+    animation: varnishPulse 4s ease-in-out infinite;
+}
+
+@keyframes varnishPulse {
+    0%, 100% {
+        opacity: 0.6;
+        height: 45%;
+    }
+    50% {
+        opacity: 1;
+        height: 48%;
+    }
+}
+
+/* ========== БЛИК 2: Бегущий лаковый блик ========== */
+.Menu .gloss {
+    position: absolute;
+    top: -50%;
+    left: -100%;
+    width: 50%;
+    height: 200%;
+    background: linear-gradient(
+            115deg,
+            transparent 35%,
+            rgba(255, 255, 255, 0.2) 45%,
+            rgba(255, 255, 255, 0.4) 50%,
+            rgba(255, 255, 255, 0.2) 55%,
+            transparent 65%
+    );
+    transform: rotate(25deg);
+    pointer-events: none;
+    z-index: 3;
+    animation: glossRun 6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes glossRun {
+    0% {
+        left: -100%;
+    }
+    20%, 100% {
+        left: 150%;
+    }
+}
+
+/* ========== БЛИК 3: Нижнее затемнение (тень от лака) ========== */
+.Menu::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 25%;
+    background: linear-gradient(
+            to top,
+            rgba(0, 0, 0, 0.2) 0%,
+            rgba(0, 0, 0, 0.05) 60%,
+            transparent 100%
+    );
+    border-radius: 0 0 1.5rem 1.5rem;
+    pointer-events: none;
+    z-index: 1;
+    animation: woodShadow 3s ease-in-out infinite;
+}
+
+@keyframes woodShadow {
+    0%, 100% {
+        opacity: 0.6;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+/* ========== Ускорение при наведении ========== */
+.Menu:hover .gloss {
+    animation-duration: 1.5s;
+}
+
+.Menu:hover .varnish {
+    animation-duration: 1s;
+}
+
+/* ========== Стили для пунктов меню ========== */
+.Menu > *:not(.gloss):not(.varnish) {
+    position: relative;
+    z-index: 4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.3);
+    transition: all 0.2s ease;
+    color: #F5DEB3;
+}
+
+.Menu > *:not(.gloss):not(.varnish):hover {
+    text-shadow: 0 0 8px rgba(255, 215, 140, 0.8);
+    transform: scale(1.05);
+    color: #FFE4B5;
 }
 
 .divBtn{
     display: grid;
     justify-items: center;
-    width: 80%;
+    width: 70%;
     grid-template-columns: repeat(auto-fit, minmax(30px, 1fr));
     position: absolute;
-    bottom: 2rem;
+    bottom: 1rem;
     /*border: 1px solid red;*/
 }
 .icon{

@@ -45,8 +45,8 @@ export default function Menu() {
                         >
                             <motion.div
                                 className={s.buttonContent}
-                                whileTap={{ scale: 0.92 }}
-                                transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                                whileTap={{scale: 0.92}}
+                                transition={{type: "spring", stiffness: 400, damping: 17}}
                             >
                                 <motion.div
                                     className={s.iconWrapper}
@@ -54,7 +54,7 @@ export default function Menu() {
                                         scale: active ? 1.15 : 1,
                                         rotate: active ? [0, -5, 5, 0] : 0
                                     }}
-                                    transition={{ duration: 0.3 }}
+                                    transition={{duration: 0.3}}
                                 >
                                     <span className={s.icon}>
                                         {active ? item.iconActive : item.icon}
@@ -79,7 +79,7 @@ export default function Menu() {
                                     <motion.div
                                         className={s.activeIndicator}
                                         layoutId="activeIndicator"
-                                        transition={{ type: "spring", stiffness: 500, damping: 30 }}
+                                        transition={{type: "spring", stiffness: 500, damping: 30}}
                                     />
                                 )}
                             </motion.div>
@@ -88,10 +88,10 @@ export default function Menu() {
                 })}
             </div>
 
-                {/*/!* Декоративные цветочки *!/*/}
-                {/*<div className={s.decorativeFlower1}>🌸</div>*/}
-                {/*<div className={s.decorativeFlower2}>💐</div>*/}
-                {/*<div className={s.decorativeFlower3}>🌷</div>*/}
+            {/*/!* Декоративные цветочки *!/*/}
+            {/*<div className={s.decorativeFlower1}>🌸</div>*/}
+            {/*<div className={s.decorativeFlower2}>💐</div>*/}
+            {/*<div className={s.decorativeFlower3}>🌷</div>*/}
 
         </div>
 
