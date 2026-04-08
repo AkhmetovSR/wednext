@@ -11,7 +11,7 @@
     /*overflow: hidden;*/
     /*border: 22px solid blue;*/
     display: grid;
-    grid-template-rows: 20% 70% 9%;
+    grid-template-rows: 15% 70% 9%;
     /*border: 1px solid red;*/
     /*color: red;*/
 }

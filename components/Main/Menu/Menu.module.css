@@ -4,7 +4,7 @@
     justify-items: center;
     position: absolute;
     /*border: 1px solid red;*/
-    bottom: 1.5rem;
+    bottom: 3rem;
 }
 .MenuContainer {
     perspective: 300px;
