@@ -1,0 +1,18 @@
+.divTitle{
+    /*border: 1px solid red;*/
+    display: grid;
+    align-content: center;
+    justify-items: center;
+    /*gap: 0.01rem;*/
+}
+.titleh1{
+    font-size: 1.3rem;
+    font-family: var(--font-forum);
+    margin: 0;
+    color: #5a5a5a;
+    /*border: 1px solid red;*/
+}
+.postTitle{
+    font-family: var(--font-montserrat);
+    color: #7a7a7a;
+}

@@ -55,8 +55,8 @@ const Swipe = ({children}) => {
                         </motion.div>
                     </Link>
                 </motion.div>
-                {/*{autoSlide && <motion.div className={s.swipeAnimation} initial={{opacity: 0}} animate={{opacity: 1}} transition={{duration: 1}}><Lottie animationData={animationData} loop={true} autoplay={true} style={{width: '100%'}}/></motion.div>}*/}
-                {/*{!autoSlide && clickAnimation && <motion.div className={s.tapAnimation} initial={{opacity: 0}} animate={{opacity: 1}} transition={{duration: 1.5, delay: 1}}><Lottie animationData={tapAnimation} loop={true} autoplay={true} style={{width: '100%'}}/></motion.div>}*/}
+                {autoSlide && <motion.div className={s.swipeAnimation} initial={{opacity: 0}} animate={{opacity: 1}} transition={{duration: 1}}><Lottie animationData={animationData} loop={true} autoplay={true} style={{width: '100%'}}/></motion.div>}
+                {!autoSlide && clickAnimation && <motion.div className={s.tapAnimation} initial={{opacity: 0}} animate={{opacity: 1}} transition={{duration: 1.5, delay: 1}}><Lottie animationData={tapAnimation} loop={true} autoplay={true} style={{width: '100%'}}/></motion.div>}
                 {React.Children.map(children, (child, index) => {
                     const id = child.props["data-id"];
                     const position = getSlidePosition(index, activeSlide, totalSlides);

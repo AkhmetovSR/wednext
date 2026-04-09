@@ -1,10 +1,11 @@
 .M{
+    position: absolute;
     width: 100%;
     display: grid;
     justify-items: center;
-    position: absolute;
+
     /*border: 1px solid red;*/
-    bottom: 3rem;
+    bottom: 2.5rem;
 }
 .MenuContainer {
     perspective: 300px;
@@ -190,11 +191,11 @@
 .divBtn{
     display: grid;
     justify-items: center;
-    width: 70%;
+    width: 17rem;
     grid-template-columns: repeat(auto-fit, minmax(30px, 1fr));
     position: absolute;
-    bottom: 1rem;
-    gap: 5%;
+    bottom: 1.2rem;
+    gap: 8%;
     /*border: 1px solid red;*/
 }
 
@@ -203,21 +204,33 @@
     text-decoration: none;
     cursor: pointer;
     /* Fallback для Android */
-    background: rgba(205, 205, 205, 0.13);
+    background: rgba(255, 255, 255, 0.51);
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
     border-radius: 1.5rem;
-    width: 46px;
-    height: 46px;
+    width: 3rem;
+    height: 3rem;
     /*min-width: 56px;*/
     transition: all 0.3s cubic-bezier(0.34, 1.2, 0.64, 1);
-    border: 2px solid rgba(212, 165, 165, 0.6);
+    border: 1px solid rgba(198, 198, 198, 0.6);
 }
 
 .MenuButtonActive {
-    background: linear-gradient(135deg, rgba(216, 170, 172, 0.22) 0%, #fecfef 100%);
-    border-color: rgba(255, 107, 107, 0.52); /* Активный бордер */
+    background: rgba(0, 128, 255, 0.1);
+    border-color: rgb(164, 161, 255); /* Активный бордер */
     transform: translateY(-10px) scale(1.2); /* Подъём вверх и увеличение */
+    animation: float 2s ease-in-out infinite;
+}
+@keyframes float {
+    0% {
+        transform: translateY(-0.5rem) scale(1.2);
+    }
+    50% {
+        transform: translateY(-1rem) scale(1.2);
+    }
+    100% {
+        transform: translateY(-0.5rem) scale(1.2);
+    }
 }
 
 .buttonContent {
@@ -240,9 +253,13 @@
 }
 
 .icon {
-    font-size: 1rem;
-    line-height: 1;
+
     display: inline-block;
+}
+.iconImage{
+    height: 1.5rem;
+    width: 1.5rem;
+    opacity: 0.7;
 }
 
 /*.BtnName {*/
@@ -266,10 +283,10 @@
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: 4px;
-    height: 4px;
+    width: 0.4rem;
+    height: 0.4rem;
     background: #ff6b6b;
-    border-radius: 2px;
+    border-radius: 5rem;
     box-shadow: 0 0 6px #ff6b6b;
 }
 
@@ -284,8 +301,8 @@
 }
 
 .decorativeFlower1 {
-    bottom: 80px;
-    left: 10px;
+    bottom: 30px;
+    left: 30px;
     animation: float 3s ease-in-out infinite;
 }
 
@@ -300,9 +317,4 @@
     left: 50%;
     transform: translateX(-50%);
     animation: float 3.5s ease-in-out infinite;
-}
-
-@keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-10px); }
 }

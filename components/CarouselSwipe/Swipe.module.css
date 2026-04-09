@@ -59,6 +59,12 @@
     align-items: center;
     justify-items: center;
 }
+.swipeAnimation, .tapAnimation{
+    position: absolute;
+    width: 50%;
+    /*border: 1px solid red;*/
+    z-index: 15;
+}
 
 /*-------------------------------------------------------------------------*/
 .info {

@@ -2,7 +2,11 @@
 import s from "./Menu.module.css";
 import Link from "next/link";
 import { useSelectedLayoutSegment } from "next/navigation";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
+import TempIcon from "@/public/images/TempIcon.webp";
+import InstructionIcon from "@/public/images/InstructionIcon.webp";
+
 
 export default function Menu() {
     const segment = useSelectedLayoutSegment();
@@ -12,11 +16,11 @@ export default function Menu() {
     };
 
     const menuItems = [
-        { path: "/", name: "Шаблоны", icon: "💝", iconActive: "💒" },
-        { path: "/Instruction", name: "Инструкция", icon: "📖", iconActive: "💌" },
-        { path: "/Policy", name: "Политика", icon: "🔒", iconActive: "💍" },
-        { path: "/Offer", name: "Оферта", icon: "📜", iconActive: "✨" },
-        { path: "/Company", name: "Контакты", icon: "📞", iconActive: "🌸" },
+        { path: "/", name: "Шаблоны", icon: TempIcon, iconActive: TempIcon },
+        { path: "/Instruction", name: "Инструкция", icon: InstructionIcon, iconActive: InstructionIcon },
+        { path: "/Policy", name: "Политика", icon: TempIcon, iconActive: TempIcon },
+        { path: "/Offer", name: "Оферта", icon: TempIcon, iconActive: TempIcon },
+        { path: "/Company", name: "Контакты", icon: TempIcon, iconActive: TempIcon },
     ];
 
     return (
@@ -45,20 +49,26 @@ export default function Menu() {
                         >
                             <motion.div
                                 className={s.buttonContent}
-                                whileTap={{scale: 0.92}}
-                                transition={{type: "spring", stiffness: 400, damping: 17}}
+                                // whileTap={{scale: 0.92}}
+                                // transition={{type: "spring", stiffness: 400, damping: 17}}
                             >
                                 <motion.div
                                     className={s.iconWrapper}
-                                    animate={{
-                                        scale: active ? 1.15 : 1,
-                                        rotate: active ? [0, -5, 5, 0] : 0
-                                    }}
-                                    transition={{duration: 0.3}}
+                                    // animate={{
+                                    //     scale: active ? 1.15 : 1,
+                                    //     rotate: active ? [0, -5, 5, 0] : 0
+                                    // }}
+                                    // transition={{duration: 0.3}}
                                 >
-                                    <span className={s.icon}>
-                                        {active ? item.iconActive : item.icon}
-                                    </span>
+                                    <div className={s.icon}>
+                                        <Image
+                                            src={active ? item.iconActive : item.icon}
+                                            alt={item.name}
+                                            // width={28}
+                                            // height={28}
+                                            className={s.iconImage}
+                                        />
+                                    </div>
                                 </motion.div>
 
                                 {/*<AnimatePresence mode="wait">*/}
