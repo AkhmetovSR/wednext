@@ -5,7 +5,6 @@ import {useParams} from 'next/navigation';
 import Link from "next/link";
 import s from "@/components/CarouselSwipe/Swipe.module.css";
 import {useCarouselState} from "@/components/Providers/Context";
-import CarouselNavigation from "@/components/CarouselSwipe/CarouselNavigation";
 import {useSwipeSlide} from "@/hooks/useSwipeSlide";
 import {useAutoSlide} from "@/hooks/useSlideManagement";
 import Title from "@/components/CarouselSwipe/Title";
@@ -54,6 +53,7 @@ const Swipe = ({children}) => {
                             <div className={s.CardShadowInner}/>
                         </motion.div>
                     </Link>
+                    <div className={s.Price}>{currentPrice} ₽</div>
                 </motion.div>
                 {autoSlide && <motion.div className={s.swipeAnimation} initial={{opacity: 0}} animate={{opacity: 1}} transition={{duration: 1}}><Lottie animationData={animationData} loop={true} autoplay={true} style={{width: '100%'}}/></motion.div>}
                 {!autoSlide && clickAnimation && <motion.div className={s.tapAnimation} initial={{opacity: 0}} animate={{opacity: 1}} transition={{duration: 1.5, delay: 1}}><Lottie animationData={tapAnimation} loop={true} autoplay={true} style={{width: '100%'}}/></motion.div>}
@@ -78,16 +78,11 @@ const Swipe = ({children}) => {
                                 filter: `blur(${Math.abs(position) * 3}px)`
                             }}
                             transition={{duration: 0.3, ease: "easeOut", type: "tween", delay: 0}}>
-                            {/*{!slideId && isActive && (<div className={s.Watch}>Посмотреть</div>)}*/}
                             {child}
                         </motion.div>
                     );
                 })}
             </div>
-
-            {/*<motion.div className={s.divNavi}>*/}
-            {/*        <CarouselNavigation />*/}
-            {/*</motion.div>*/}
         </motion.div>
     );
 };

@@ -117,7 +117,7 @@ const UnderDevelopment = ({ slideNumber }) => {
 export const tempArr = [
     { id: 1, div: <UnderDevelopment slideNumber={1} /> },
     { id: 2, div: <UnderDevelopment slideNumber={2} /> },
-    { id: 3, div: <Temp3 /> },
+    { id: 3, div: <Temp3 />, price: 3 },
     { id: 4, div: <UnderDevelopment slideNumber={4} /> },
     { id: 5, div: <UnderDevelopment slideNumber={5} /> },
     { id: 6, div: <UnderDevelopment slideNumber={6} /> },

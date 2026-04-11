@@ -33,10 +33,6 @@ export default function SlidePage() {
                         <div>Шаблон не найден</div>
                         <div>Сейчас вернемся к шаблонам...</div>
                         <div className={s.Stop}>🚧</div>
-
-                        {/*<p>Слайд {slideId} не существует</p>*/}
-                        {/*<p>ID из URL: {slideId} (тип: {typeof slideId})</p>*/}
-                        {/*<p>Доступные ID: {tempArr.map(t => t.id).join(', ')}</p>*/}
                     </div>
                 </div>
             </motion.div>
