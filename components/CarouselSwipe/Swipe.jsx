@@ -51,9 +51,10 @@ const Swipe = ({children}) => {
                         <motion.div initial={{opacity: 0}} animate={{opacity: 1}} transition={{delay: 0.3}} className={s.divPhone}>
                             <Image className={s.phone} src={iphone} alt='phone'/>
                             <div className={s.CardShadowInner}/>
+                            <div className={s.Price}>{currentPrice} ₽</div>
                         </motion.div>
                     </Link>
-                    <div className={s.Price}>{currentPrice} ₽</div>
+
                 </motion.div>
                 {autoSlide && <motion.div className={s.swipeAnimation} initial={{opacity: 0}} animate={{opacity: 1}} transition={{duration: 1}}><Lottie animationData={animationData} loop={true} autoplay={true} style={{width: '100%'}}/></motion.div>}
                 {!autoSlide && clickAnimation && <motion.div className={s.tapAnimation} initial={{opacity: 0}} animate={{opacity: 1}} transition={{duration: 1.5, delay: 1}}><Lottie animationData={tapAnimation} loop={true} autoplay={true} style={{width: '100%'}}/></motion.div>}
