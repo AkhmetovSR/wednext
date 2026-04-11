@@ -9,7 +9,7 @@
 }
 .MenuContainer {
     perspective: 300px;
-    perspective-origin: center top; /* Важно! Точка обзора сверху */
+    /*perspective-origin: center top; !* Важно! Точка обзора сверху *!*/
     display: inline-block;
 }
 
@@ -27,7 +27,7 @@
 
     /* Тень, следующая за наклоном */
     box-shadow:
-            0 0.6rem 0 -0.2rem #8B5A2B,
+            0 0.7rem 0 -0.2rem #6c4621,
             0 20px 15px -5px rgba(0, 0, 0, 0.4),
             0 20px 25px -8px rgba(0, 0, 0, 0.3);
 
@@ -51,143 +51,23 @@
     /* Наложение градиента для объёма */
     background-blend-mode: overlay;
 }
-
 /* Дополнительный слой для имитации деревянной текстуры */
-.Menu::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: radial-gradient(
-            ellipse at 30% 50%,
-            rgba(0, 0, 0, 0.1) 0%,
-            rgba(0, 0, 0, 0.3) 100%
-    );
-    border-radius: inherit;
-    pointer-events: none;
-    z-index: 1;
-}
-
-/* ========== БЛИК 1: Верхний свет (лаковое покрытие) ========== */
-.Menu .varnish {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 45%;
-    background: linear-gradient(
-            to bottom,
-            rgba(255, 255, 255, 0.25) 0%,
-            rgba(255, 255, 255, 0.08) 40%,
-            transparent 100%
-    );
-    border-radius: 1.5rem 1.5rem 0 0;
-    pointer-events: none;
-    z-index: 2;
-    animation: varnishPulse 4s ease-in-out infinite;
-}
-
-@keyframes varnishPulse {
-    0%, 100% {
-        opacity: 0.6;
-        height: 45%;
-    }
-    50% {
-        opacity: 1;
-        height: 48%;
-    }
-}
-
-/* ========== БЛИК 2: Бегущий лаковый блик ========== */
-.Menu .gloss {
-    position: absolute;
-    top: -50%;
-    left: -100%;
-    width: 50%;
-    height: 200%;
-    background: linear-gradient(
-            115deg,
-            transparent 35%,
-            rgba(255, 255, 255, 0.2) 45%,
-            rgba(255, 255, 255, 0.4) 50%,
-            rgba(255, 255, 255, 0.2) 55%,
-            transparent 65%
-    );
-    transform: rotate(25deg);
-    pointer-events: none;
-    z-index: 3;
-    animation: glossRun 6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-}
-
-@keyframes glossRun {
-    0% {
-        left: -100%;
-    }
-    20%, 100% {
-        left: 150%;
-    }
-}
-
-/* ========== БЛИК 3: Нижнее затемнение (тень от лака) ========== */
-.Menu::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 25%;
-    background: linear-gradient(
-            to top,
-            rgba(0, 0, 0, 0.2) 0%,
-            rgba(0, 0, 0, 0.05) 60%,
-            transparent 100%
-    );
-    border-radius: 0 0 1.5rem 1.5rem;
-    pointer-events: none;
-    z-index: 1;
-    animation: woodShadow 3s ease-in-out infinite;
-}
-
-@keyframes woodShadow {
-    0%, 100% {
-        opacity: 0.6;
-    }
-    50% {
-        opacity: 1;
-    }
-}
-
-/* ========== Ускорение при наведении ========== */
-.Menu:hover .gloss {
-    animation-duration: 1.5s;
-}
-
-.Menu:hover .varnish {
-    animation-duration: 1s;
-}
-
-/* ========== Стили для пунктов меню ========== */
-.Menu > *:not(.gloss):not(.varnish) {
-    position: relative;
-    z-index: 4;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 500;
-    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.3);
-    transition: all 0.2s ease;
-    color: #F5DEB3;
-}
-
-.Menu > *:not(.gloss):not(.varnish):hover {
-    text-shadow: 0 0 8px rgba(255, 215, 140, 0.8);
-    transform: scale(1.05);
-    color: #FFE4B5;
-}
-
+/*.Menu::before {*/
+/*    content: '';*/
+/*    position: absolute;*/
+/*    top: 0;*/
+/*    left: 0;*/
+/*    right: 0;*/
+/*    bottom: 0;*/
+/*    background: radial-gradient(*/
+/*            ellipse at 30% 50%,*/
+/*            rgba(0, 0, 0, 0.1) 0%,*/
+/*            rgba(0, 0, 0, 0.3) 100%*/
+/*    );*/
+/*    border-radius: inherit;*/
+/*    pointer-events: none;*/
+/*    z-index: 1;*/
+/*}*/
 .divBtn{
     display: grid;
     justify-items: center;
@@ -196,7 +76,6 @@
     position: absolute;
     bottom: 1.2rem;
     gap: 8%;
-    /*border: 1px solid red;*/
 }
 
 .MenuButton {
@@ -204,117 +83,45 @@
     text-decoration: none;
     cursor: pointer;
     /* Fallback для Android */
-    background: rgba(255, 255, 255, 0.51);
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(5px);
+    /*-webkit-backdrop-filter: blur(15px);*/
     border-radius: 1.5rem;
     width: 3rem;
     height: 3rem;
-    /*min-width: 56px;*/
     transition: all 0.3s cubic-bezier(0.34, 1.2, 0.64, 1);
-    border: 1px solid rgba(198, 198, 198, 0.6);
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 1);
+    box-shadow: 0 -1px 4px rgb(200, 200, 200);
+    /* Добавляем transition для transform, чтобы возврат был плавным */
+    transition: transform 0.4s cubic-bezier(0.34, 1.2, 0.64, 1), all 0.3s cubic-bezier(0.34, 1.2, 0.64, 1);
 }
-
 .MenuButtonActive {
-    background: rgba(0, 128, 255, 0.1);
-    border-color: rgb(164, 161, 255); /* Активный бордер */
-    transform: translateY(-10px) scale(1.2); /* Подъём вверх и увеличение */
-    animation: float 2s ease-in-out infinite;
+    background: rgba(0, 4, 255, 0.2);
 }
-@keyframes float {
-    0% {
-        transform: translateY(-0.5rem) scale(1.2);
-    }
-    50% {
-        transform: translateY(-1rem) scale(1.2);
-    }
-    100% {
-        transform: translateY(-0.5rem) scale(1.2);
-    }
-}
-
 .buttonContent {
-    position: relative;
+    /*position: relative;*/
     width: 100%;
     height: 100%;
-    display: flex;
+    display: grid;
     align-items: center;
     justify-content: center;
     /*border-radius: 1%;*/
     overflow: hidden;
     /*border: 2px solid red;*/
 }
-
-.iconWrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.2s ease;
-}
-
-.icon {
-
-    display: inline-block;
-}
 .iconImage{
-    height: 1.5rem;
-    width: 1.5rem;
-    opacity: 0.7;
+    height: 1.8rem;
+    width: 1.8rem;
+    /*opacity: 0.6;*/
 }
-
-/*.BtnName {*/
+/*.activeIndicator {*/
 /*    position: absolute;*/
-/*    left: 60px;*/
-/*    white-space: nowrap;*/
-/*    font-size: 0.5rem;*/
-/*    font-weight: 600;*/
-/*    color: #ff6b6b;*/
-/*    font-family: var(--font-mPlus);*/
-/*    letter-spacing: 0.5px;*/
-/*    background: rgba(255, 255, 255, 0.9);*/
-/*    !*padding: 4px 12px;*!*/
-/*    border-radius: 20px;*/
-/*    !*backdrop-filter: blur(4px);*!*/
-/*    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);*/
+/*    bottom: 0;*/
+/*    left: 50%;*/
+/*    transform: translateX(-50%);*/
+/*    width: 0.4rem;*/
+/*    height: 0.4rem;*/
+/*    background: #ff6b6b;*/
+/*    border-radius: 5rem;*/
+/*    box-shadow: 0 0 6px #ff6b6b;*/
 /*}*/
-
-.activeIndicator {
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 0.4rem;
-    height: 0.4rem;
-    background: #ff6b6b;
-    border-radius: 5rem;
-    box-shadow: 0 0 6px #ff6b6b;
-}
-
-/* Декоративные цветочки (закомментированы, но если раскомментировать) */
-.decorativeFlower1,
-.decorativeFlower2,
-.decorativeFlower3 {
-    position: absolute;
-    font-size: 1rem;
-    opacity: 0.6;
-    pointer-events: none;
-}
-
-.decorativeFlower1 {
-    bottom: 30px;
-    left: 30px;
-    animation: float 3s ease-in-out infinite;
-}
-
-.decorativeFlower2 {
-    bottom: 100px;
-    right: 10px;
-    animation: float 4s ease-in-out infinite reverse;
-}
-
-.decorativeFlower3 {
-    bottom: 60px;
-    left: 50%;
-    transform: translateX(-50%);
-    animation: float 3.5s ease-in-out infinite;
-}
