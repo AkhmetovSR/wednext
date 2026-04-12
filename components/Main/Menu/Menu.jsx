@@ -5,8 +5,10 @@ import { useSelectedLayoutSegment } from "next/navigation";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import TempIcon from "@/public/images/TempIcon.webp";
-import InstructionIcon from "@/public/images/InstructionIcon.webp";
+import InstructionIcon from "@/public/images/InstructionIcon2.webp";
 import PolicyIcon from "@/public/images/PolycyIcon.webp";
+import OfferIcon from "@/public/images/OfferIcon.webp";
+import ContactsIcon from "@/public/images/ContactsIcon.webp";
 
 
 export default function Menu() {
@@ -20,8 +22,8 @@ export default function Menu() {
         { path: "/", name: "Шаблоны", icon: TempIcon, iconActive: TempIcon },
         { path: "/Instruction", name: "Инструкция", icon: InstructionIcon, iconActive: InstructionIcon },
         { path: "/Policy", name: "Политика", icon: PolicyIcon, iconActive: PolicyIcon },
-        { path: "/Offer", name: "Оферта", icon: TempIcon, iconActive: TempIcon },
-        { path: "/Company", name: "Контакты", icon: TempIcon, iconActive: TempIcon },
+        { path: "/Offer", name: "Оферта", icon: OfferIcon, iconActive: OfferIcon },
+        { path: "/Company", name: "Контакты", icon: ContactsIcon, iconActive: ContactsIcon },
     ];
 
     return (
