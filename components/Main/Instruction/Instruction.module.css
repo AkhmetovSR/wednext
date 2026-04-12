@@ -1,11 +1,27 @@
 .Cont{
-    height: 98%;
-    width: 90%;
-    /*border: 1px solid blue;*/
-    align-self: end;
+    display: grid;
+    height: 92%;
+    width: 80%;
+    border: 2px solid #a1a1a1;
+    border-radius: 25px;
+    margin: 2% auto;
+    align-self: start;
+    align-content: start;
     justify-self: center;
     overflow-y: scroll;
     overflow-x: hidden;
+    padding: 3%;
+}
+.Title{
+    Color: lightgrey;
+}
+.InstTitle{
+    text-align: center;
+    font-size: 1.3rem;
+    color: #7a7a7a;
+}
+.P1{
+    color: grey;
 }
 .ImgInstr{
     display: grid;
@@ -19,3 +35,44 @@
     /*width: 100%;*/
     border-radius: 15px;
 }
+
+.Temp{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    /*justify-items: center;*/
+    /*border: 1px solid blue;*/
+    height: 14rem;
+    padding: 5%;
+    gap: 1%;
+}
+.T1, .T3{
+    height: 9rem;
+    left: 25%;
+
+    top: 23%;
+
+}
+.T2 {
+    background-color: #A0522D;
+    height: 12rem;
+    z-index: 2;
+    left: 34%;
+    width: 8rem;
+    border-radius: 1rem;
+    font-size: 2rem;
+    color: white;
+    display: grid;
+    align-content: center;
+    justify-items: center;
+}
+.T1{
+    border-radius: 1rem 0 0 1rem;
+    background-color: gold;
+}
+
+.T3{
+    border-radius: 0 1rem 1rem 0;
+    background-color: greenyellow;
+}
+
