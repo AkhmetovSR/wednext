@@ -49,7 +49,7 @@ const Swipe = ({children}) => {
                 <motion.div className={s.SwipeZone} {...swipeHandlers}>
                     <Link href={`/temp/${activeSlide + 1}`} prefetch className={s.Link}>
                         <motion.div initial={{opacity: 0}} animate={{opacity: 1}} transition={{delay: 0.3}} className={s.divPhone}>
-                            <Image className={s.phone} src={iphone} alt='phone'/>
+                            <Image className={s.phone} src={iphone} loading='eager' priority alt='phone'/>
                             <div className={s.CardShadowInner}/>
                             <div className={s.Price}>{currentPrice} ₽</div>
                         </motion.div>
