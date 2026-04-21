@@ -1,12 +1,13 @@
 'use client';  // ← Добавьте в начало файла
-import main from "../Main.module.css";
-import s from "../Policy/Policy.module.css";
+import main from "@/components/Main/Home/Home.module.css";
+import s from '@/components/Main/Policy/Policy.module.css';
+import m from "@/components/Main/MainStyle.module.css";
 import React from "react";
 
 export default function Company({setActiveTab}) {
     return (
         <div className={main.Main}>
-            <div className={s.companyContent}>
+            <div className={m.Cont}>
                 <div className={s.companyHeader}>
                     <h3 className={s.companyTitle}>О компании / контакты / реквизиты</h3>
                 </div>

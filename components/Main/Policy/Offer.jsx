@@ -1,14 +1,15 @@
 // components/Legal/UserAgreement.jsx
 import React from 'react';
-import main from "../Main.module.css"
-import s from './Policy.module.css';
+import main from "@/components/Main/Home/Home.module.css";
+import s from '@/components/Main/Policy/Policy.module.css';
+import m from "@/components/Main/MainStyle.module.css";
 
 const Offer = () => {
     const currentYear = new Date().getFullYear();
 
     return (
         <div className={main.Main}>
-            <div className={s.Policy}>
+            <div className={m.Cont}>
                 <div className={s.Offer}>
                     <header className={s.policyHeader}>
                         <h1 className={s.policyTitle}>Договор публичной оферты</h1>
