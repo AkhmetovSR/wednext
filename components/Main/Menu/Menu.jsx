@@ -20,10 +20,10 @@ export default function Menu() {
 
     const menuItems = [
         { path: "/", name: "Шаблоны", icon: TempIcon, iconActive: TempIcon },
-        { path: "/Instruction", name: "Инструкция", icon: InstructionIcon, iconActive: InstructionIcon },
-        { path: "/Policy", name: "Политика", icon: PolicyIcon, iconActive: PolicyIcon },
-        { path: "/Offer", name: "Оферта", icon: OfferIcon, iconActive: OfferIcon },
-        { path: "/Company", name: "Контакты", icon: ContactsIcon, iconActive: ContactsIcon },
+        { path: "/instruction", name: "Инструкция", icon: InstructionIcon, iconActive: InstructionIcon },
+        { path: "/policy", name: "Политика", icon: PolicyIcon, iconActive: PolicyIcon },
+        { path: "/offer", name: "Оферта", icon: OfferIcon, iconActive: OfferIcon },
+        { path: "/company", name: "Контакты", icon: ContactsIcon, iconActive: ContactsIcon },
     ];
 
     return (

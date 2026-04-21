@@ -199,6 +199,40 @@
 .WishDesc{
     margin-bottom: 5%;
 }
+/*-------------------------------------------------------Instruction, Policy, Offer, Contacts--------------------------------------------------*/
+.Cont {
+    display: grid;
+    height: 88%;
+    width: 85%;
+    /*padding: 1rem;*/
+    margin: 2% auto;
+    justify-items: center;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background: #ffffff;
+    border-radius: 1.5rem;
+    position: relative;
+    transition: all 0.4s ease;
+    scrollbar-width: thin;
+    scrollbar-color: #cbd5e1 #f1f5f9;
+    border: 1px solid #a8a8a8;
+    font-family: -apple-system;
+}
+.Title {
+    /*border: 1px solid red;*/
+    /*width: 100%;*/
+    /*text-align: start;*/
+    font-size: 1.2rem;
+    font-family: -apple-system;
+    /*font-family: var(--font-forum);*/
+    /*border-radius: 1rem;*/
+    color: #787878;
+    /*background-color: #fafafa;*/
+    /*text-align: start;*/
+    padding: 1rem;
+    margin: 0;
+}
+
 /*-------------------------------------------------------очень важно--------------------------------------------------*/
 /* iOS specific fixes */
 @supports (-webkit-touch-callout: none) {

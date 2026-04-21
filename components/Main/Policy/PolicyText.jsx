@@ -1,7 +1,9 @@
 // components/Legal/PrivacyPolicy.jsx
+'use client';
 import React from 'react';
-import s from './Policy.module.css';
-import {Link} from "react-router-dom";
+import s from '@/components/Main/Policy/Policy.module.css';
+import m from '@/components/Main/MainStyle.module.css';
+// import {Link} from "react-router-dom";
 
 const PrivacyPolicy = ({setActiveTab}) => {
     const handleCookiePolicyClick = () => {
@@ -10,9 +12,9 @@ const PrivacyPolicy = ({setActiveTab}) => {
     return (
         <div className={s.policyContainer}>
             <header className={s.policyHeader}>
-                <h1 className={s.policyTitle}>Политика в отношении обработки персональных данных</h1>
-                <a href="/Policy.pdf" download target="_blank" rel="noopener noreferrer" className={s.LoadPolicy}>Скачать в PDF</a>
+                <h1 className={m.Title}>Политика в отношении обработки персональных данных</h1>
                 <p className={s.lastUpdated}>Последнее обновление: {new Date().toLocaleDateString('ru-RU')}</p>
+                <a href="/Policy.pdf" download target="_blank" rel="noopener noreferrer" className={s.LoadPolicy}>Скачать в PDF</a>
             </header>
 
             <div className={s.policyContent}>
@@ -107,7 +109,7 @@ const PrivacyPolicy = ({setActiveTab}) => {
                         </li>
                         <li className={s.listItem}>отвечать на обращения и запросы субъектов
                             персональных данных и их законных представителей. Подать обращение
-                            или запрос Вы можете в разделе <Link to="/Company">"Контакты"</Link>.
+                            {/*или запрос Вы можете в разделе <Link to="/company">"Контакты"</Link>.*/}
                         </li>
                     </ul>
                 </section>

@@ -1,21 +1,37 @@
 // components/Legal/CookiePolicy.jsx
+'use client';
 import React from 'react';
-import s from './Policy.module.css';
-import {Link, useNavigate} from "react-router-dom";
-import CookieManager from "../../../OokieManager";
+import { useRouter } from 'next/navigation';
+import s from '@/components/Main/Policy/Policy.module.css';
+import m from '@/components/Main/MainStyle.module.css';
+// import {Link, useNavigate} from "react-router-dom";
+// import CookieManager from "../../../OokieManager";
 
-const CookiePolicy = ({setActiveTab, isExpanded, CookNot, setIsExpanded}) => {
+const CookiePolicy = ({ setActiveTab, isExpanded, CookNot, setIsExpanded }) => {
     const currentYear = new Date().getFullYear();
-    const navigate = useNavigate(); // Добавьте эту строку
-    function goToLink() {
-        setIsExpanded(false);
-        navigate('/Policy');
-        CookNot();
-    }
+    const router = useRouter();
+
+    const goToLink = () => {
+        if (setIsExpanded) {
+            setIsExpanded(false);
+        }
+        if (CookNot) {
+            CookNot();
+        }
+        router.push('/Policy');
+    };
+
+    const handlePrivacyClick = () => {
+        if (isExpanded && goToLink) {
+            goToLink();
+        } else if (setActiveTab) {
+            setActiveTab('privacy');
+        }
+    };
     return (
         <div>
             <header className={s.policyHeader}>
-                <h1 className={s.policyTitle}>Политика использования файлов «cookie»</h1>
+                <h1 className={m.Title}>Политика использования файлов «cookie»</h1>
                 <a href="/Cookie.pdf" download target="_blank" rel="noopener noreferrer" className={s.LoadPolicy}>Скачать в PDF</a>
                 <p className={s.policySubtitle}>
                     Для сайта <strong>your-website.com</strong>

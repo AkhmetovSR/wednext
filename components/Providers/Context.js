@@ -108,13 +108,16 @@ export const PolicyStateProvider = ({ children }) => {
     const [cookieAccepted, setCookieAccepted] = useState(false);
     const [policyAccepted, setPolicyAccepted] = useState(false);
     const [showCookieBanner, setShowCookieBanner] = useState(false);
+    const [activeTab, setActiveTab] = useState('privacy');
     const value = {
         cookieAccepted,
         setCookieAccepted,
         policyAccepted,
         setPolicyAccepted,
         showCookieBanner,
-        setShowCookieBanner
+        setShowCookieBanner,
+        activeTab,
+        setActiveTab
     };
 
     return (

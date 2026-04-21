@@ -69,7 +69,7 @@ export default function Company({setActiveTab}) {
 
                 {/*<div className={s.footer}>*/}
                     {/*<div className={s.legalLinks}>*/}
-                    {/*    <NavLink to="/Policy" className={s.links}>*/}
+                    {/*    <NavLink to="/policy" className={s.links}>*/}
                     {/*        <div className={s.legalLink} onClick={() => {setActiveTab('privacy')}}>Политика конфиденциальности</div>*/}
                     {/*        <div className={s.legalLink} onClick={() => {setActiveTab('agreement')}}>Пользовательское соглашение</div>*/}
                     {/*    </NavLink>*/}

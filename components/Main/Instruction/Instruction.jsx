@@ -2,6 +2,7 @@
 import React from "react";
 import Head from "next/head";
 import main from "@/components/Main/Home/Home.module.css";
+import m from "@/components/Main/MainStyle.module.css";
 import s from "./Instruction.module.css";
 import Lottie from "lottie-react";
 import animationData from "@/public/lottie/Swipe.json";
@@ -68,10 +69,8 @@ export default function Instruction() {
             </Head>
 
             <div className={main.Main}>
-                <div className={s.Cont}>
-                        <div className={s.Title}>Инструкция</div>
-                        <h1 className={s.InstTitle}>Как создать свадебное приглашение за 4 шага</h1>
-
+                <div className={m.Cont}>
+                        <h1 className={m.Title}>Инструкция: как создать свадебное приглашение за 4 шага</h1>
                         <ol className={s.StepsList}>
                             <li className={s.Step1}>
                                 <span className={s.StepText1}><strong>Выберите шаблон</strong> и нажмите на него, чтобы открыть.</span>
